@@ -1,82 +1,82 @@
-# GESTOR - GestÃ£o Escolar, SupervisÃ£o, Tecnologia e OrganizaÃ§Ã£o em Rede
+# GESTOR - Gestão Escolar, Supervisão, Tecnologia e Organização em Rede
 
 <p align="center">
-  <strong>Uma soluÃ§Ã£o moderna, inteligente e eficiente para a gestÃ£o educacional.</strong>
+  <strong>Uma solução moderna, inteligente e eficiente para a gestão educacional.</strong>
 </p>
 
 ---
 
-## ðŸŒŸ Sobre o Projeto
+## 🌟 Sobre o Projeto
 
-O **GESTOR** Ã© uma plataforma inteligente voltada para a gestÃ£o de escolas, projetada para simplificar processos, conectar a comunidade escolar e fornecer dados em tempo real para a tomada de decisÃµes estratÃ©gicas. 
+O **GESTOR** é uma plataforma inteligente voltada para a gestão de escolas, projetada para simplificar processos, conectar a comunidade escolar e fornecer dados em tempo real para a tomada de decisões estratégicas. 
 
-Esta Ã© a **Landing Page** do produto, criada para apresentar os diferenciais, mÃ³dulos e benefÃ­cios da plataforma de maneira atrativa, moderna e dinÃ¢mica para potenciais clientes e parceiros educacionais.
-
----
-
-## âœ¨ Funcionalidades Principais
-
-* **NavegaÃ§Ã£o Fluida (Navbar):** Menu responsivo e intuitivo, com rolagem suave para as principais seÃ§Ãµes e chamada de aÃ§Ã£o (CTA) direta.
-* **Hero Impactante:** ApresentaÃ§Ã£o clara do valor do produto com badges interativos, efeitos animados e botÃµes de chamada de aÃ§Ã£o.
-* **BenefÃ­cios Clave:** ExplicaÃ§Ã£o visual das vantagens de utilizar a plataforma.
-* **MÃ³dulos do Sistema:** DemonstraÃ§Ã£o interativa dos recursos voltados para supervisores, professores, pais e alunos.
-* **MÃ©tricas em NÃºmeros:** Painel estatÃ­stico demonstrando o impacto e o alcance do sistema.
-* **Depoimentos (Testimonials):** EspaÃ§o para feedback e avaliaÃ§Ãµes reais de gestores e educadores.
-* **Modal de DemonstraÃ§Ã£o (DemoModal):** FormulÃ¡rio interativo para captaÃ§Ã£o de leads interessados em testar o sistema.
+Esta é a **Landing Page** do produto, criada para apresentar os diferenciais, módulos e benefícios da plataforma de maneira atrativa, moderna e dinâmica para potenciais clientes e parceiros educacionais.
 
 ---
 
-## ðŸ› ï¸ Tecnologias Utilizadas
+## ✨ Funcionalidades Principais
 
-Este projeto foi construÃ­do utilizando as melhores e mais modernas tecnologias para desenvolvimento web:
-
-* **[React](https://react.dev/):** Biblioteca principal para a criaÃ§Ã£o dos componentes da interface.
-* **[Vite](https://vite.dev/):** Ferramenta de build extremamente rÃ¡pida para o desenvolvimento local.
-* **[TypeScript](https://www.typescriptlang.org/):** Tipagem estÃ¡tica para maior seguranÃ§a e produtividade no cÃ³digo.
-* **[Framer Motion](https://www.framer.com/motion/):** Para transiÃ§Ãµes e micro-animaÃ§Ãµes fluidas e premium.
-* **[Lucide React](https://lucide.dev/):** Conjunto de Ã­cones vetoriais modernos e leves.
-* **CSS Modules:** EstilizaÃ§Ã£o modularizada, garantindo que o CSS nÃ£o sofra interferÃªncias externas indesejadas.
+* **Navegação Fluida (Navbar):** Menu responsivo e intuitivo, com rolagem suave para as principais seções e chamada de ação (CTA) direta.
+* **Hero Impactante:** Apresentação clara do valor do produto com badges interativos, efeitos animados e botões de chamada de ação.
+* **Benefícios Clave:** Explicação visual das vantagens de utilizar a plataforma.
+* **Módulos do Sistema:** Demonstração interativa dos recursos voltados para supervisores, professores, pais e alunos.
+* **Métricas em Números:** Painel estatístico demonstrando o impacto e o alcance do sistema.
+* **Depoimentos (Testimonials):** Espaço para feedback e avaliações reais de gestores e educadores.
+* **Modal de Demonstração (DemoModal):** Formulário interativo para captação de leads interessados em testar o sistema.
 
 ---
 
-## ðŸ“‚ Estrutura do Projeto
+## 🛠️ Tecnologias Utilizadas
 
-O cÃ³digo estÃ¡ organizado da seguinte forma:
+Este projeto foi construído utilizando as melhores e mais modernas tecnologias para desenvolvimento web:
+
+* **[React](https://react.dev/):** Biblioteca principal para a criação dos componentes da interface.
+* **[Vite](https://vite.dev/):** Ferramenta de build extremamente rápida para o desenvolvimento local.
+* **[TypeScript](https://www.typescriptlang.org/):** Tipagem estática para maior segurança e produtividade no código.
+* **[Framer Motion](https://www.framer.com/motion/):** Para transições e micro-animações fluidas e premium.
+* **[Lucide React](https://lucide.dev/):** Conjunto de ícones vetoriais modernos e leves.
+* **CSS Modules:** Estilização modularizada, garantindo que o CSS não sofra interferências externas indesejadas.
+
+---
+
+## 📂 Estrutura do Projeto
+
+O código está organizado da seguinte forma:
 
 ```bash
 gestor-landing/
-â”œâ”€â”€ public/              # Arquivos estÃ¡ticos pÃºblicos (favicon, etc)
-â”œâ”€â”€ src/
-â”‚   â”œâ”€â”€ assets/          # Imagens, logotipos e ilustraÃ§Ãµes
-â”‚   â”œâ”€â”€ components/      # Componentes reutilizÃ¡veis do sistema (Navbar, Hero, CTA, etc)
-â”‚   â”œâ”€â”€ pages/
-â”‚   â”‚   â””â”€â”€ Home/        # PÃ¡gina principal reunindo os componentes
-â”‚   â”œâ”€â”€ styles/          # EstilizaÃ§Ãµes globais do projeto
-â”‚   â”œâ”€â”€ App.tsx          # Componente raiz do aplicativo
-â”‚   â”œâ”€â”€ main.tsx         # Ponto de entrada do React
-â”‚   â””â”€â”€ index.css        # Estilos globais e tokens de design
-â”œâ”€â”€ tsconfig.json        # ConfiguraÃ§Ã£o do TypeScript
-â”œâ”€â”€ vite.config.ts       # ConfiguraÃ§Ã£o do Vite
-â””â”€â”€ package.json         # DependÃªncias e scripts do projeto
+├── public/              # Arquivos estáticos públicos (favicon, etc)
+├── src/
+│   ├── assets/          # Imagens, logotipos e ilustrações
+│   ├── components/      # Componentes reutilizáveis do sistema (Navbar, Hero, CTA, etc)
+│   ├── pages/
+│   │   └── Home/        # Página principal reunindo os componentes
+│   ├── styles/          # Estilizações globais do projeto
+│   ├── App.tsx          # Componente raiz do aplicativo
+│   ├── main.tsx         # Ponto de entrada do React
+│   └── index.css        # Estilos globais e tokens de design
+├── tsconfig.json        # Configuração do TypeScript
+├── vite.config.ts       # Configuração do Vite
+└── package.json         # Dependências e scripts do projeto
 ```
 
 ---
 
-## ðŸš€ Como Executar o Projeto Localmente
+## 🚀 Como Executar o Projeto Localmente
 
-### PrÃ©-requisitos
+### Pré-requisitos
 
-Certifique-se de ter o **Node.js** instalado em sua mÃ¡quina.
+Certifique-se de ter o **Node.js** instalado em sua máquina.
 
-### Passos para execuÃ§Ã£o
+### Passos para execução
 
-1. **Clone o repositÃ³rio:**
+1. **Clone o repositório:**
    ```bash
    git clone https://github.com/Eder-Jesus/webpage-gestor.git
    cd webpage-gestor
    ```
 
-2. **Instale as dependÃªncias:**
+2. **Instale as dependências:**
    ```bash
    npm install
    ```
@@ -87,22 +87,22 @@ Certifique-se de ter o **Node.js** instalado em sua mÃ¡quina.
    ```
 
 4. **Acesse o projeto:**
-   Abra o seu navegador e acesse [http://localhost:5173](http://localhost:5173) para ver o projeto em execuÃ§Ã£o!
+   Abra o seu navegador e acesse [http://localhost:5173](http://localhost:5173) para ver o projeto em execução!
 
 ---
 
-## ðŸ“¦ Build para ProduÃ§Ã£o
+## 📦 Build para Produção
 
-Para gerar a versÃ£o otimizada para publicaÃ§Ã£o (produÃ§Ã£o):
+Para gerar a versão otimizada para publicação (produção):
 
 ```bash
 npm run build
 ```
 
-Os arquivos finais compilados serÃ£o salvos na pasta `/dist`, prontos para serem hospedados no servidor de sua preferÃªncia (como Vercel, Netlify, GitHub Pages, etc.).
+Os arquivos finais compilados serão salvos na pasta `/dist`, prontos para serem hospedados no servidor de sua preferência (como Vercel, Netlify, GitHub Pages, etc.).
 
 ---
 
-## ðŸ“„ LicenÃ§a
+## 📄 Licença
 
-Este projeto Ã© de uso privado. Todos os direitos reservados.
+Este projeto é de uso privado. Todos os direitos reservados.

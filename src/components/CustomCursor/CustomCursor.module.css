@@ -1,0 +1,30 @@
+.cursorDot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+.cursorRing {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid rgba(37, 99, 235, 0.4);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  transition: 
+    scale 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.15s ease,
+    background-color 0.15s ease;
+}

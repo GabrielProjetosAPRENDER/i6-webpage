@@ -1,0 +1,68 @@
+:root {
+  /* Brand Color Palette - Vercel / Linear Style */
+  --color-primary: #2563EB;
+  --color-primary-hover: #1D4ED8;
+  --color-primary-light: #60A5FA;
+  --color-primary-glow: rgba(37, 99, 235, 0.15);
+  
+  --color-secondary: #1E40AF;
+  --color-secondary-hover: #1D4ED8;
+  
+  /* Slate Scale (Modern Neutrals) */
+  --color-slate-50: #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+  --color-slate-950: #020617;
+  
+  /* Interface Themes */
+  --bg-app-light: #F8FAFC;
+  --bg-card-light: #FFFFFF;
+  --border-light: #E2E8F0;
+  --text-main-light: #0F172A;
+  --text-muted-light: #475569;
+  
+  --bg-app-dark: #020617;
+  --bg-card-dark: #0F172A;
+  --border-dark: #1E293B;
+  --text-main-dark: #F8FAFC;
+  --text-muted-dark: #94A3B8;
+
+  /* Default theme values (Light, with specific dark components) */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-family-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-weight-title: 700;
+  --font-weight-subtitle: 600;
+  --font-weight-body: 400;
+
+  /* Layout and Sizing */
+  --max-width: 1200px;
+  --header-height-full: 80px;
+  --header-height-scrolled: 64px;
+  
+  /* Premium Glassmorphism & Shadow Effects */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.06), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+  --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --shadow-glow-blue: 0 0 30px rgba(37, 99, 235, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Border Radii */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-circle: 50%;
+}

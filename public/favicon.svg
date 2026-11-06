@@ -1,0 +1,28 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lightbulb contours -->
+  <path d="M50 78C32 78 22 64 22 45C22 28 35 15 50 15C65 15 78 28 78 45C78 64 68 78 50 78Z" stroke="#2563EB" strokeWidth="6.5" strokeLinecap="round" strokeLinejoin="round" />
+  
+  <!-- Screw threads -->
+  <path d="M37 78C37 81 41 83 50 83C59 83 63 81 63 78" stroke="#1E293B" strokeWidth="6" strokeLinecap="round" />
+  <path d="M39 84C39 87 42 89 50 89C58 89 61 87 61 84" stroke="#1E293B" strokeWidth="6" strokeLinecap="round" />
+  <path d="M43 90C43 93 45 95 50 95C55 95 57 93 57 90" stroke="#1E293B" strokeWidth="6" strokeLinecap="round" />
+
+  <!-- Left Circuit Path -->
+  <path d="M34 46V54L42 62V70" stroke="#2563EB" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+  <circle cx="34" cy="42" r="4.5" fill="#2563EB" />
+  
+  <path d="M43 38V46L36 53V62" stroke="#2563EB" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+  <circle cx="43" cy="34" r="4.5" fill="#2563EB" />
+
+  <!-- Right Circuit Path -->
+  <path d="M66 46V54L58 62V70" stroke="#2563EB" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+  <circle cx="66" cy="42" r="4.5" fill="#2563EB" />
+  
+  <path d="M57 38V46L64 53V62" stroke="#2563EB" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+  <circle cx="57" cy="34" r="4.5" fill="#2563EB" />
+
+  <!-- Central vertical track ending in glowing green node -->
+  <path d="M50 74V50" stroke="#10B981" strokeWidth="7" strokeLinecap="round" />
+  <circle cx="50" cy="43" r="8" fill="#10B981" />
+  <circle cx="50" cy="43" r="4" fill="#A7F3D0" />
+</svg>

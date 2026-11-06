@@ -1,0 +1,136 @@
+.testimonials {
+  background-color: var(--color-bg-white);
+}
+
+.header {
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+.badge {
+  display: inline-block;
+  background-color: rgba(10, 45, 99, 0.08);
+  color: var(--color-primary);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-circle);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-subtitle);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+}
+
+.subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.card {
+  background-color: var(--color-bg-light);
+  padding: 2.5rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  border: 1px solid rgba(10, 45, 99, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+.quoteIcon {
+  color: var(--color-secondary);
+  opacity: 0.2;
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+  color: #FBBF24; /* Amber yellow stars */
+  margin-bottom: 1.25rem;
+}
+
+.content {
+  font-style: italic;
+  color: var(--color-text-main);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-circle);
+  background-color: var(--color-primary-light);
+  color: var(--color-bg-white);
+  font-weight: var(--font-weight-title);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-weight: var(--font-weight-title);
+  color: var(--color-primary);
+  font-size: 1.05rem;
+}
+
+.userRole {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .title {
+    font-size: 2rem;
+  }
+  .card {
+    padding: 2rem;
+  }
+}
