@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Cpu, Cloud, Database, Code2, Globe2 } from 'lucide-react';
+import { ShieldCheck, Database, Smartphone, Server, Sparkles } from 'lucide-react';
 import Hero from '../../components/Hero/Hero';
 import Features from '../../components/Features/Features';
 import MunicipalSimulator from '../../components/MunicipalSimulator/MunicipalSimulator';
@@ -12,26 +12,26 @@ interface HomeProps {
 }
 
 export const Home: React.FC<HomeProps> = ({ onOpenDemoModal }) => {
-  const techStack = [
-    {
-      icon: <Code2 size={24} />,
-      name: 'React & TypeScript',
-      desc: 'Interfaces dinamicas, rapidas e tipagem robusta para sistemas sem quebras.'
-    },
-    {
-      icon: <Cpu size={24} />,
-      name: 'APIs Escalaveis',
-      desc: 'Backend resiliente projetado para suportar altos volumes de acessos diarios.'
-    },
+  const securityPillars = [
     {
       icon: <Database size={24} />,
-      name: 'Banco de Dados Seguro',
-      desc: 'Modelagem relacional otimizada com backups frequentes e seguranca total.'
+      name: 'Multi-Tenant por Schema PostgreSQL',
+      desc: 'Isolamento estrito entre prefeituras. Cada município opera em seu próprio namespace de dados, eliminando qualquer risco de vazamento entre redes.'
     },
     {
-      icon: <Cloud size={24} />,
-      name: 'Cloud AWS',
-      desc: 'Hospedagem elastica que se adapta a demanda de acessos do seu municipio.'
+      icon: <ShieldCheck size={24} />,
+      name: 'Blindagem LGPD (Art. 14 - Menores)',
+      desc: 'Proteção jurídica integral de dados de crianças e adolescentes, com controle de acesso em 3 camadas e logs de auditoria para o TCE e Promotoria.'
+    },
+    {
+      icon: <Smartphone size={24} />,
+      name: 'Arquitetura Offline-First (PWA)',
+      desc: 'Sistemas que funcionam no Brasil real. Diários de classe operam em salas rurais sem sinal e sincronizam de forma atômica com o banco central.'
+    },
+    {
+      icon: <Server size={24} />,
+      name: 'Alta Disponibilidade & Cloud Escalável',
+      desc: 'Infraestrutura moderna e veloz que suporta os picos críticos de matrícula escolar, chamadas diárias e prazos de exportação do Censo INEP.'
     }
   ];
 
@@ -43,22 +43,22 @@ export const Home: React.FC<HomeProps> = ({ onOpenDemoModal }) => {
 
       <MunicipalSimulator onOpenDemoModal={onOpenDemoModal} />
 
-      {/* Technologies Section */}
+      {/* Technologies & Governance Architecture Section */}
       <section className={styles.techSection}>
         <div className="container">
           <div className={styles.techHeader}>
             <span className={styles.techBadge}>
-              <Globe2 size={12} />
-              Infraestrutura & Tecnologia
+              <Sparkles size={12} />
+              Segurança, Multi-Tenancy & LGPD
             </span>
-            <h2 className={styles.techTitle}>Tecnologia de ponta para a gestao publica</h2>
+            <h2 className={styles.techTitle}>Arquitetura construída para a administração pública</h2>
             <p className={styles.techSubtitle}>
-              Utilizamos as mesmas tecnologias adotadas pelas maiores empresas de software do mundo para entregar seguranca, velocidade e estabilidade.
+              Soluções desenvolvidas por especialistas em engenharia de dados e sistemas corporativos para garantir velocidade, integridade e blindagem jurídica aos municípios parceiros.
             </p>
           </div>
 
           <div className={styles.techGrid}>
-            {techStack.map((tech, index) => (
+            {securityPillars.map((tech, index) => (
               <motion.div 
                 key={index} 
                 className={styles.techCard}
@@ -66,7 +66,7 @@ export const Home: React.FC<HomeProps> = ({ onOpenDemoModal }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ scale: 1.02, borderColor: 'rgba(37, 99, 235, 0.2)' }}
+                whileHover={{ scale: 1.02, borderColor: 'rgba(37, 99, 235, 0.3)' }}
               >
                 <div className={styles.techIconWrapper}>
                   {tech.icon}

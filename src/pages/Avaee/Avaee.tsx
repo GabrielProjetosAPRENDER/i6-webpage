@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   ChevronDown, ChevronUp, ArrowRight,
   Brain, Activity, FileText, Users, ShieldCheck,
-  HeartHandshake, Sparkles, Clock, AlertTriangle
+  HeartHandshake, Sparkles, Clock, AlertTriangle,
+  Lock, Eye, CheckCircle2
 } from 'lucide-react';
 import styles from './Avaee.module.css';
 
@@ -10,85 +11,113 @@ interface AvaeeProps {
   onOpenDemoModal: () => void;
 }
 
+type AvaeeTab = 'ficha' | 'semaforo' | 'prontuario';
+type PriorityFilter = 'todos' | 'vermelho' | 'amarelo' | 'verde';
+type SigiloMode = 'clinica' | 'pedagogica';
+
 export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
+  const [activeTab, setActiveTab] = useState<AvaeeTab>('semaforo');
+  const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>('todos');
+  const [sigiloMode, setSigiloMode] = useState<SigiloMode>('clinica');
+  const [selectedBlock, setSelectedBlock] = useState<number>(4);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
+
+  // Synthetic student queue data (Strictly anonymized, zero leaked data)
+  const queueCases = [
+    { id: 'CAEE-089', name: 'Lucas M.', school: 'E.M. Darcy Ribeiro', priority: 'vermelho', specialty: 'Psicologia & TO', days: 4, desc: 'Desregulação sensorial severa em sala de aula. Intervenção prioritária.' },
+    { id: 'CAEE-092', name: 'Beatriz S.', school: 'E.M. Castro Alves', priority: 'amarelo', specialty: 'Fonoaudiologia', days: 11, desc: 'Dificuldade acentuada de processamento auditivo e fala.' },
+    { id: 'CAEE-095', name: 'Gabriel P.', school: 'E.M. Monteiro Lobato', priority: 'verde', specialty: 'AEE / SRM', days: 14, desc: 'Adaptação de material didático e apoio na Sala de Recursos.' },
+    { id: 'CAEE-098', name: 'Mariana K.', school: 'E.M. Paulo Freire', priority: 'vermelho', specialty: 'Neuropediatria / Psicologia', days: 2, desc: 'Suspeita TEA Nível 3, crise comportamental frequente.' }
+  ];
+
+  const filteredCases = priorityFilter === 'todos' 
+    ? queueCases 
+    : queueCases.filter(c => c.priority === priorityFilter);
+
+  const screeningBlocks = [
+    { num: 1, title: 'Identificação & Dados do Estudante', desc: 'Dados civis, matrícula, turno e escola regular de origem.' },
+    { num: 4, title: 'Aspectos Sensoriais & Motores', desc: 'Acuidade visual, auditiva, equilíbrio, esquema corporal e motricidade fina.' },
+    { num: 7, title: 'Comunicação & Linguagem', desc: 'Compreensão oral, fala espontânea, intenção comunicativa e escrita.' },
+    { num: 10, title: 'Intervenções Prévias da Escola', desc: 'Estratégias pedagógicas já testadas pelo professor regente em sala de aula.' },
+    { num: 13, title: 'Parecer Conclusivo da Coordenação', desc: 'Indicação do especialista solicitado e justificativa técnica da urgência.' }
+  ];
 
   const pillars = [
     {
       icon: <FileText size={26} />,
-      title: 'Ficha Pedagógica Padronizada (13 Blocos)',
+      title: 'Ficha Padronizada em 13 Blocos',
       badge: 'Escola Regular',
-      desc: 'O Coordenador Escolar preenche a ficha oficial padronizada direto no sistema. Elimina formulários de papel soltos e registra observações de aprendizagem, comunicação, interação social e intervenções prévias da escola.'
+      desc: 'O Coordenador Pedagógico preenche a ficha oficial padronizada direto no sistema. Elimina ofícios em papel solto e registra objetivamente aspectos de aprendizagem, comunicação e histórico de intervenções prévias da escola.'
     },
     {
       icon: <AlertTriangle size={26} />,
       title: 'Semáforo Pedagógico de Prioridade',
       badge: 'Triagem Objetiva',
-      desc: 'Classificação automática em três níveis de criticidade (🟢 Baixa Necessidade, 🟡 Necessita Investigação, 🔴 Prioridade Máxima), orientando a triagem da Psicologia e da equipe técnica sem decisões subjetivas.'
+      desc: 'Classificação técnica automática em três níveis de criticidade (🟢 Baixa Necessidade, 🟡 Investigação Prioritária, 🔴 Urgência Máxima), acabando com pedidos informais e direcionando as vagas aos casos mais graves.'
     },
     {
       icon: <Clock size={26} />,
       title: 'Fila Única Transparente do CAEE',
       badge: 'Regulação de Vagas',
-      desc: 'Gestão da fila de espera municipal categorizada por especialidade. Acaba com pedidos de favor ou perdas de prazo, garantindo transparência para a Secretaria de Educação e famílias.'
+      desc: 'Gestão da fila de espera municipal categorizada por especialidade. Garante transparência para a Secretaria de Educação, Ministério Público e famílias, com tempo de convocação auditável.'
     },
     {
       icon: <ShieldCheck size={26} />,
-      title: 'Prontuário Eletrônico & Rotatividade',
+      title: 'Prontuário com Duplo Sigilo & PDI',
       badge: 'Equipe Multiprofissional',
-      desc: 'Cada especialista acompanha sua grade de horários, registra evoluções do PDI com duplo sigilo profissional (LGPD) e conclui tratamentos liberando vagas automaticamente para a fila.'
+      desc: 'A equipe de saúde registra anotações clínicas com sigilo médico ético, enquanto os planos pedagógicos (PDI) e adaptações curriculares são compartilhados com o professor da sala comum.'
     }
   ];
 
   const specialties = [
     {
       icon: <Brain size={24} />,
-      title: 'Psicologia Escolar',
-      desc: 'Triagem inicial, anamnese do estudante e entrevista familiar para diagnóstico de necessidades.'
+      title: 'Psicologia Escolar & Clínica',
+      desc: 'Triagem inicial, anamnese do estudante, escuta familiar e intervenção comportamental.'
     },
     {
       icon: <Activity size={24} />,
       title: 'Fonoaudiologia',
-      desc: 'Intervenção no desenvolvimento da fala, linguagem oral e processamento auditivo central.'
+      desc: 'Diagnóstico e reabilitação da comunicação, linguagem oral, deglutição e processamento auditivo.'
     },
     {
       icon: <HeartHandshake size={24} />,
       title: 'Terapia Ocupacional (TO)',
-      desc: 'Integração sensorial, estímulo à coordenação motora e autonomia nas atividades diárias.'
+      desc: 'Integração sensorial, estímulo à coordenação motora e desenvolvimento da autonomia.'
     },
     {
       icon: <FileText size={24} />,
       title: 'Psicopedagogia',
-      desc: 'Investigação profunda de dislexia, discalculia e desenho de rotas pedagógicas personalizadas.'
+      desc: 'Investigação profunda de barreiras cognitivas, dislexia, discalculia e rotas pedagógicas personalizadas.'
     },
     {
       icon: <Users size={24} />,
-      title: 'Professores de AEE',
-      desc: 'Adaptação de materiais, tecnologia assistiva e suporte direto à Sala de Recursos Multifuncionais.'
+      title: 'Professores de AEE (SRM)',
+      desc: 'Adaptação de materiais curriculares, tecnologia assistiva e atendimento na Sala de Recursos.'
     },
     {
       icon: <ShieldCheck size={24} />,
-      title: 'Coordenação CAEE',
-      desc: 'Painel mestre de regulação de filas, distribuição de grades horárias e relatórios para a Secretaria.'
+      title: 'Regulação Central do CAEE',
+      desc: 'Painel mestre para a Secretaria distribuir grades horárias, monitorar altas e rotatividade da fila.'
     }
   ];
 
   const faqs = [
     {
-      q: 'Como o AVAEE GD garante o sigilo e atende à LGPD?',
-      a: 'O sistema possui controle rigoroso de perfis e duplo sigilo. Dados de saúde e anotações clínicas de menores são restritos ao profissional responsável. A coordenação e a escola têm acesso apenas aos pareceres pedagógicos e status de encaminhamento, garantindo conformidade com a LGPD.'
+      q: 'Como o AVAEE GD garante o sigilo ético e atende à LGPD?',
+      a: 'O sistema opera com controle rígido de duplo sigilo (Art. 14 da LGPD). Dados de saúde, hipóteses de CID e anotações confidenciais dos terapeutas são visíveis apenas ao profissional de saúde e à equipe do CAEE. A escola comum e os professores têm acesso restrito ao PDI (Plano de Desenvolvimento Individual), que contém apenas as adaptações pedagógicas necessárias para o cotidiano escolar.'
     },
     {
       q: 'Como funciona a rotatividade de vagas no CAEE?',
-      a: 'Cada plano de atendimento possui metas claras estabelecidas no PDI (Plano de Desenvolvimento Individual) e duração pré-determinada de ciclo. Quando o aluno recebe alta do atendimento ou encerra o ciclo terapêutico, o sistema libera a vaga na grade do especialista e convoca o próximo da fila única.'
+      a: 'O atendimento no CAEE não é vitalício. Cada estudante recebe um plano de intervenção por ciclo com metas claras no PDI. Ao atingir os marcos terapêuticos estipulados, o especialista concede a alta ou transiciona o estudante para acompanhamento na Sala de Recursos Multifuncionais (SRM), liberando automaticamente a vaga na grade horária para o próximo da fila única.'
     },
     {
       q: 'O sistema substitui o trabalho da escola regular ou do professor?',
-      a: 'Não. O AVAEE GD integra a escola regular com o Centro de Atendimento Especializado (CAEE). O coordenador escolar faz a solicitação padronizada, a equipe multidisciplinar atende no contraturno e as orientações pedagógicas retornam para a escola para apoiar o professor em sala de aula.'
+      a: 'Não. O AVAEE GD conecta a escola regular ao Centro de Atendimento Especializado (CAEE). O coordenador escolar faz a solicitação formal no sistema, a equipe multidisciplinar atende no contraturno escolar e as orientações práticas retornam ao professor para aplicação em sala de aula.'
     },
     {
-      q: 'Quanto tempo leva para implantar o AVAEE GD na prefeitura?',
-      a: 'A implantação ocorre entre 7 e 14 dias úteis, incluindo o cadastramento das unidades escolares, configuração das especialidades ativas no CAEE e treinamento prático para coordenadores escolares e terapeutas.'
+      q: 'O que o Semáforo Pedagógico analisa para definir a prioridade?',
+      a: 'O algoritmo do Semáforo cruza os indicadores preenchidos na Ficha de 13 Blocos: grau de prejuízo no convívio escolar, presença de desregulação sensorial grave, barreiras severas de comunicação e tempo decorrido sem suporte especializado, gerando a pontuação técnica que classifica o caso em Verde, Amarelo ou Vermelho.'
     }
   ];
 
@@ -103,15 +132,15 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
           <div className={styles.heroHeader}>
             <div className={styles.productBadge}>
               <Sparkles size={14} />
-              <span>AVAEE GD • Gestão do Atendimento Educacional Especializado</span>
+              <span>AVAEE GD • Regulação da Educação Especial Inclusiva</span>
             </div>
 
             <h1 className={styles.heroTitle}>
-              Regulação de vagas e inclusão escolar com <span className={styles.titleHighlight}>total transparência</span>.
+              Regulação técnica de vagas e inclusão escolar com <span className={styles.titleHighlight}>total transparência</span>.
             </h1>
 
             <p className={styles.heroSubtitle}>
-              A plataforma oficial que conecta escolas regulares, coordenação do CAEE e especialistas (Psicologia, Fonoaudiologia, Terapia Ocupacional e AEE) com Ficha Padronizada em 13 eixos, Semáforo Pedagógico e fila única.
+              A plataforma oficial que conecta escolas regulares, coordenação do CAEE e especialistas (Psicologia, Fonoaudiologia, Terapia Ocupacional e AEE) com Ficha Padronizada em 13 Blocos, Semáforo Pedagógico de criticidade e fila única.
             </p>
 
             <div className={styles.heroActions}>
@@ -122,186 +151,342 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
             </div>
           </div>
 
-          {/* High-Precision Vector Mockup do AVAEE GD (Clean Emerald/Teal, Zero Leaked Data) */}
-          <div className={styles.cockpitFrame}>
-            <div className={styles.browserTopBar}>
-              <div className={styles.windowControls}>
-                <span className={`${styles.controlDot} ${styles.dotRed}`} />
-                <span className={`${styles.controlDot} ${styles.dotYellow}`} />
-                <span className={`${styles.controlDot} ${styles.dotGreen}`} />
-              </div>
-              <div className={styles.browserAddress}>
-                <span>avaee.i6systems.com.br/caee/regulacao</span>
-              </div>
-              <div className={styles.liveBadge}>
-                <span className={styles.pulseDot} />
-                <span>Central CAEE Ativa</span>
-              </div>
-            </div>
-
-            {/* Vector UI Body */}
-            <div className={styles.cockpitBody}>
-              {/* Top Stats Strip */}
-              <div className={styles.statsStrip}>
-                <div className={styles.statBox}>
-                  <span className={styles.statLabel}>Estudantes em Atendimento</span>
-                  <strong className={styles.statNumber}>184 Alunos</strong>
-                  <span className={styles.statSub}>Grades Ativas nos Centros</span>
+          {/* Interactive Live SaaS Cockpit (AVAEE GD) */}
+          <div className={styles.cockpitContainer}>
+            <div className={styles.cockpitWindow}>
+              {/* Window Header */}
+              <div className={styles.windowHeader}>
+                <div className={styles.windowDots}>
+                  <div className={styles.dotRed} />
+                  <div className={styles.dotYellow} />
+                  <div className={styles.dotGreen} />
                 </div>
-                <div className={styles.statBox}>
-                  <span className={styles.statLabel}>Semáforo Prioridade Máxima</span>
-                  <strong className={`${styles.statNumber} ${styles.colorAlert}`}>12 Casos</strong>
-                  <span className={styles.statSub}>Triagem Técnica Concluída</span>
+                <div className={styles.windowAddressBar}>
+                  <ShieldCheck size={13} color="#10B981" />
+                  <span>avaee.i6systems.com.br/caee/regulacao</span>
                 </div>
-                <div className={styles.statBox}>
-                  <span className={styles.statLabel}>Tempo Médio de Espera</span>
-                  <strong className={`${styles.statNumber} ${styles.colorSuccess}`}>14 Dias</strong>
-                  <span className={styles.statSub}>Redução de 84% com Regulação</span>
-                </div>
-                <div className={styles.statBox}>
-                  <span className={styles.statLabel}>Rotatividade de Vagas</span>
-                  <strong className={`${styles.statNumber} ${styles.colorTeal}`}>100%</strong>
-                  <span className={styles.statSub}>Vagas liberadas após alta PDI</span>
+                <div className={styles.windowMetaStatus}>
+                  <span className={styles.pulseDot} />
+                  <span>Central CAEE Ativa</span>
                 </div>
               </div>
 
-              {/* Split Panels */}
-              <div className={styles.cockpitSplit}>
-                {/* Left: Semáforo Pedagógico & Ficha 13 Eixos */}
-                <div className={styles.subCard}>
-                  <div className={styles.subCardHeader}>
-                    <AlertTriangle size={16} color="#059669" />
-                    <span>Semáforo Pedagógico • Ficha de Encaminhamento (13 Eixos)</span>
-                  </div>
+              {/* Navigation Tabs */}
+              <div className={styles.cockpitTabs}>
+                <button 
+                  className={`${styles.tabBtn} ${activeTab === 'semaforo' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('semaforo')}
+                >
+                  <AlertTriangle size={16} />
+                  <span>Semáforo Pedagógico & Fila Única</span>
+                </button>
+                <button 
+                  className={`${styles.tabBtn} ${activeTab === 'ficha' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('ficha')}
+                >
+                  <FileText size={16} />
+                  <span>Ficha Padronizada (13 Blocos)</span>
+                </button>
+                <button 
+                  className={`${styles.tabBtn} ${activeTab === 'prontuario' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('prontuario')}
+                >
+                  <ShieldCheck size={16} />
+                  <span>Prontuário com Duplo Sigilo & PDI</span>
+                </button>
+              </div>
 
-                  <div className={styles.trafficLightList}>
-                    <div className={styles.trafficItem}>
-                      <div className={`${styles.trafficDot} ${styles.dotGreenTraffic}`} />
-                      <div className={styles.trafficInfo}>
-                        <strong>🟢 Baixa Necessidade Pedagógica</strong>
-                        <span>Adaptação curricular em sala comum com apoio da Sala de Recursos.</span>
+              {/* Cockpit Body */}
+              <div className={styles.cockpitBody}>
+                {/* TAB 1: SEMÁFORO & FILA ÚNICA */}
+                {activeTab === 'semaforo' && (
+                  <div className={styles.tabContent}>
+                    <div className={styles.cockpitTopBar}>
+                      <div>
+                        <h3 className={styles.viewTitle}>Central de Regulação de Vagas • CAEE Municipal</h3>
+                        <p className={styles.viewSub}>Triagem técnica contínua baseada em criticidade • 184 estudantes atendidos na rede</p>
                       </div>
-                      <span className={styles.trafficCount}>42 Alunos</span>
+                      <div className={styles.filterButtonGroup}>
+                        <button 
+                          className={`${styles.filterBtn} ${priorityFilter === 'todos' ? styles.filterBtnActive : ''}`}
+                          onClick={() => setPriorityFilter('todos')}
+                        >
+                          Todos (82)
+                        </button>
+                        <button 
+                          className={`${styles.filterBtn} ${priorityFilter === 'vermelho' ? styles.filterBtnRedActive : ''}`}
+                          onClick={() => setPriorityFilter('vermelho')}
+                        >
+                          🔴 Urgência (12)
+                        </button>
+                        <button 
+                          className={`${styles.filterBtn} ${priorityFilter === 'amarelo' ? styles.filterBtnYellowActive : ''}`}
+                          onClick={() => setPriorityFilter('amarelo')}
+                        >
+                          🟡 Prioritário (28)
+                        </button>
+                        <button 
+                          className={`${styles.filterBtn} ${priorityFilter === 'verde' ? styles.filterBtnGreenActive : ''}`}
+                          onClick={() => setPriorityFilter('verde')}
+                        >
+                          🟢 Acompanhamento (42)
+                        </button>
+                      </div>
                     </div>
 
-                    <div className={styles.trafficItem}>
-                      <div className={`${styles.trafficDot} ${styles.dotYellowTraffic}`} />
-                      <div className={styles.trafficInfo}>
-                        <strong>🟡 Necessita Investigação Técnica</strong>
-                        <span>Anamnese inicial com Psicóloga agendada na unidade escolar.</span>
+                    {/* Queue Case Cards */}
+                    <div className={styles.queueTable}>
+                      <div className={styles.tableHeaderRow}>
+                        <span>Protocolo & Estudante</span>
+                        <span>Unidade Solicitante</span>
+                        <span>Especialidade Requisitada</span>
+                        <span>Tempo em Espera</span>
+                        <span>Status</span>
                       </div>
-                      <span className={styles.trafficCount}>28 Alunos</span>
+                      {filteredCases.map(item => (
+                        <div key={item.id} className={styles.tableDataRow}>
+                          <div className={styles.caseStudentCell}>
+                            <span className={styles.caseIdBadge}>{item.id}</span>
+                            <div>
+                              <strong>{item.name}</strong>
+                              <span className={styles.caseDescHint}>{item.desc}</span>
+                            </div>
+                          </div>
+                          <span className={styles.cellMuted}>{item.school}</span>
+                          <span className={styles.cellBold}>{item.specialty}</span>
+                          <span className={styles.cellMuted}>{item.days} dias</span>
+                          <div>
+                            {item.priority === 'vermelho' && (
+                              <span className={styles.badgeUrgent}>🔴 Prioridade Máxima</span>
+                            )}
+                            {item.priority === 'amarelo' && (
+                              <span className={styles.badgeWarning}>🟡 Em Triagem</span>
+                            )}
+                            {item.priority === 'verde' && (
+                              <span className={styles.badgeRegular}>🟢 Sala de Recursos</span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
                     </div>
 
-                    <div className={styles.trafficItem}>
-                      <div className={`${styles.trafficDot} ${styles.dotRedTraffic}`} />
-                      <div className={styles.trafficInfo}>
-                        <strong>🔴 Prioridade Máxima CAEE</strong>
-                        <span>Vulnerabilidade e barreira severa. Convocação prioritária para vaga.</span>
-                      </div>
-                      <span className={styles.trafficCount}>12 Alunos</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right: Fila Única Transparente por Especialidade */}
-                <div className={styles.subCard}>
-                  <div className={styles.subCardHeader}>
-                    <Clock size={16} color="#059669" />
-                    <span>Fila Única Transparente por Especialidade</span>
-                  </div>
-
-                  <div className={styles.queueGrid}>
-                    <div className={styles.queueRow}>
-                      <div className={styles.queueSpec}>
+                    {/* Specialties Strip */}
+                    <div className={styles.specialtyMetricsStrip}>
+                      <div className={styles.specMiniCard}>
                         <Brain size={16} color="#059669" />
-                        <span>Psicologia Clínica & Escolar</span>
+                        <div>
+                          <strong>Psicologia Clínica</strong>
+                          <span>18 vagas ativas • 6 na fila</span>
+                        </div>
                       </div>
-                      <div className={styles.queueMetrics}>
-                        <span className={styles.pillActive}>18 Atendimentos</span>
-                        <span className={styles.pillQueue}>6 na Fila</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.queueRow}>
-                      <div className={styles.queueSpec}>
+                      <div className={styles.specMiniCard}>
                         <Activity size={16} color="#059669" />
-                        <span>Fonoaudiologia</span>
+                        <div>
+                          <strong>Fonoaudiologia</strong>
+                          <span>14 vagas ativas • 4 na fila</span>
+                        </div>
                       </div>
-                      <div className={styles.queueMetrics}>
-                        <span className={styles.pillActive}>14 Atendimentos</span>
-                        <span className={styles.pillQueue}>4 na Fila</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.queueRow}>
-                      <div className={styles.queueSpec}>
+                      <div className={styles.specMiniCard}>
                         <HeartHandshake size={16} color="#059669" />
-                        <span>Terapia Ocupacional</span>
+                        <div>
+                          <strong>Terapia Ocupacional</strong>
+                          <span>12 vagas ativas • 5 na fila</span>
+                        </div>
                       </div>
-                      <div className={styles.queueMetrics}>
-                        <span className={styles.pillActive}>16 Atendimentos</span>
-                        <span className={styles.pillQueue}>5 na Fila</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.queueRow}>
-                      <div className={styles.queueSpec}>
+                      <div className={styles.specMiniCard}>
                         <FileText size={16} color="#059669" />
-                        <span>Psicopedagogia</span>
-                      </div>
-                      <div className={styles.queueMetrics}>
-                        <span className={styles.pillActive}>12 Atendimentos</span>
-                        <span className={styles.pillQueue}>3 na Fila</span>
+                        <div>
+                          <strong>Psicopedagogia</strong>
+                          <span>16 vagas ativas • 3 na fila</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
+                )}
+
+                {/* TAB 2: FICHA EM 13 BLOCOS */}
+                {activeTab === 'ficha' && (
+                  <div className={styles.tabContent}>
+                    <div className={styles.cockpitTopBar}>
+                      <div>
+                        <h3 className={styles.viewTitle}>Ficha Padronizada de Encaminhamento (13 Blocos)</h3>
+                        <p className={styles.viewSub}>Instrumento técnico preenchido pela coordenação da escola regular para acionar o CAEE</p>
+                      </div>
+                      <div className={styles.standardBadge}>
+                        <CheckCircle2 size={15} color="#059669" />
+                        <span>Padrão Homologado SEMED</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.blocksExplorer}>
+                      <div className={styles.blocksSidebar}>
+                        {screeningBlocks.map(block => (
+                          <button 
+                            key={block.num}
+                            className={`${styles.blockNavBtn} ${selectedBlock === block.num ? styles.blockNavBtnActive : ''}`}
+                            onClick={() => setSelectedBlock(block.num)}
+                          >
+                            <span className={styles.blockNumBadge}>Bloco {block.num.toString().padStart(2, '0')}</span>
+                            <span className={styles.blockNavTitle}>{block.title}</span>
+                          </button>
+                        ))}
+                      </div>
+
+                      <div className={styles.blockDetailView}>
+                        <div className={styles.blockDetailHeader}>
+                          <span className={styles.blockDetailTag}>Bloco Selecionado • Campo Oficial</span>
+                          <h4>Bloco {selectedBlock.toString().padStart(2, '0')}: {screeningBlocks.find(b => b.num === selectedBlock)?.title}</h4>
+                          <p>{screeningBlocks.find(b => b.num === selectedBlock)?.desc}</p>
+                        </div>
+
+                        {selectedBlock === 4 && (
+                          <div className={styles.blockQuestionsMock}>
+                            <div className={styles.questionItem}>
+                              <label>Apresenta hipersensibilidade a ruídos intensos ou toques?</label>
+                              <div className={styles.radioGroupMock}>
+                                <span className={styles.radioActive}>Sim, acentuada (tampa ouvidos em momentos de alarme ou gritaria)</span>
+                              </div>
+                            </div>
+                            <div className={styles.questionItem}>
+                              <label>Coordenação motora fina no manuseio de lápis e tesoura:</label>
+                              <div className={styles.radioGroupMock}>
+                                <span className={styles.radioActive}>Apresenta preensão palmar imatura para a faixa etária</span>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {selectedBlock !== 4 && (
+                          <div className={styles.blockQuestionsMock}>
+                            <div className={styles.questionItem}>
+                              <label>Registro estruturado de observações pedagógicas em sala de aula:</label>
+                              <div className={styles.textareaMock}>
+                                "Estudante demonstra potencial de raciocínio lógico em jogos visuais, mas necessita de apoio intensivo para leitura de enunciados longos e regulação de tempo."
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 3: PRONTUÁRIO DUPLO SIGILO */}
+                {activeTab === 'prontuario' && (
+                  <div className={styles.tabContent}>
+                    <div className={styles.cockpitTopBar}>
+                      <div>
+                        <h3 className={styles.viewTitle}>Prontuário Multiprofissional com Duplo Sigilo & PDI</h3>
+                        <p className={styles.viewSub}>Estudante: Lucas M. • 4º Ano A • Protocolo CAEE-089 (LGPD Art. 14)</p>
+                      </div>
+                      <div className={styles.sigiloToggleGroup}>
+                        <button 
+                          className={`${styles.sigiloBtn} ${sigiloMode === 'clinica' ? styles.sigiloBtnActive : ''}`}
+                          onClick={() => setSigiloMode('clinica')}
+                        >
+                          <Lock size={14} />
+                          <span>Visão Clínica Sigilosa (Saúde)</span>
+                        </button>
+                        <button 
+                          className={`${styles.sigiloBtn} ${sigiloMode === 'pedagogica' ? styles.sigiloBtnActive : ''}`}
+                          onClick={() => setSigiloMode('pedagogica')}
+                        >
+                          <Eye size={14} />
+                          <span>Visão Pedagógica Compartilhada (PDI)</span>
+                        </button>
+                      </div>
+                    </div>
+
+                    {sigiloMode === 'clinica' ? (
+                      <div className={styles.clinicalPanel}>
+                        <div className={styles.sigiloWarningBox}>
+                          <Lock size={16} color="#DC2626" />
+                          <span><strong>Área Restrita aos Terapeutas (Psicólogo / Fono / TO):</strong> Informações clínicas protegidas por sigilo profissional e LGPD. Não visíveis para professores da sala comum.</span>
+                        </div>
+                        <div className={styles.clinicalNotes}>
+                          <div className={styles.noteCard}>
+                            <span className={styles.noteDate}>04/11/2026 • Sessão 06 (Psicologia Clínica)</span>
+                            <h5>Evolução Comportamental e Vínculo Terapêutico</h5>
+                            <p>Estudante demonstrou maior tolerância à troca de atividades dirigidas. Utilizados suportes visuais de rotina com redução de episódios de desregulação. Orientação realizada com os responsáveis para manutenção de rotinas previsíveis no domicílio.</p>
+                          </div>
+                          <div className={styles.noteCard}>
+                            <span className={styles.noteDate}>28/10/2026 • Avaliação Sensorial (Terapia Ocupacional)</span>
+                            <h5>Perfil de Modulação Sensorial</h5>
+                            <p>Identificada busca proprioceptiva e defensividade tátil leve. Recomendadas pausas sensoriais de 5 minutos a cada bloco de 45 minutos de aula regular.</p>
+                          </div>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className={styles.pedagogicalPanel}>
+                        <div className={styles.pedagogyNoticeBox}>
+                          <Eye size={16} color="#059669" />
+                          <span><strong>Documento Compartilhado com o Professor Regente:</strong> PDI com adaptações práticas para o dia a dia da sala de aula comum.</span>
+                        </div>
+                        <div className={styles.pdiGrid}>
+                          <div className={styles.pdiItem}>
+                            <strong>Adaptação Curricular & Avaliações</strong>
+                            <p>Provas com fonte ampliada (tamanho 16), tempo adicional de 30 minutos e leitura mediada dos enunciados pelo professor de apoio.</p>
+                          </div>
+                          <div className={styles.pdiItem}>
+                            <strong>Recursos de Acessibilidade & Sala de Recursos</strong>
+                            <p>Atendimento 2 vezes por semana no contraturno na Sala de Recursos Multifuncionais (SRM) com foco em alfabetização matemática e tecnologia assistiva.</p>
+                          </div>
+                          <div className={styles.pdiItem}>
+                            <strong>Estratégia de Regulação em Sala</strong>
+                            <p>Posicionamento do aluno na primeira fileira, longe de janelas com ruídos externos e permissão para uso de abafador auricular em eventos ruidosos.</p>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* The 4 Core Pillars of AVAEE GD */}
+      {/* 4 Pillars Section */}
       <section className={styles.pillarsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionBadge}>Pilares da Plataforma</span>
-            <h2 className={styles.sectionTitle}>Como o AVAEE GD organiza a Educação Especial</h2>
+            <span className={styles.sectionBadge}>Os 4 Pilares do AVAEE GD</span>
+            <h2 className={styles.sectionTitle}>Como transformamos a Educação Especial no seu município</h2>
             <p className={styles.sectionSubtitle}>
-              Tecnologia construída especificamente para superar as dificuldades de encaminhamento, triagem e regulação da rede municipal.
+              Da triagem inicial na escola regular até o atendimento clínico no CAEE com transparência absoluta.
             </p>
           </div>
 
           <div className={styles.pillarsGrid}>
-            {pillars.map((p, idx) => (
+            {pillars.map((pillar, idx) => (
               <div key={idx} className={styles.pillarCard}>
-                <div className={styles.pillarBadge}>{p.badge}</div>
-                <div className={styles.pillarIconBox}>{p.icon}</div>
-                <h3 className={styles.pillarTitle}>{p.title}</h3>
-                <p className={styles.pillarDesc}>{p.desc}</p>
+                <div className={styles.pillarHeader}>
+                  <div className={styles.pillarIconBox}>{pillar.icon}</div>
+                  <span className={styles.pillarBadge}>{pillar.badge}</span>
+                </div>
+                <h3 className={styles.pillarTitle}>{pillar.title}</h3>
+                <p className={styles.pillarDesc}>{pillar.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Multiprofessional Team Section */}
-      <section className={styles.teamSection}>
+      {/* Specialties Grid */}
+      <section className={styles.specialtiesSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
-            <span className={styles.sectionBadge}>Integração e-Multi / CAEE</span>
-            <h2 className={styles.sectionTitle}>Especialidades Integradas no Sistema</h2>
+            <span className={styles.sectionBadge}>Equipe Multiprofissional</span>
+            <h2 className={styles.sectionTitle}>Especialidades integradas no mesmo sistema</h2>
             <p className={styles.sectionSubtitle}>
-              Cada profissional conta com ambiente próprio para gestão de horários, faltas e registros de evolução clínica e pedagógica.
+              Cada terapeuta gerencia sua agenda, prontuários e altas com total rastreabilidade.
             </p>
           </div>
 
           <div className={styles.specialtiesGrid}>
-            {specialties.map((spec, index) => (
-              <div key={index} className={styles.specialtyCard}>
-                <div className={styles.specIcon}>{spec.icon}</div>
+            {specialties.map((spec, idx) => (
+              <div key={idx} className={styles.specCard}>
+                <div className={styles.specIconBox}>{spec.icon}</div>
                 <h3 className={styles.specTitle}>{spec.title}</h3>
                 <p className={styles.specDesc}>{spec.desc}</p>
               </div>
@@ -313,43 +498,47 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
       {/* FAQ Section */}
       <section className={styles.faqSection}>
         <div className="container">
-          <div className={styles.faqHeader}>
-            <span className={styles.sectionBadge}>Tire suas Dúvidas</span>
-            <h2 className={styles.sectionTitleCenter}>Perguntas Frequentes sobre o AVAEE GD</h2>
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionBadge}>Tire Suas Dúvidas</span>
+            <h2 className={styles.sectionTitle}>Perguntas frequentes sobre o AVAEE GD</h2>
+            <p className={styles.sectionSubtitle}>Transparência sobre funcionamento técnico, LGPD e rotatividade de vagas.</p>
           </div>
 
           <div className={styles.faqList}>
-            {faqs.map((faq, index) => (
-              <div 
-                key={index} 
-                className={`${styles.faqItem} ${activeFaq === index ? styles.faqOpen : ''}`}
-                onClick={() => setActiveFaq(activeFaq === index ? null : index)}
-              >
-                <div className={styles.faqQuestion}>
-                  <h3>{faq.q}</h3>
-                  {activeFaq === index ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+            {faqs.map((faq, index) => {
+              const isOpen = activeFaq === index;
+              return (
+                <div key={index} className={`${styles.faqItem} ${isOpen ? styles.faqOpen : ''}`}>
+                  <button 
+                    className={styles.faqQuestion} 
+                    onClick={() => setActiveFaq(isOpen ? null : index)}
+                    aria-expanded={isOpen}
+                  >
+                    <span>{faq.q}</span>
+                    {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                  </button>
+                  {isOpen && (
+                    <div className={styles.faqAnswer}>
+                      <p>{faq.a}</p>
+                    </div>
+                  )}
                 </div>
-                {activeFaq === index && (
-                  <div className={styles.faqAnswer}>
-                    <p>{faq.a}</p>
-                  </div>
-                )}
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* CTA Bottom */}
+      {/* Final CTA */}
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaCard}>
-            <h2 className={styles.ctaTitle}>Estruture a regulação da Educação Especial no seu município</h2>
+            <h2 className={styles.ctaTitle}>Garanta inclusão real e regulação técnica no seu município</h2>
             <p className={styles.ctaSubtitle}>
-              Garanta fila única transparente, conformidade com a LGPD e agilidade no atendimento de alunos com deficiência ou neurodivergência.
+              Agende uma apresentação técnica exclusiva do AVAEE GD com nossa equipe de especialistas.
             </p>
             <button onClick={onOpenDemoModal} className={styles.btnPrimaryLg}>
-              Solicitar Demonstração para Meu Município
+              Solicitar Apresentação Técnica
               <ArrowRight size={18} />
             </button>
           </div>
