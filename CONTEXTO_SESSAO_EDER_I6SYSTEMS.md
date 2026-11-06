@@ -44,110 +44,96 @@ A **i6 Systems** (CNPJ: `50.542.946/0001-58`, SÃ£o LuÃ­s - MA) Ã© uma GovT
    â•‘        GESTOR EDUC          â•‘               â•‘          AVAEE GD           â•‘
    â•‘   (EducaÃ§Ã£o Regular & ADM)  â•‘               â•‘    (EducaÃ§Ã£o Especial AEE)  â•‘
    â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£               â• â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•£
-   â•‘ â€¢ MatrÃ­culas & Capacidade   â•‘               â•‘ â€¢ Ficha PedagÃ³gica 13 Blocosâ•‘
-   â•‘ â€¢ DiÃ¡rio Mobile 100% Offlineâ•‘               â•‘ â€¢ SemÃ¡foro de Criticidade   â•‘
-   â•‘ â€¢ Auditoria Educacenso INEP â•‘               â•‘ â€¢ RegulaÃ§Ã£o de Vagas CAEE   â•‘
-   â•‘ â€¢ Frotas e Transporte       â•‘               â•‘ â€¢ ProntuÃ¡rio Multiprofissao â•‘
-   â•‘ â€¢ Biblioteca & Sala Leitura â•‘               â•‘ â€¢ Duplo Sigilo & LGPD       â•‘
+   â•‘ â€¢ DiÃ¡rio Mobile 100% Offlineâ•‘               â•‘ â€¢ Ficha PedagÃ³gica 13 Blocosâ•‘
+   â•‘ â€¢ Validador Educacenso INEP â•‘               â•‘ â€¢ SemÃ¡foro de Criticidade   â•‘
+   â•‘ â€¢ LogÃ­stica Transporte Ruralâ•‘               â•‘ â€¢ RegulaÃ§Ã£o de Vagas CAEE   â•‘
+   â•‘ â€¢ PNAE Merenda & NutriÃ§Ã£o   â•‘               â•‘ â€¢ ProntuÃ¡rio Multiprofissao â•‘
+   â•‘ â€¢ PrÃ©-MatrÃ­cula SocioeconÃ´m.â•‘               â•‘ â€¢ Duplo Sigilo & LGPD       â•‘
+   â•‘ â€¢ Painel Executivo da SEMED â•‘               â•‘ â€¢ Plano Desenv. Indiv. (PDI)â•‘
    â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•               â•šâ•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 ```
 
 ---
 
-## ðŸ’» 3. Estado Atual dos CÃ³digos e RepositÃ³rios
+## ðŸ’» 3. RepositÃ³rios Oficiais e Estado Atual dos CÃ³digos
 
 | RepositÃ³rio | Visibilidade | Finalidade | Tecnologias Principais |
 | :--- | :--- | :--- | :--- |
 | **[`GabrielProjetosAPRENDER/i6-webpage`](https://github.com/GabrielProjetosAPRENDER/i6-webpage)** | **Oficial / PÃºblico** | **Landing Page Oficial da i6 Systems** (com `Eder-Jesus` e `GabrielProjetosAPRENDER` como colaboradores) | React 19, TypeScript, Vite, Framer Motion, CSS Modules |
-| **`Eder-Jesus/webpage-gestor`** | Privado (Mirror) | RepositÃ³rio espelho de trabalho | React 19, TypeScript, Vite |
-| **`GabrielProjetosAPRENDER/SISTEMA_ESCOLAR`** | Privado | Sistema Operacional Gestor Educ (EducaÃ§Ã£o Regular) | TypeScript / Web |
-| **`GabrielProjetosAPRENDER/ideia-avaee`** | Privado | Sistema Operacional do AVAEE GD | Frontend React + Vite / Backend Java Spring Boot |
+| **`Eder-Jesus/webpage-gestor`** | Privado (Mirror) | RepositÃ³rio espelho conectado ao Vercel | React 19, TypeScript, Vite |
+| **`GabrielProjetosAPRENDER/SISTEMA_ESCOLAR`** | Privado (ReferÃªncia) | Sistema Operacional Gestor Educ (EducaÃ§Ã£o Regular) | Java Spring Boot + React Vite + PostgreSQL |
+| **`GabrielProjetosAPRENDER/ideia-avaee`** | Privado (ReferÃªncia) | Sistema Operacional do AVAEE GD | Java Spring Boot + React Vite + PostgreSQL |
 | **`Eder-Jesus/Eder-Jesus`** | PÃºblico | Profile README do GitHub | SVG Nativo, GitHub Actions (Snake), SkillIcons |
 
-A landing page oficial da **i6 Systems** foi completamente reformulada a partir das diretrizes de design de produto e feedback direto:
-
-### A. SubstituiÃ§Ã£o Total de Imagens Borradas por Mockups Vetoriais Interativos (HTML/CSS)
-* **Zero Vazamento de Dados:** Todas as capturas de tela rasas (`dashboard_general.png`, `dashboard_schools.png`, `dashboard_curriculum.png`) que mostravam nomes reais/falsos de escolas ou dados municipais borrados foram eliminadas.
-* **Vetor Nativo de Alta Fidelidade:** Os mÃ³dulos foram substituÃ­dos por painÃ©is vetoriais responsivos com mÃ©tricas municipais (18 Escolas, 12.450 Alunos, 94.8% FrequÃªncia, 0 Erros Educacenso), nÃ­tidos em qualquer resoluÃ§Ã£o (Full HD, 4K, Retina).
-
-### B. Gestor Educ (`src/pages/Gestor/Gestor.tsx` & `Gestor.module.css`)
-* EstÃ©tica GovTech cristalina e luminosa (fundo branco, azul institucional `#2563EB`, ardÃ³sia escura `#0F172A`).
-* Seis cartÃµes de arquitetura tÃ©cnica:
-  1. **DiÃ¡rio Mobile 100% Offline:** SincronizaÃ§Ã£o automÃ¡tica para professores da zona rural.
-  2. **Auditoria PrÃ©via do Censo Escolar (INEP/FUNDEB):** Validador em tempo real que impede erros de cadastro e perda de verbas federais.
-  3. **GestÃ£o Inteligente de Vagas e MatrÃ­culas:** Fila auditÃ¡vel e enturmaÃ§Ã£o automÃ¡tica por capacidade.
-  4. **LogÃ­stica de Transporte Escolar:** Rotas rurais mapeadas, controle de combustÃ­vel e frotas.
-  5. **Biblioteca & Acervo Escolar:** EmprÃ©stimos, devoluÃ§Ãµes e catalogaÃ§Ã£o por cÃ³digo de barras.
-  6. **Painel Executivo da Secretaria:** VisÃ£o consolidada em tempo real para o SecretÃ¡rio de EducaÃ§Ã£o.
-
-### C. AVAEE GD (`src/pages/Avaee/Avaee.tsx` & `Avaee.module.css`)
-* **Fim do "Roxinho Cagado":** A paleta de cores roxa/violeta foi totalmente banida. Foi aplicada a paleta **GovTech Esmeralda / Teal** (`#059669` / `#047857`) com ardÃ³sia institucional, alinhada Ã  saÃºde e regulaÃ§Ã£o educacional.
-* **Regras Reais do Sistema AVAEE:**
-  1. **Ficha Padronizada em 13 Blocos:** Triagem estruturada preenchida pela escola regular.
-  2. **SemÃ¡foro PedagÃ³gico de Criticidade:** Vermelho (Urgente/IntervenÃ§Ã£o Imediata), Amarelo (PrioritÃ¡rio/Acompanhamento) e Verde (EstÃ¡vel).
-  3. **Fila Ãšnica Transparente para o CAEE:** RegulaÃ§Ã£o por especialidade (Psicologia, Fonoaudiologia, Psicopedagogia, Terapia Ocupacional, AssistÃªncia Social).
-  4. **ProntuÃ¡rio Multiprofissional com Duplo Sigilo & PDI:** AnotaÃ§Ãµes clÃ­nicas visÃ­veis apenas aos terapeutas; plano pedagÃ³gico individual compartilhado com a escola regular.
-* Mockup interativo vetorial renderizando a fila de espera e o semÃ¡foro em tempo real.
-
-### D. Home & Hero (`src/components/Hero/Hero.tsx` & `Hero.module.css`)
-* Eliminado o texto informal "Dois Carros-Chefe"; substituÃ­do por "Plataformas Integradas para a EducaÃ§Ã£o PÃºblica Municipal".
-* Mockup de Cockpit Municipal vetorial no Hero.
-* O **Simulador Municipal de Alunos** foi preservado e destacado (estimativa de horas economizadas e FUNDEB protegido).
-
-### E. Nova PÃ¡gina "Sobre a i6 Systems" (`src/pages/Sobre/Sobre.tsx` & `Sobre.module.css`)
-* Totalmente reescrita para refletir a histÃ³ria autÃªntica da empresa:
-  * Fundada por cientistas da computaÃ§Ã£o e engenheiros de dados maranhenses e paulistas.
-  * Sede operacional em SÃ£o LuÃ­s - MA.
-  * CNPJ registrado: `50.542.946/0001-58`.
-  * Softwares registrados no **INPI**, em conformidade integral com a **LGPD**.
-  * PrincÃ­pios claros: Tecnologia para o Brasil Real (Offline-First), Blindagem do FUNDEB, InclusÃ£o com RegulaÃ§Ã£o TÃ©cnica e PresenÃ§a FÃ­sica na Ponta com Treinamento Assistido.
-  * BotÃ£o de aÃ§Ã£o conectado diretamente ao modal de demonstraÃ§Ã£o tÃ©cnica (`onOpenDemoModal`).
+*(Nota: O repositÃ³rio `idebnapratica` nÃ£o faz parte do escopo da i6 Systems e Ã© mantido isolado sem alteraÃ§Ãµes).*
 
 ---
 
-## â˜ï¸ 4. Infraestrutura de Deploy no Vercel
+## ðŸš€ 4. ReformulaÃ§Ã£o Elite "PadrÃ£o R$ 50.000" Implementada
+
+Toda a landing page foi reconstruÃ­da para falar a linguagem tÃ©cnica e institucional que SecretÃ¡rios de EducaÃ§Ã£o e Prefeitos compram, eliminando completamente imagens borradas ou estÃ©tica genÃ©rica de IA:
+
+### A. Cockpit Interativo do Gestor Educ (`src/pages/Gestor/Gestor.tsx`)
+* **Aba 1: DiÃ¡rio Mobile 100% Offline (Professores):**
+  * Chamada interativa com alternÃ¢ncia de presenÃ§a (Presente, Falta, Justificada).
+  * Habilidade da BNCC integrada (`EF05MA08`).
+  * BotÃ£o de simulaÃ§Ã£o de sincronizaÃ§Ã£o offline âž” nuvem com feedback em tempo real.
+* **Aba 2: PrÃ©-Validador do Educacenso (INEP / FUNDEB):**
+  * Painel de auditoria preventiva com 12.450 cadastros validados e 0 inconsistÃªncias.
+  * ProteÃ§Ã£o estimada de R$ 14.800.000,00 de repasses municipais contra retenÃ§Ãµes.
+* **Aba 3: LogÃ­stica de Transporte Escolar Rural:**
+  * Linha rural com itinerÃ¡rio georreferenciado, paradas com horÃ¡rio e alunos vinculados.
+* **Aba 4: PNAE â€¢ Merenda & Ficha TÃ©cnica Nutricional:**
+  * CardÃ¡pio aprovado por nutricionista com cÃ¡lculo per capita de calorias, proteÃ­nas, ferro e vitamina C (ResoluÃ§Ã£o CD/FNDE nÂº 06/2020) e controle de estoque de despensas escolares.
+* **6 MÃ³dulos Estruturais:** DiÃ¡rio Mobile, PrÃ©-Validador Censo, Transporte Escolar, PNAE Merenda, PrÃ©-MatrÃ­cula Digital e Painel Executivo / Busca Ativa (Selo UNICEF).
+
+### B. Cockpit Interativo do AVAEE GD (`src/pages/Avaee/Avaee.tsx`)
+* **Aba 1: SemÃ¡foro PedagÃ³gico & Fila Ãšnica CAEE:**
+  * Filtros dinÃ¢micos por criticidade: ðŸ”´ UrgÃªncia MÃ¡xima (12), ðŸŸ¡ InvestigaÃ§Ã£o (28), ðŸŸ¢ Acompanhamento (42).
+  * Fila transparente por especialidades: Psicologia, Fonoaudiologia, Terapia Ocupacional, Psicopedagogia e AEE/SRM.
+* **Aba 2: Ficha Padronizada em 13 Blocos:**
+  * Navegador interativo dos 13 blocos de triagem preenchidos pela coordenaÃ§Ã£o da escola regular.
+* **Aba 3: ProntuÃ¡rio Multiprofissional com Duplo Sigilo & PDI:**
+  * Toggle interativo: **VisÃ£o ClÃ­nica Sigilosa (SaÃºde)** vs **VisÃ£o PedagÃ³gica Compartilhada (PDI para o Professor)**.
+  * Conformidade estrita com o Artigo 14 da LGPD e sigilo Ã©tico profissional.
+
+### C. Arquitetura de GovernanÃ§a & Multi-Tenancy na Home (`src/pages/Home/Home.tsx`)
+* **Multi-Tenant por Schema PostgreSQL:** Cada municÃ­pio opera em um namespace isolado (`tenant_<municipio>`).
+* **ProteÃ§Ã£o Integral de Menores (LGPD Art. 14):** Logs de auditoria para promotorias e Tribunais de Contas (TCE).
+* **Arquitetura Offline-First (PWA):** OperaÃ§Ã£o contÃ­nua nas salas de aula da zona rural.
+* **Alta Disponibilidade em Nuvem:** Pronta para picos de matrÃ­cula e censo.
+
+### D. Sobre a i6 Systems (`src/pages/Sobre/Sobre.tsx`)
+* Origem: SÃ£o LuÃ­s - MA, fundada por cientistas da computaÃ§Ã£o e engenheiros de dados.
+* CNPJ: `50.542.946/0001-58`, Softwares registrados no INPI, 100% LGPD.
+
+---
+
+## â˜ï¸ 5. Infraestrutura de Deploy no Vercel
 
 * **OrganizaÃ§Ã£o / Team na Vercel:** `ideia-software`
 * **Projeto:** `i6-systems`
-* **RepositÃ³rio GitHub:** `Eder-Jesus/webpage-gestor`
+* **RepositÃ³rio Conectado:** `Eder-Jesus/webpage-gestor`
 * **Branch:** `main`
 * **Ãšltimos Commits Publicados:**
-  * `86deb2f`: *feat: revamp Sobre page with authentic i6 Systems GovTech identity and wire modal*
-  * `730f83b`: *feat: complete visual overhaul with crisp vector GovTech mockups, zero leaked data, and emerald theme for AVAEE*
+  * `GabrielProjetosAPRENDER/i6-webpage`: `3826555` (*feat: implement interactive SaaS live cockpits for Gestor Educ & AVAEE GD and Multi-Tenant architecture section*)
+  * `Eder-Jesus/webpage-gestor`: `9848400` (*feat: implement interactive SaaS live cockpits for Gestor Educ & AVAEE GD and Multi-Tenant architecture section*)
 * **Status do Deploy:** **ðŸŸ¢ Success / Ready** (`Deployment has completed`)
 * **URLs de ProduÃ§Ã£o Ativas:**
-  * **URL CanÃ´nica do Time:** [`https://i6-systems-ideia-software.vercel.app`](https://i6-systems-ideia-software.vercel.app)
-  * **Deploy EspecÃ­fico (Sobre + AVAEE + Gestor):** [`https://i6-systems-952tfh5c8-ideia-software.vercel.app`](https://i6-systems-952tfh5c8-ideia-software.vercel.app)
+  * **Deploy EspecÃ­fico Mais Recente:** [`https://i6-systems-l2rpuiz7n-ideia-software.vercel.app`](https://i6-systems-l2rpuiz7n-ideia-software.vercel.app)
+  * **URL CanÃ´nica da Equipe:** [`https://i6-systems-ideia-software.vercel.app`](https://i6-systems-ideia-software.vercel.app)
 
-### âš ï¸ Regra CrÃ­tica sobre Deploys "ðŸ”´ Blocked" no Vercel:
+---
+
+## ðŸ›¡ï¸ 6. Regra CrÃ­tica sobre Deploys "ðŸ”´ Blocked" no Vercel
+
 * Commits devem SEMPRE ser assinados com o e-mail:
   ```bash
   git config user.name "Eder-Jesus"
   git config user.email "eder-jesus@users.noreply.github.com"
   ```
-  Isso garante que o Vercel reconheÃ§a o commit como vindo do assento de `atomicplays-7946`.
+  *(Esse e-mail pertence ao assento ativo de `atomicplays-7946` na equipe `ideia-software`).*
 
 ---
 
-## ðŸ›¡ï¸ 5. ManutenÃ§Ã£o do Ambiente Local & Suporte Realizado
-
-1. **DesativaÃ§Ã£o do OneDrive:** As pastas locais foram desconectadas do backup compulsÃ³rio na nuvem para manter a integridade dos arquivos locais em `C:\Users\atomi\Desktop`.
-2. **RemoÃ§Ã£o de Adwares / PUPs:** Processos e tarefas do *Premier Opinion* e *Weather Zero* foram expurgados do sistema.
-3. **LinkedIn & TransiÃ§Ã£o de Carreira:** AnÃ¡lise do perfil realizada com foco no posicionamento de SÃ³cio/Tech Lead da i6 Systems e Engenheiro de Dados Pleno.
-
----
-
-## ðŸ“Œ 6. PrÃ³ximos Passos Recomendados
-
-1. [ ] **InspeÃ§Ã£o Visual das Rotas no Ar:**
-   * Home: `https://i6-systems-ideia-software.vercel.app/#/`
-   * Gestor: `https://i6-systems-ideia-software.vercel.app/#/gestor`
-   * AVAEE: `https://i6-systems-ideia-software.vercel.app/#/avaee`
-   * Sobre: `https://i6-systems-ideia-software.vercel.app/#/sobre`
-   * Contato: `https://i6-systems-ideia-software.vercel.app/#/contato`
-2. [ ] **DomÃ­nio PrÃ³prio:** Conectar `i6systems.com.br` no painel da Vercel quando estiver pronto para formalizar o lanÃ§amento.
-3. [ ] **SeguranÃ§a de Tokens:** Revogar o Personal Access Token (`ghp_...`) no GitHub caso nÃ£o sejam feitas mais alteraÃ§Ãµes imediatas.
-
----
-
-*Ãšltima atualizaÃ§Ã£o: 05/11/2026. Documento mantido para restauraÃ§Ã£o imediata de contexto em novas sessÃµes.*
+*Ãšltima atualizaÃ§Ã£o: 05/11/2026. Documento mantido para sincronia e restauraÃ§Ã£o instantÃ¢nea de contexto em novas sessÃµes.*
