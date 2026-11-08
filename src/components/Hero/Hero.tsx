@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   GraduationCap, ArrowRight, CheckCircle2, 
-  Smartphone, Building2, Lock, Award, BookOpen, Sparkles
+  Smartphone, Building2, Lock, ShieldCheck, BookOpen, Sparkles
 } from 'lucide-react';
 import styles from './Hero.module.css';
 
@@ -54,8 +54,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
           {/* Trust Badges Row */}
           <div className={styles.trustProofRow}>
             <div className={styles.trustItem}>
-              <Award size={16} className={styles.trustIcon} />
-              <span>Registro no INPI & Certificação SERPRO</span>
+              <ShieldCheck size={16} className={styles.trustIcon} />
+              <span>Plataforma Própria & Segura</span>
             </div>
             <div className={styles.trustItem}>
               <CheckCircle2 size={16} className={styles.trustIcon} />

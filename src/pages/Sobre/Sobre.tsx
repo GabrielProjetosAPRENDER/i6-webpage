@@ -1,9 +1,9 @@
 import React from 'react';
 import { 
   Building2, ShieldCheck, CheckCircle2, 
-  MapPin, Award, Smartphone, HeartHandshake,
+  MapPin, Smartphone, HeartHandshake,
   ArrowRight, Sparkles, Scale, GraduationCap,
-  Database, BookOpen, FileCheck2, UserCheck, Mail
+  Database, BookOpen, FileCheck2, Users, Mail
 } from 'lucide-react';
 import styles from './Sobre.module.css';
 
@@ -17,22 +17,22 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
       icon: <Database size={26} />,
       badge: 'Tecnologia & Dados',
       title: 'Engenharia de Software & Big Data',
-      desc: 'Arquiteturas modernas desenvolvidas por cientistas da computação e especialistas em dados. Banco de dados com isolamento multi-tenant por schema no PostgreSQL, sincronização offline-first (PWA) e pré-auditoria automatizada do Educacenso (INEP).',
-      tag: 'Eder Jesus • Gabriel Fernandes • Eliel Lima'
+      desc: 'Arquiteturas modernas desenvolvidas com as melhores práticas de engenharia de software e análise de dados. Banco de dados com isolamento multi-tenant seguro no PostgreSQL, sincronização offline-first (PWA) e pré-auditoria automatizada do Educacenso (INEP).',
+      tag: 'Engenharia de Software & Ciência de Dados'
     },
     {
       icon: <BookOpen size={26} />,
       badge: 'Pedagogia Aplicada',
       title: 'Vivência Real no Chão da Escola',
-      desc: 'Sistemas estruturados por quem vive o dia a dia pedagógico da rede pública. Orientação educacional aplicada na concepção de fluxos ergonômicos para o Diário Mobile e nos 13 blocos de triagem do AVAEE GD.',
-      tag: 'Vitor Hugo Almeida • Pedagogo'
+      desc: 'Sistemas concebidos por quem conhece profundamente o dia a dia pedagógico da rede pública. Orientação educacional aplicada na definição de fluxos práticos para o Diário Mobile e na triagem em 13 blocos do AVAEE GD.',
+      tag: 'Coordenação Pedagógica & Especialistas em AEE'
     },
     {
       icon: <Scale size={26} />,
-      badge: 'Segurança Jurídica',
-      title: 'Direito Público & Compliance LGPD',
-      desc: 'Assessoria jurídica contínua em direito educacional e administrativo. Conformidade estrita com o Artigo 14 da LGPD para proteção integral de menores, duplo sigilo clínico/pedagógico e segurança em contratos públicos.',
-      tag: 'Sayron Thiago Dantas • Advogado'
+      badge: 'Governança & Segurança',
+      title: 'Gestão Pública & Compliance LGPD',
+      desc: 'Alinhamento contínuo às normas educacionais e administrativas. Rigorosa conformidade com o Artigo 14 da LGPD para proteção integral de dados de menores, duplo sigilo clínico/pedagógico e segurança jurídica para o município.',
+      tag: 'Governança Pública & Proteção de Dados'
     }
   ];
 
@@ -40,22 +40,22 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
     {
       icon: <Smartphone size={26} />,
       title: 'Tecnologia que Funciona no Brasil Real',
-      desc: 'Desenvolvemos soluções com arquitetura offline-first. Nossos diários e sistemas operam perfeitamente em salas de aula e escolas da zona rural sem sinal de internet, sincronizando quando houver conexão.'
+      desc: 'Desenvolvemos soluções com arquitetura offline-first. Nossos diários e sistemas operam com total estabilidade em salas de aula e escolas da zona rural sem sinal de internet, sincronizando os dados automaticamente assim que houver conexão.'
     },
     {
       icon: <FileCheck2 size={26} />,
       title: 'Blindagem de Recursos Públicos (FUNDEB)',
-      desc: 'Erros de digitação no Censo Escolar geram perdas severas de repasses. Criamos mecanismos de validação prévia contínua que eliminam inconsistências cadastrais antes dos prazos oficiais do INEP.'
+      desc: 'Erros de digitação e dados desatualizados no Censo Escolar geram perdas severas de repasses. Criamos mecanismos de validação prévia contínua que eliminam inconsistências cadastrais antes dos prazos oficiais do INEP.'
     },
     {
       icon: <HeartHandshake size={26} />,
       title: 'Inclusão com Eficiência e Transparência',
-      desc: 'Com o AVAEE GD, criamos uma plataforma pioneira para regular as filas do CAEE e do AEE por especialidade (Psicologia, Fonoaudiologia, Terapia Ocupacional), substituindo pedidos informais por critérios técnicos.'
+      desc: 'Com o AVAEE GD, criamos uma plataforma pioneira para regular as filas do CAEE e do AEE por especialidade (Psicologia, Fonoaudiologia, Terapia Ocupacional), substituindo pedidos informais por critérios técnicos e científicos.'
     },
     {
       icon: <ShieldCheck size={26} />,
-      title: 'Segurança Jurídica & Registro no INPI',
-      desc: 'Nossos sistemas contam com registro de programa de computador no INPI (Processo 512026008933-6), certificação digital ICP-Brasil via SERPRO e total auditoria para promotorias e Tribunais de Contas.'
+      title: 'Conformidade Regulatória & LGPD',
+      desc: 'Plataformas desenvolvidas em total conformidade com as diretrizes do MEC e parâmetros do Censo Escolar, com privacidade por padrão (Privacy by Design) e proteção rigorosa dos dados dos estudantes e servidores municipais.'
     }
   ];
 
@@ -104,18 +104,18 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
         <div className="container">
           <div className={styles.identityGrid}>
             <div className={styles.identityText}>
-              <span className={styles.sectionBadge}>Nossa Origem & Trajetória</span>
+              <span className={styles.sectionBadge}>Nossa Origem & Propósito</span>
               <h2 className={styles.sectionTitle}>
-                Nascemos para acabar com o abismo entre a tecnologia moderna e as prefeituras.
+                Nascemos para conectar tecnologia moderna à realidade prática das prefeituras.
               </h2>
               <p className={styles.paragraph}>
-                A <strong>i6 Systems</strong> (CNPJ: <code>50.542.946/0001-58</code>), sediada em <strong>Gonçalves Dias - MA</strong>, nasceu no final de 2025 da união estratégica de profissionais com vivências complementares: cientistas da computação e engenheiros de dados com experiência corporativa, pedagogos da rede pública e operadores do direito administrativo.
+                A <strong>i6 Systems</strong> (CNPJ: <code>50.542.946/0001-58</code>), sediada em <strong>Gonçalves Dias - MA</strong>, nasceu da união de engenheiros de software, especialistas em dados e educadores da rede pública que vivenciam de perto a rotina e os desafios da gestão municipal.
               </p>
               <p className={styles.paragraph}>
-                Ao longo de 2026, consolidamos nossa maturidade estatal e regulatória: registramos oficialmente nossos programas de computador no <strong>INPI</strong> (Processo nº <code>512026008933-6</code> sob a Lei nº 9.609/98), firmamos certificação digital com o <strong>SERPRO</strong> (Serviço Federal de Processamento de Dados) nos padrões da ICP-Brasil e alinhamos nossos algoritmos aos parâmetros do Educacenso (INEP/MEC) e da LGPD (Lei nº 13.709/18).
+                Desenvolvemos soluções que simplificam a administração pública: eliminamos processos burocráticos manuais, prevenimos perdas de repasses do FUNDEB com pré-auditoria do Educacenso (INEP/MEC), conectamos escolas rurais com sincronização offline e estruturamos a Educação Especial com agilidade e respeito à LGPD.
               </p>
               <div className={styles.quoteBox}>
-                "Não criamos softwares genéricos de prateleira. Desenvolvemos ferramentas desenhadas para a realidade de quem está na sala de aula, na secretaria da escola e na mesa do secretário municipal."
+                "Não criamos softwares genéricos de prateleira. Desenvolvemos ferramentas desenhadas para a realidade de quem está na sala de aula, na secretaria da escola e na tomada de decisão municipal."
               </div>
             </div>
 
@@ -139,26 +139,26 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
                 </div>
 
                 <div className={styles.instItem}>
-                  <div className={styles.instItemIcon}><Award size={16} /></div>
+                  <div className={styles.instItemIcon}><Smartphone size={16} /></div>
                   <div>
-                    <strong>Registro no INPI</strong>
-                    <span>Processo nº 512026008933-6 (Lei 9.609/98)</span>
+                    <strong>Tecnologia & Operação</strong>
+                    <span>Arquitetura Offline-First & Sincronização em Nuvem</span>
                   </div>
                 </div>
 
                 <div className={styles.instItem}>
                   <div className={styles.instItemIcon}><ShieldCheck size={16} /></div>
                   <div>
-                    <strong>Certificação Federal</strong>
-                    <span>SERPRO • ICP-Brasil (Pessoa Jurídica A1)</span>
+                    <strong>Conformidade & Segurança</strong>
+                    <span>Alinhado ao Educacenso (INEP/MEC) e à LGPD</span>
                   </div>
                 </div>
 
                 <div className={styles.instItem}>
                   <div className={styles.instItemIcon}><GraduationCap size={16} /></div>
                   <div>
-                    <strong>Foco Estratégico</strong>
-                    <span>Educação Regular (Gestor Educ) & Especial (AVAEE GD)</span>
+                    <strong>Plataformas Oficiais</strong>
+                    <span>Gestor Educ (Regular) & AVAEE GD (Especial/AEE)</span>
                   </div>
                 </div>
 
@@ -173,7 +173,7 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
 
               <div className={styles.instCardFooter}>
                 <span>CNPJ: 50.542.946/0001-58</span>
-                <span className={styles.activeTag}>● Empresa Ativa & Homologada</span>
+                <span className={styles.activeTag}>● Empresa Ativa e Regular</span>
               </div>
             </div>
           </div>
@@ -199,7 +199,7 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
                 <h3 className={styles.triadTitle}>{col.title}</h3>
                 <p className={styles.triadDesc}>{col.desc}</p>
                 <div className={styles.triadFooterTag}>
-                  <UserCheck size={14} color="#2563EB" />
+                  <Users size={14} color="#2563EB" />
                   <span>{col.tag}</span>
                 </div>
               </div>
