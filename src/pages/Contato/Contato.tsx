@@ -206,16 +206,18 @@ export const Contato: React.FC = () => {
                   <li>
                     <MapPin className={styles.icon} />
                     <div>
-                      <strong>Endereço</strong>
-                      <span>São Luís - MA</span>
+                      <strong>Endereço da Sede</strong>
+                      <span>Travessa Primeiro de Maio, 211, Centro</span>
+                      <span style={{ display: 'block', fontSize: '0.8rem', color: '#64748B' }}>Gonçalves Dias - MA • CEP: 65775-000</span>
                     </div>
                   </li>
                   <li>
                     <Phone className={styles.icon} />
                     <div>
-                      <strong>Telefones</strong>
-                      <span style={{ display: 'block' }}>(99) 98214-6865</span>
-                      <span style={{ display: 'block' }}>(99) 98139-4306</span>
+                      <strong>Telefones Institucionais</strong>
+                      <span style={{ display: 'block' }}>(99) 98400-8982 (Geral)</span>
+                      <span style={{ display: 'block' }}>(99) 98139-4306 (Jurídico & Contratos)</span>
+                      <span style={{ display: 'block' }}>(99) 98214-6865 (Suporte Técnico)</span>
                     </div>
                   </li>
                   <li>
@@ -255,7 +257,7 @@ export const Contato: React.FC = () => {
               <div className={styles.mapPlaceholder}>
                 <div className={styles.mapOverlay}>
                   <MapPin size={24} className={styles.mapPinIcon} />
-                  <span>Sede da i6 Systems - São Luís - MA</span>
+                  <span>Sede da i6 Systems — Gonçalves Dias - MA</span>
                 </div>
                 {/* Abstrac background grid mimicking a map */}
                 <div className={styles.mapLines} />

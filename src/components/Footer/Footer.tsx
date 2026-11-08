@@ -59,13 +59,13 @@ export const Footer: React.FC = () => {
               <div className={styles.contactItem}>
                 <Phone size={15} className={styles.contactIcon} />
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                  <a href="tel:+5599982146865">(99) 98214-6865</a>
+                  <a href="tel:+5599984008982">(99) 98400-8982</a>
                   <a href="tel:+5599981394306">(99) 98139-4306</a>
                 </div>
               </div>
               <div className={styles.contactItem}>
                 <MapPin size={15} className={styles.contactIcon} />
-                <span>São Luís - MA</span>
+                <span>Gonçalves Dias - MA</span>
               </div>
             </div>
           </div>

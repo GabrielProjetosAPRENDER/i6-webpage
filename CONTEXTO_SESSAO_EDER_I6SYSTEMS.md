@@ -11,10 +11,10 @@
 * **Nome:** Eder Jesus (`Edzxra` | GitHub: [`Eder-Jesus`](https://github.com/Eder-Jesus))
 * **E-mail de Contato / Vercel:** `atomicplays@hotmail.com`
 * **E-mail do GitHub No-Reply (Membro Vercel):** `eder-jesus@users.noreply.github.com`
-* **Localização:** São Paulo, SP — Brasil (com raízes operacionais da empresa em São Luís - MA)
+* **Localização:** São Paulo, SP — Brasil (Sede oficial da empresa em Gonçalves Dias - MA)
 * **Formação Acadêmica:** Bacharelado em Ciência da Computação pela **SPTech (São Paulo Tech School)** | Técnico em TI pela **Etec Jaraguá**
 * **Atuação Profissional:**
-  * 🏢 **Co-proprietário & Sócio-Administrador da i6 Systems:** GovTech e Software House especializada em modernização da gestão pública municipal e educação especial inclusiva.
+  * 🏢 **Co-proprietário & Representante Legal da i6 Systems:** GovTech e Software House fundada no final de 2025 e consolidada em 2026, especializada em modernização da gestão pública municipal e educação especial inclusiva.
   * 💳 **Engenheiro de Dados & Analista de BI Pleno no Grupo Elo:** Arquitetura Medallion (Bronze/Silver/Gold), pipelines de dados em Python integrando Salesforce Omni-Channel, Sprinklr e HugMe; procedures analíticas de alta performance em T-SQL (~120x mais rápidas).
   * 🏥 Histórico prévio em **Dasa Empresas** (Inteligência Comercial), **A5 Solutions** (Java/Spring Boot) e **Accenture** (Big Data & Analytics: Hive, Impala, MongoDB, Tableau).
 * **Alta Performance & Esports:**
@@ -28,9 +28,17 @@
 
 ---
 
-## 🏛️ 2. O Ecossistema i6 Systems (A Arquitetura de Produtos)
+## 🏛️ 2. O Ecossistema i6 Systems (A Arquitetura de Produtos e Credenciais Oficiais)
 
-A **i6 Systems** (CNPJ: `50.542.946/0001-58`, São Luís - MA) é uma GovTech que oferece soluções integradas para prefeituras e secretarias municipais de educação, com **dois produtos comerciais estruturantes**:
+A **i6 Systems Ltda.** (CNPJ: `50.542.946/0001-58`, Gonçalves Dias - MA) é uma GovTech nascida no final de 2025 e consolidada em 2026, com credenciais estatais homologadas:
+* 📜 **Registro no INPI (Instituto Nacional da Propriedade Industrial):** Pedido de Registro de Programa de Computador nº `512026008933-6` (Petição `870260103787`) sob a Lei Federal nº 9.609/1998 (Gestor Educ).
+* 🔐 **Certificação Digital SERPRO:** Certificado Digital Pessoa Jurídica A1 emitido pelo SERPRO (Serviço Federal de Processamento de Dados) nos padrões da ICP-Brasil.
+* 👥 **Tríade Autora & Fundadora Multidisciplinar:**
+  1. *Engenharia de Software & Big Data:* Eder Matheus Martins de Jesus, Gabriel Alves da Silva Fernandes e Eliel Silva Lima.
+  2. *Vivência Pedagógica Aplicada:* Vitor Hugo Almeida do Nascimento (Pedagogo e Orientador Educacional).
+  3. *Segurança Jurídica & Compliance LGPD:* Sayron Thiago de Oliveira Dantas (Advogado).
+
+Com **dois produtos comerciais estruturantes**:
 
 ```
                       ┌──────────────────────────────────────┐

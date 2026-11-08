@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Building2, ShieldCheck, CheckCircle2, 
   MapPin, Award, Smartphone, HeartHandshake,
-  ArrowRight, Sparkles, Scale, GraduationCap
+  ArrowRight, Sparkles, Scale, GraduationCap,
+  Database, BookOpen, FileCheck2, UserCheck, Mail
 } from 'lucide-react';
 import styles from './Sobre.module.css';
 
@@ -11,6 +12,30 @@ interface SobreProps {
 }
 
 export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
+  const triad = [
+    {
+      icon: <Database size={26} />,
+      badge: 'Tecnologia & Dados',
+      title: 'Engenharia de Software & Big Data',
+      desc: 'Arquiteturas modernas desenvolvidas por cientistas da computação e especialistas em dados. Banco de dados com isolamento multi-tenant por schema no PostgreSQL, sincronização offline-first (PWA) e pré-auditoria automatizada do Educacenso (INEP).',
+      tag: 'Eder Jesus • Gabriel Fernandes • Eliel Lima'
+    },
+    {
+      icon: <BookOpen size={26} />,
+      badge: 'Pedagogia Aplicada',
+      title: 'Vivência Real no Chão da Escola',
+      desc: 'Sistemas estruturados por quem vive o dia a dia pedagógico da rede pública. Orientação educacional aplicada na concepção de fluxos ergonômicos para o Diário Mobile e nos 13 blocos de triagem do AVAEE GD.',
+      tag: 'Vitor Hugo Almeida • Pedagogo'
+    },
+    {
+      icon: <Scale size={26} />,
+      badge: 'Segurança Jurídica',
+      title: 'Direito Público & Compliance LGPD',
+      desc: 'Assessoria jurídica contínua em direito educacional e administrativo. Conformidade estrita com o Artigo 14 da LGPD para proteção integral de menores, duplo sigilo clínico/pedagógico e segurança em contratos públicos.',
+      tag: 'Sayron Thiago Dantas • Advogado'
+    }
+  ];
+
   const principles = [
     {
       icon: <Smartphone size={26} />,
@@ -18,9 +43,9 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
       desc: 'Desenvolvemos soluções com arquitetura offline-first. Nossos diários e sistemas operam perfeitamente em salas de aula e escolas da zona rural sem sinal de internet, sincronizando quando houver conexão.'
     },
     {
-      icon: <Scale size={26} />,
+      icon: <FileCheck2 size={26} />,
       title: 'Blindagem de Recursos Públicos (FUNDEB)',
-      desc: 'Erros de digitação no Censo Escolar geram perdas milionárias de repasses. Criamos mecanismos de validação prévia contínua que eliminam inconsistências cadastrais antes dos prazos do INEP.'
+      desc: 'Erros de digitação no Censo Escolar geram perdas severas de repasses. Criamos mecanismos de validação prévia contínua que eliminam inconsistências cadastrais antes dos prazos oficiais do INEP.'
     },
     {
       icon: <HeartHandshake size={26} />,
@@ -29,8 +54,8 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
     },
     {
       icon: <ShieldCheck size={26} />,
-      title: 'Segurança Jurídica & LGPD Rigorosa',
-      desc: 'Nossos sistemas contam com controle de acesso por perfil, rastreabilidade de logs de auditoria e registro de programa de computador no INPI, garantindo sigilo absoluto dos dados de menores e servidores.'
+      title: 'Segurança Jurídica & Registro no INPI',
+      desc: 'Nossos sistemas contam com registro de programa de computador no INPI (Processo 512026008933-6), certificação digital ICP-Brasil via SERPRO e total auditoria para promotorias e Tribunais de Contas.'
     }
   ];
 
@@ -68,7 +93,7 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
               Tecnologia de ponta construída para a <span className={styles.titleHighlight}>realidade da gestão pública</span>.
             </h1>
             <p className={styles.heroSubtitle}>
-              Somos uma GovTech maranhense especializada em engenharia de dados e desenvolvimento de software para modernizar secretarias municipais de educação com velocidade, segurança e transparência.
+              Fundada no final de 2025 e consolidada institucionalmente em 2026, a i6 Systems é uma GovTech maranhense especializada em modernizar secretarias municipais de educação com engenharia de dados, vivência pedagógica e rigor jurídico.
             </p>
           </div>
         </div>
@@ -79,15 +104,15 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
         <div className="container">
           <div className={styles.identityGrid}>
             <div className={styles.identityText}>
-              <span className={styles.sectionBadge}>Nossa Origem</span>
+              <span className={styles.sectionBadge}>Nossa Origem & Trajetória</span>
               <h2 className={styles.sectionTitle}>
                 Nascemos para acabar com o abismo entre a tecnologia moderna e as prefeituras.
               </h2>
               <p className={styles.paragraph}>
-                A <strong>i6 Systems</strong> (CNPJ: <code>50.542.946/0001-58</code>), sediada em São Luís - MA, nasceu de uma constatação clara: a maioria dos municípios brasileiros ainda está presa a dois extremos ineficientes. De um lado, softwares antigos dos anos 2000, pesados, caros e que travam constantemente; do outro, pilhas de papéis soltos e dezenas de planilhas desorganizadas que colocam em risco os repasses federais e atrasam o atendimento ao cidadão.
+                A <strong>i6 Systems</strong> (CNPJ: <code>50.542.946/0001-58</code>), sediada em <strong>Gonçalves Dias - MA</strong>, nasceu no final de 2025 da união estratégica de profissionais com vivências complementares: cientistas da computação e engenheiros de dados com experiência corporativa, pedagogos da rede pública e operadores do direito administrativo.
               </p>
               <p className={styles.paragraph}>
-                Unimos profissionais com sólida experiência em <strong>Ciência da Computação, Engenharia de Dados e Arquitetura de Software</strong> em grandes corporações do país para levar o mesmo nível de excelência técnica às administrações públicas municipais.
+                Ao longo de 2026, consolidamos nossa maturidade estatal e regulatória: registramos oficialmente nossos programas de computador no <strong>INPI</strong> (Processo nº <code>512026008933-6</code> sob a Lei nº 9.609/98), firmamos certificação digital com o <strong>SERPRO</strong> (Serviço Federal de Processamento de Dados) nos padrões da ICP-Brasil e alinhamos nossos algoritmos aos parâmetros do Educacenso (INEP/MEC) e da LGPD (Lei nº 13.709/18).
               </p>
               <div className={styles.quoteBox}>
                 "Não criamos softwares genéricos de prateleira. Desenvolvemos ferramentas desenhadas para a realidade de quem está na sala de aula, na secretaria da escola e na mesa do secretário municipal."
@@ -99,7 +124,7 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
               <div className={styles.instCardHeader}>
                 <Building2 size={24} className={styles.instIcon} />
                 <div>
-                  <h3 className={styles.instTitle}>i6 Systems</h3>
+                  <h3 className={styles.instTitle}>i6 Systems Ltda.</h3>
                   <span className={styles.instSubtitle}>GovTech & Soluções em Software</span>
                 </div>
               </div>
@@ -109,40 +134,76 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
                   <div className={styles.instItemIcon}><MapPin size={16} /></div>
                   <div>
                     <strong>Sede Operacional</strong>
-                    <span>São Luís - Maranhão</span>
+                    <span>Trav. 1º de Maio, 211, Centro — Gonçalves Dias - MA</span>
                   </div>
                 </div>
 
                 <div className={styles.instItem}>
                   <div className={styles.instItemIcon}><Award size={16} /></div>
                   <div>
-                    <strong>Propriedade Intelectual</strong>
-                    <span>Softwares com Registro no INPI</span>
+                    <strong>Registro no INPI</strong>
+                    <span>Processo nº 512026008933-6 (Lei 9.609/98)</span>
                   </div>
                 </div>
 
                 <div className={styles.instItem}>
                   <div className={styles.instItemIcon}><ShieldCheck size={16} /></div>
                   <div>
-                    <strong>Segurança & Compliance</strong>
-                    <span>100% em Conformidade com a LGPD</span>
+                    <strong>Certificação Federal</strong>
+                    <span>SERPRO • ICP-Brasil (Pessoa Jurídica A1)</span>
                   </div>
                 </div>
 
                 <div className={styles.instItem}>
                   <div className={styles.instItemIcon}><GraduationCap size={16} /></div>
                   <div>
-                    <strong>Foco Setorial</strong>
-                    <span>Educação Pública Regular & Especial (AEE/CAEE)</span>
+                    <strong>Foco Estratégico</strong>
+                    <span>Educação Regular (Gestor Educ) & Especial (AVAEE GD)</span>
+                  </div>
+                </div>
+
+                <div className={styles.instItem}>
+                  <div className={styles.instItemIcon}><Mail size={16} /></div>
+                  <div>
+                    <strong>Canal Oficial</strong>
+                    <span>contato@i6systems.com.br</span>
                   </div>
                 </div>
               </div>
 
               <div className={styles.instCardFooter}>
                 <span>CNPJ: 50.542.946/0001-58</span>
-                <span className={styles.activeTag}>● Empresa Ativa</span>
+                <span className={styles.activeTag}>● Empresa Ativa & Homologada</span>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Tríade de Autoridade (Equipe Multidisciplinar Autora) */}
+      <section className={styles.triadSection}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.sectionBadge}>Nossos Fundamentos</span>
+            <h2 className={styles.sectionTitle}>A Tríade que Torna a i6 Systems Única</h2>
+            <p className={styles.sectionSubtitle}>
+              Softwares eficientes para o setor público só nascem quando tecnologia de ponta, pedagogia de campo e segurança jurídica caminham juntas.
+            </p>
+          </div>
+
+          <div className={styles.triadGrid}>
+            {triad.map((col, idx) => (
+              <div key={idx} className={styles.triadCard}>
+                <div className={styles.triadIconBox}>{col.icon}</div>
+                <span className={styles.triadBadge}>{col.badge}</span>
+                <h3 className={styles.triadTitle}>{col.title}</h3>
+                <p className={styles.triadDesc}>{col.desc}</p>
+                <div className={styles.triadFooterTag}>
+                  <UserCheck size={14} color="#2563EB" />
+                  <span>{col.tag}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

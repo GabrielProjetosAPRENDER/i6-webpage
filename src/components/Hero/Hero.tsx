@@ -55,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
           <div className={styles.trustProofRow}>
             <div className={styles.trustItem}>
               <Award size={16} className={styles.trustIcon} />
-              <span>Registro de Software no INPI</span>
+              <span>Registro no INPI & Certificação SERPRO</span>
             </div>
             <div className={styles.trustItem}>
               <CheckCircle2 size={16} className={styles.trustIcon} />
