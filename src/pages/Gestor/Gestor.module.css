@@ -141,64 +141,67 @@
   border-bottom: 1px solid #1E3A8A;
 }
 
-.windowDots {
-  display: flex;
-  gap: 6px;
-}
-
 .windowBrand {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #FFFFFF;
+  gap: 0.85rem;
 }
 
 .cockpitLogoImg {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 
-.dotRed, .dotYellow, .dotGreen {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.brandTitle {
+  display: block;
+  font-size: 0.925rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
 }
 
-.dotRed { background: #EF4444; }
-.dotYellow { background: #F59E0B; }
-.dotGreen { background: #10B981; }
+.brandNetwork {
+  display: block;
+  font-size: 0.725rem;
+  color: #94A3B8;
+  font-weight: 500;
+}
 
-.windowAddressBar {
+.windowRightMeta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 0.3rem 1rem;
-  border-radius: 6px;
-  font-size: 0.775rem;
-  color: #CBD5E1;
-  font-family: monospace;
+  gap: 0.75rem;
 }
 
-.windowMetaStatus {
-  display: flex;
+.operacionalBadge {
+  display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  color: #34D399;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #10B981;
 }
 
-.pulseDot {
-  width: 8px;
-  height: 8px;
+.greenDotSmall {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: #10B981;
-  box-shadow: 0 0 8px #10B981;
-  animation: pulse 2s infinite;
+}
+
+.roleTag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #E2E8F0;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.725rem;
+  font-weight: 600;
 }
 
 @keyframes pulse {
@@ -542,44 +545,76 @@
 .opsIconAmber { color: #D97706; }
 .opsIconPurple { color: #7C3AED; }
 
-/* Student Tryout Cards Grid */
-.studentsTryoutGrid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-.studentTryoutCard {
+/* Student Roster Table */
+.rosterTableWrapper {
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.85rem;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
-  transition: all 0.2s ease;
+  overflow-x: auto;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.02);
 }
 
-.cardBorderPresent { border-left: 4px solid #10B981; }
-.cardBorderAbsent { border-left: 4px solid #EF4444; }
-.cardBorderJustified { border-left: 4px solid #F59E0B; }
+.rosterTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+  min-width: 780px;
+}
 
-.studentCardHeader {
+.rosterTable thead {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.rosterTable th {
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.rosterRow {
+  border-bottom: 1px solid #F1F5F9;
+  transition: background 0.15s ease;
+}
+
+.rosterRow:hover {
+  background: #F8FAFC;
+}
+
+.rosterRow td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+}
+
+.rosterStudentCell {
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.studentAvatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
+.rosterCallBadge {
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.rosterAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 800;
   flex-shrink: 0;
 }
@@ -588,27 +623,51 @@
 .avatarAbsent { background: #FEF2F2; color: #DC2626; border: 1px solid #FECACA; }
 .avatarJustified { background: #FFFBEB; color: #D97706; border: 1px solid #FDE68A; }
 
-.studentMeta {
-  display: flex;
-  flex-direction: column;
-}
-
-.studentCallNum {
-  font-size: 0.725rem;
-  font-weight: 600;
-  color: #64748B;
-  font-family: monospace;
-}
-
-.studentCardName {
-  font-size: 0.95rem;
+.rosterStudentName {
+  display: block;
+  font-size: 0.9rem;
   font-weight: 700;
   color: #0F172A;
 }
 
-.studentCardFooter {
+.rosterMatricula {
+  display: block;
+  font-size: 0.725rem;
+  color: #64748B;
+  font-family: monospace;
+}
+
+.historyDotsRow {
   display: flex;
-  justify-content: flex-end;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dotP, .dotF, .dotJ {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 800;
+}
+
+.dotP { background: #ECFDF5; color: #047857; border: 1px solid #A7F3D0; }
+.dotF { background: #FEF2F2; color: #B91C1C; border: 1px solid #FECACA; }
+.dotJ { background: #FFFBEB; color: #B45309; border: 1px solid #FDE68A; }
+
+.censoOkBadge {
+  display: inline-block;
+  background: #EFF6FF;
+  border: 1px solid #DBEAFE;
+  color: #1D4ED8;
+  font-size: 0.725rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
+  border-radius: 6px;
+  white-space: nowrap;
 }
 
 .modernStatusBtn {
@@ -1314,5 +1373,4 @@
   .cockpitTabs { flex-direction: column; }
   .kpiCardsGrid { grid-template-columns: 1fr; }
   .opsGrid { grid-template-columns: 1fr; }
-  .studentsTryoutGrid { grid-template-columns: 1fr; }
 }

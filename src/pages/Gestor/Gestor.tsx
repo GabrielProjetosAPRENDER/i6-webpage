@@ -169,23 +169,20 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
             <div className={styles.cockpitWindow}>
               {/* Cockpit Window Header */}
               <div className={styles.windowHeader}>
-                <div className={styles.windowDots}>
-                  <div className={styles.dotRed} />
-                  <div className={styles.dotYellow} />
-                  <div className={styles.dotGreen} />
-                </div>
                 <div className={styles.windowBrand}>
                   <img src={gestorLogo} alt="Gestor Educ" className={styles.cockpitLogoImg} />
-                  <span>Gestor Educ • SEMED Digital</span>
-                  <span className={styles.envTag}>Tryout Interativo</span>
+                  <div>
+                    <span className={styles.brandTitle}>Gestor Educ • Suíte Integrada de Gestão Municipal (SEMED)</span>
+                    <span className={styles.brandNetwork}>Rede Municipal de Ensino • Gonçalves Dias - MA</span>
+                  </div>
                 </div>
-                <div className={styles.windowAddressBar}>
-                  <ShieldCheck size={13} color="#10B981" />
-                  <span>gestor.i6systems.com.br/municipio/painel</span>
-                </div>
-                <div className={styles.windowMetaStatus}>
-                  <span className={styles.pulseDot} />
-                  <span>Rede Conectada • Gonçalves Dias - MA</span>
+
+                <div className={styles.windowRightMeta}>
+                  <div className={styles.operacionalBadge}>
+                    <span className={styles.greenDotSmall} />
+                    <span>Rede Municipal Conectada</span>
+                  </div>
+                  <span className={styles.roleTag}>Painel da Secretaria</span>
                 </div>
               </div>
 
@@ -379,45 +376,75 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       <span>Resolver e elaborar problemas de multiplicação e divisão com números naturais usando estimativas e cálculo mental.</span>
                     </div>
 
-                    {/* Interactive Student Attendance Cards Grid */}
-                    <div className={styles.studentsTryoutGrid}>
-                      {students.map(student => (
-                        <div 
-                          key={student.id} 
-                          className={`${styles.studentTryoutCard} ${
-                            student.status === 'presente' ? styles.cardBorderPresent :
-                            student.status === 'ausente' ? styles.cardBorderAbsent : styles.cardBorderJustified
-                          }`}
-                        >
-                          <div className={styles.studentCardHeader}>
-                            <div className={`${styles.studentAvatar} ${
-                              student.status === 'presente' ? styles.avatarPresent :
-                              student.status === 'ausente' ? styles.avatarAbsent : styles.avatarJustified
-                            }`}>
-                              {student.initials}
-                            </div>
-                            <div className={styles.studentMeta}>
-                              <span className={styles.studentCallNum}>Chamada #{student.id.toString().padStart(2, '0')}</span>
-                              <strong className={styles.studentCardName}>{student.name}</strong>
-                            </div>
-                          </div>
+                    {/* Interactive Student Attendance Roster (Authentic Teacher Tablet/PWA View) */}
+                    <div className={styles.rosterTableWrapper}>
+                      <table className={styles.rosterTable}>
+                        <thead>
+                          <tr>
+                            <th>Nº &amp; NOME DO ESTUDANTE</th>
+                            <th>HISTÓRICO DA SEMANA</th>
+                            <th>SITUAÇÃO DE FREQUÊNCIA (CLIQUE PARA ALTERNAR)</th>
+                            <th style={{ textAlign: 'right' }}>SITUAÇÃO CENSO</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {students.map(student => (
+                            <tr key={student.id} className={styles.rosterRow}>
+                              <td>
+                                <div className={styles.rosterStudentCell}>
+                                  <span className={styles.rosterCallBadge}>#{student.id.toString().padStart(2, '0')}</span>
+                                  <div className={`${styles.rosterAvatar} ${
+                                    student.status === 'presente' ? styles.avatarPresent :
+                                    student.status === 'ausente' ? styles.avatarAbsent : styles.avatarJustified
+                                  }`}>
+                                    {student.initials}
+                                  </div>
+                                  <div>
+                                    <strong className={styles.rosterStudentName}>{student.name}</strong>
+                                    <span className={styles.rosterMatricula}>Matrícula: 2026.0{student.id}42</span>
+                                  </div>
+                                </div>
+                              </td>
 
-                          <div className={styles.studentCardFooter}>
-                            <button 
-                              className={`${styles.modernStatusBtn} ${
-                                student.status === 'presente' ? styles.btnStatePresent :
-                                student.status === 'ausente' ? styles.btnStateAbsent : styles.btnStateJustified
-                              }`}
-                              onClick={() => toggleStudentStatus(student.id)}
-                              title="Clique para alternar presença"
-                            >
-                              {student.status === 'presente' && '✓ Presente em Sala'}
-                              {student.status === 'ausente' && '✕ Falta Registrada'}
-                              {student.status === 'justificada' && '⏱ Falta Justificada'}
-                            </button>
-                          </div>
-                        </div>
-                      ))}
+                              <td>
+                                <div className={styles.historyDotsRow} title="Frequência nos últimos 5 dias letivos">
+                                  <span className={styles.dotP}>P</span>
+                                  <span className={styles.dotP}>P</span>
+                                  <span className={styles.dotP}>P</span>
+                                  <span className={student.status === 'ausente' ? styles.dotF : styles.dotP}>
+                                    {student.status === 'ausente' ? 'F' : 'P'}
+                                  </span>
+                                  <span className={
+                                    student.status === 'presente' ? styles.dotP :
+                                    student.status === 'ausente' ? styles.dotF : styles.dotJ
+                                  }>
+                                    {student.status === 'presente' ? 'P' : student.status === 'ausente' ? 'F' : 'J'}
+                                  </span>
+                                </div>
+                              </td>
+
+                              <td>
+                                <button 
+                                  className={`${styles.modernStatusBtn} ${
+                                    student.status === 'presente' ? styles.btnStatePresent :
+                                    student.status === 'ausente' ? styles.btnStateAbsent : styles.btnStateJustified
+                                  }`}
+                                  onClick={() => toggleStudentStatus(student.id)}
+                                  title="Clique para alternar presença"
+                                >
+                                  {student.status === 'presente' && '✓ Presente em Sala'}
+                                  {student.status === 'ausente' && '✕ Falta Registrada'}
+                                  {student.status === 'justificada' && '⏱ Falta Justificada'}
+                                </button>
+                              </td>
+
+                              <td style={{ textAlign: 'right' }}>
+                                <span className={styles.censoOkBadge}>Regular • 100% INEP</span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
 
                     {/* Real-time Dynamic Feedback Bar */}

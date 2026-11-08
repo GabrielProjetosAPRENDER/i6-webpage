@@ -3,7 +3,7 @@ import {
   ChevronDown, ChevronUp, ArrowRight,
   Brain, Activity, FileText, Users, ShieldCheck,
   HeartHandshake, Clock, AlertTriangle,
-  Lock, Eye, CheckCircle2
+  Lock, Eye, CheckCircle2, Search, Building2
 } from 'lucide-react';
 import styles from './Avaee.module.css';
 import avaeeLogo from '../../assets/images/avaee_logo.png';
@@ -23,12 +23,78 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
   const [selectedBlock, setSelectedBlock] = useState<number>(4);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
-  // Synthetic student queue data (Strictly anonymized, zero leaked data)
+  // Synthetic student queue data (Strictly anonymized, replicating ideia-avaee CaeeFilaEmultiPage)
   const queueCases = [
-    { id: 'CAEE-089', initials: 'LM', name: 'Lucas M.', school: 'E.M. Darcy Ribeiro', priority: 'vermelho', specialty: 'Psicologia & T.O.', days: 4, desc: 'Desregulação sensorial severa em sala de aula. Intervenção prioritária.' },
-    { id: 'CAEE-092', initials: 'BS', name: 'Beatriz S.', school: 'E.M. Castro Alves', priority: 'amarelo', specialty: 'Fonoaudiologia', days: 11, desc: 'Dificuldade acentuada de processamento auditivo e fala.' },
-    { id: 'CAEE-095', initials: 'GP', name: 'Gabriel P.', school: 'E.M. Monteiro Lobato', priority: 'verde', specialty: 'AEE / SRM', days: 14, desc: 'Adaptação de material didático e apoio na Sala de Recursos.' },
-    { id: 'CAEE-098', initials: 'MK', name: 'Mariana K.', school: 'E.M. Paulo Freire', priority: 'vermelho', specialty: 'Neuropediatria / Psicologia', days: 2, desc: 'Suspeita TEA Nível 3, crise comportamental frequente.' }
+    { 
+      id: 'CAEE-089', 
+      pos: '01', 
+      name: 'Lucas M.', 
+      grade: '4º Ano B (10 anos)', 
+      school: 'E.M. Darcy Ribeiro', 
+      specialty: 'Psicologia Clínica & T.O.', 
+      priority: 'vermelho', 
+      score: 26, 
+      scoreLabel: 'Crítico • < 48h',
+      status: 'Aguardando Vaga',
+      days: 4, 
+      desc: 'Desregulação sensorial severa com sobrecarga sonora em sala regular.' 
+    },
+    { 
+      id: 'CAEE-092', 
+      pos: '02', 
+      name: 'Beatriz S.', 
+      grade: '2º Ano A (8 anos)', 
+      school: 'E.M. Castro Alves', 
+      specialty: 'Fonoaudiologia', 
+      priority: 'amarelo', 
+      score: 14, 
+      scoreLabel: 'Atenção • Em Triagem',
+      status: 'Em Investigação',
+      days: 11, 
+      desc: 'Dificuldade acentuada de processamento auditivo central e atraso de fala.' 
+    },
+    { 
+      id: 'CAEE-098', 
+      pos: '03', 
+      name: 'Mariana K.', 
+      grade: '1º Ano B (6 anos)', 
+      school: 'E.M. Paulo Freire', 
+      specialty: 'Neuropediatria & Psico', 
+      priority: 'vermelho', 
+      score: 28, 
+      scoreLabel: 'Crítico • Urgente',
+      status: 'Regulação Prioritária',
+      days: 2, 
+      desc: 'Suspeita TEA Nível 3, crise comportamental frequente, suporte intensivo.' 
+    },
+    { 
+      id: 'CAEE-104', 
+      pos: '04', 
+      name: 'Arthur H.', 
+      grade: '3º Ano C (9 anos)', 
+      school: 'E.M. Darcy Ribeiro', 
+      specialty: 'Psicopedagogia', 
+      priority: 'amarelo', 
+      score: 12, 
+      scoreLabel: 'Atenção • Em Triagem',
+      status: 'Fila Documental',
+      days: 8, 
+      desc: 'Barreiras severas de decodificação leitora e esquema corporal.' 
+    },
+    { 
+      id: 'CAEE-095', 
+      pos: '05', 
+      name: 'Gabriel P.', 
+      grade: '5º Ano A (11 anos)', 
+      school: 'E.M. Monteiro Lobato', 
+      specialty: 'AEE / SRM', 
+      priority: 'verde', 
+      score: 6, 
+      scoreLabel: 'Regular • SRM',
+      status: 'Sala de Recursos',
+      days: 14, 
+      desc: 'Adaptação de material didático e apoio contínuo na Sala de Recursos.' 
+    }
   ];
 
   const filteredCases = priorityFilter === 'todos' 
@@ -157,23 +223,20 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
             <div className={styles.cockpitWindow}>
               {/* Window Header */}
               <div className={styles.windowHeader}>
-                <div className={styles.windowDots}>
-                  <div className={styles.dotRed} />
-                  <div className={styles.dotYellow} />
-                  <div className={styles.dotGreen} />
-                </div>
                 <div className={styles.windowBrand}>
                   <img src={avaeeLogo} alt="AVAEE GD" className={styles.cockpitLogoImg} />
-                  <span>AVAEE GD • Central de Operações CAEE</span>
-                  <span className={styles.envTag}>Demonstração Interativa</span>
+                  <div>
+                    <span className={styles.brandTitle}>AVAEE GD • Central de Regulação CAEE</span>
+                    <span className={styles.brandNetwork}>Rede Municipal de Educação • Gonçalves Dias - MA</span>
+                  </div>
                 </div>
-                <div className={styles.windowAddressBar}>
-                  <ShieldCheck size={13} color="#45B5A5" />
-                  <span>avaee.i6systems.com.br/caee/regulacao</span>
-                </div>
-                <div className={styles.windowMetaStatus}>
-                  <span className={styles.pulseDot} />
-                  <span>Central CAEE Operacional • Gonçalves Dias - MA</span>
+
+                <div className={styles.windowRightMeta}>
+                  <div className={styles.systemStatusPill}>
+                    <span className={styles.greenPulseDot} />
+                    <span>Central CAEE Operacional</span>
+                  </div>
+                  <span className={styles.roleTag}>Perfil Multiprofissional</span>
                 </div>
               </div>
 
@@ -308,97 +371,154 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                   </div>
                 )}
 
-                {/* TAB 2: SEMÁFORO & FILA ÚNICA (TRYOUT CLÍNICO INTERATIVO) */}
+                {/* TAB 2: SEMÁFORO & FILA ÚNICA (TABELA REGULATÓRIA DE ALTA DENSIDADE) */}
                 {activeTab === 'semaforo' && (
                   <div className={styles.tabContent}>
-                    <div className={styles.cockpitTopBar}>
-                      <div>
-                        <h3 className={styles.viewTitle}>Fila Única Transparente • Regulação Técnica de Vagas</h3>
-                        <p className={styles.viewSub}>Triagem técnica contínua baseada em criticidade clínica e pedagógica</p>
+                    {/* Top KPIs de Regulação da Fila */}
+                    <div className={styles.filaKpiRow}>
+                      <div className={styles.filaKpiCard}>
+                        <div>
+                          <span className={styles.filaKpiLabel}>Total na Fila de Espera</span>
+                          <strong className={styles.filaKpiNum}>28</strong>
+                          <span className={styles.filaKpiSub}>Estudantes aguardando vaga</span>
+                        </div>
+                        <div className={styles.filaKpiIconBlue}>
+                          <Users size={20} />
+                        </div>
+                      </div>
+
+                      <div className={styles.filaKpiCard}>
+                        <div>
+                          <span className={styles.filaKpiLabel}>Prioridade Máxima</span>
+                          <strong className={styles.filaKpiNumRed}>5</strong>
+                          <span className={styles.filaKpiSub}>Critério clínico urgente (&lt; 48h)</span>
+                        </div>
+                        <div className={styles.filaKpiIconRed}>
+                          <AlertTriangle size={20} />
+                        </div>
+                      </div>
+
+                      <div className={styles.filaKpiCard}>
+                        <div>
+                          <span className={styles.filaKpiLabel}>Tempo Médio de Espera</span>
+                          <strong className={styles.filaKpiNumAmber}>7 dias</strong>
+                          <span className={styles.filaKpiSub}>Garantia de rotatividade assistida</span>
+                        </div>
+                        <div className={styles.filaKpiIconAmber}>
+                          <Clock size={20} />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Filter & Search Bar */}
+                    <div className={styles.filaToolbar}>
+                      <div className={styles.filaSearchBox}>
+                        <Search size={15} color="#94A3B8" />
+                        <span className={styles.filaSearchText}>Filtrando fila regulada • Polo Gonçalves Dias - MA</span>
                       </div>
                       <div className={styles.filterButtonGroup}>
                         <button 
                           className={`${styles.filterBtn} ${priorityFilter === 'todos' ? styles.filterBtnActive : ''}`}
                           onClick={() => setPriorityFilter('todos')}
                         >
-                          Todos (82)
+                          Todos (28)
                         </button>
                         <button 
                           className={`${styles.filterBtn} ${priorityFilter === 'vermelho' ? styles.filterBtnRedActive : ''}`}
                           onClick={() => setPriorityFilter('vermelho')}
                         >
-                          🔴 Urgência (12)
+                          🔴 Urgência (5)
                         </button>
                         <button 
                           className={`${styles.filterBtn} ${priorityFilter === 'amarelo' ? styles.filterBtnYellowActive : ''}`}
                           onClick={() => setPriorityFilter('amarelo')}
                         >
-                          🟡 Prioritário (28)
+                          🟡 Triagem (11)
                         </button>
                         <button 
                           className={`${styles.filterBtn} ${priorityFilter === 'verde' ? styles.filterBtnGreenActive : ''}`}
                           onClick={() => setPriorityFilter('verde')}
                         >
-                          🟢 Acompanhamento (42)
+                          🟢 Regular / SRM (12)
                         </button>
                       </div>
                     </div>
 
-                    {/* Modern Clinical Case Cards Grid (Sleek SaaS layout, NOT flat table) */}
-                    <div className={styles.clinicalCardsGrid}>
-                      {filteredCases.map(item => (
-                        <div key={item.id} className={styles.clinicalCaseCard}>
-                          <div className={styles.caseTopHeader}>
-                            <div className={styles.caseAvatarBadgeRow}>
-                              <div className={`${styles.patientAvatar} ${
-                                item.priority === 'vermelho' ? styles.avatarUrgent :
-                                item.priority === 'amarelo' ? styles.avatarWarning : styles.avatarRegular
-                              }`}>
-                                {item.initials}
-                              </div>
-                              <div>
-                                <div className={styles.protoRow}>
-                                  <span className={styles.caseIdBadge}>{item.id}</span>
-                                  <strong className={styles.patientName}>{item.name}</strong>
+                    {/* Authentic Clinical Queue Table */}
+                    <div className={styles.tableResponsiveWrapper}>
+                      <table className={styles.queueDataTable}>
+                        <thead>
+                          <tr>
+                            <th>POS. &amp; ESTUDANTE</th>
+                            <th>ESCOLA REGULAR</th>
+                            <th>ESPECIALIDADE REQUISITADA</th>
+                            <th>SEMÁFORO DE CRITICIDADE</th>
+                            <th>TEMPO EM ESPERA</th>
+                            <th>STATUS</th>
+                            <th style={{ textAlign: 'right' }}>AÇÕES</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {filteredCases.map(item => (
+                            <tr key={item.id} className={styles.queueTableRow}>
+                              <td>
+                                <div className={styles.studentColCell}>
+                                  <span className={styles.posBadge}>{item.pos}</span>
+                                  <div>
+                                    <div className={styles.nameRow}>
+                                      <strong className={styles.studentNameText}>{item.name}</strong>
+                                      <span className={styles.protoCode}>{item.id}</span>
+                                    </div>
+                                    <span className={styles.gradeText}>{item.grade}</span>
+                                  </div>
                                 </div>
-                                <span className={styles.patientSchool}>{item.school}</span>
-                              </div>
-                            </div>
+                              </td>
 
-                            <div>
-                              {item.priority === 'vermelho' && (
-                                <span className={styles.badgeUrgent}>🔴 Prioridade Máxima</span>
-                              )}
-                              {item.priority === 'amarelo' && (
-                                <span className={styles.badgeWarning}>🟡 Em Triagem</span>
-                              )}
-                              {item.priority === 'verde' && (
-                                <span className={styles.badgeRegular}>🟢 Sala de Recursos</span>
-                              )}
-                            </div>
-                          </div>
+                              <td>
+                                <div className={styles.schoolCell}>
+                                  <Building2 size={13} color="#64748B" />
+                                  <span>{item.school}</span>
+                                </div>
+                              </td>
 
-                          <div className={styles.caseBodyInfo}>
-                            <p className={styles.caseComplaintText}>{item.desc}</p>
-                          </div>
+                              <td>
+                                <span className={styles.specialtyBadge}>{item.specialty}</span>
+                              </td>
 
-                          <div className={styles.caseFooterDetails}>
-                            <div className={styles.caseSpecsLeft}>
-                              <span className={styles.specialtyTag}>Especialidade: <strong>{item.specialty}</strong></span>
-                              <span className={styles.waitTimeTag}>Espera: <strong>{item.days} dias</strong></span>
-                            </div>
-                            <button 
-                              className={styles.btnActionCase}
-                              onClick={() => setActiveTab('prontuario')}
-                            >
-                              Ver Prontuário PDI <ArrowRight size={12} />
-                            </button>
-                          </div>
-                        </div>
-                      ))}
+                              <td>
+                                <div className={`${styles.semaforoPill} ${
+                                  item.priority === 'vermelho' ? styles.semaforoRed :
+                                  item.priority === 'amarelo' ? styles.semaforoYellow : styles.semaforoGreen
+                                }`}>
+                                  <span className={styles.semaforoDot} />
+                                  <span>{item.scoreLabel} (Escore {item.score})</span>
+                                </div>
+                              </td>
+
+                              <td>
+                                <span className={styles.waitingDays}>{item.days} dias</span>
+                              </td>
+
+                              <td>
+                                <span className={styles.statusCellBadge}>{item.status}</span>
+                              </td>
+
+                              <td style={{ textAlign: 'right' }}>
+                                <button 
+                                  className={styles.btnTableAction}
+                                  onClick={() => setActiveTab('prontuario')}
+                                  title="Abrir Prontuário PDI"
+                                >
+                                  Ver Prontuário PDI <ArrowRight size={12} />
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
 
-                    {/* Specialties Strip */}
+                    {/* Capacidade Instalada e Especialidades */}
                     <div className={styles.specialtyMetricsStrip}>
                       <div className={styles.specMiniCard}>
                         <Brain size={16} color="#0D9488" />

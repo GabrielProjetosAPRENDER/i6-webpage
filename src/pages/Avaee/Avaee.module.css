@@ -142,64 +142,68 @@
   border-bottom: 1px solid #2D4270;
 }
 
-.windowDots {
-  display: flex;
-  gap: 6px;
-}
-
 .windowBrand {
   display: flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #FFFFFF;
+  gap: 0.85rem;
 }
 
 .cockpitLogoImg {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   object-fit: contain;
 }
 
-.dotRed, .dotYellow, .dotGreen {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
+.brandTitle {
+  display: block;
+  font-size: 0.925rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
 }
 
-.dotRed { background: #EF4444; }
-.dotYellow { background: #F59E0B; }
-.dotGreen { background: #10B981; }
+.brandNetwork {
+  display: block;
+  font-size: 0.725rem;
+  color: #94A3B8;
+  font-weight: 500;
+}
 
-.windowAddressBar {
+.windowRightMeta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  background: rgba(255, 255, 255, 0.12);
-  padding: 0.3rem 1rem;
-  border-radius: 6px;
-  font-size: 0.775rem;
-  color: #E2E8F0;
-  font-family: monospace;
+  gap: 0.75rem;
 }
 
-.windowMetaStatus {
-  display: flex;
+.systemStatusPill {
+  display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  color: #34D399;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #A7F3D0;
 }
 
-.pulseDot {
-  width: 8px;
-  height: 8px;
+.greenPulseDot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background-color: #34D399;
-  box-shadow: 0 0 8px #34D399;
-  animation: pulse 2s infinite;
+  background-color: #10B981;
+  box-shadow: 0 0 8px #10B981;
+}
+
+.roleTag {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #E2E8F0;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.725rem;
+  font-weight: 600;
 }
 
 @keyframes pulse {
@@ -610,140 +614,308 @@
 }
 
 /* =========================================
-   CLINICAL PROTOCOL CARDS GRID (FILA ÚNICA)
+   AUTHENTIC CLINICAL REGULATION QUEUE TABLE
    ========================================= */
-.clinicalCardsGrid {
+.filaKpiRow {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
 }
 
-.clinicalCaseCard {
+.filaKpiCard {
   background: #FFFFFF;
   border: 1px solid #E2E8F0;
   border-radius: 12px;
-  padding: 1.15rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.85rem;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.02);
-  transition: all 0.2s ease;
-}
-
-.clinicalCaseCard:hover {
-  border-color: #CBD5E1;
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.05);
-}
-
-.caseTopHeader {
+  padding: 1.15rem 1.25rem;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.75rem;
-}
-
-.caseAvatarBadgeRow {
-  display: flex;
   align-items: center;
-  gap: 0.75rem;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
 }
 
-.patientAvatar {
-  width: 40px;
-  height: 40px;
+.filaKpiLabel {
+  display: block;
+  font-size: 0.725rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748B;
+}
+
+.filaKpiNum {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #0F172A;
+  line-height: 1.15;
+  margin: 0.2rem 0;
+}
+
+.filaKpiNumRed {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #DC2626;
+  line-height: 1.15;
+  margin: 0.2rem 0;
+}
+
+.filaKpiNumAmber {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #D97706;
+  line-height: 1.15;
+  margin: 0.2rem 0;
+}
+
+.filaKpiSub {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748B;
+}
+
+.filaKpiIconBlue {
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
+  background: #EFF6FF;
+  color: #2563EB;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.85rem;
-  font-weight: 800;
   flex-shrink: 0;
 }
 
-.avatarUrgent { background: #FEE2E2; color: #DC2626; border: 1px solid #FECACA; }
-.avatarWarning { background: #FEF3C7; color: #D97706; border: 1px solid #FDE68A; }
-.avatarRegular { background: #ECFDF5; color: #059669; border: 1px solid #A7F3D0; }
-
-.protoRow {
+.filaKpiIconRed {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #FEF2F2;
+  color: #DC2626;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.caseIdBadge {
-  background: #F1F5F9;
-  color: #0F766E;
-  font-family: monospace;
-  font-size: 0.725rem;
-  font-weight: 800;
-  padding: 0.15rem 0.45rem;
-  border-radius: 4px;
+.filaKpiIconAmber {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #FFFBEB;
+  color: #D97706;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
-.patientName {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #0F172A;
-}
-
-.patientSchool {
-  display: block;
-  font-size: 0.775rem;
-  color: #64748B;
-  margin-top: 0.15rem;
-}
-
-.caseBodyInfo {
-  background: #F8FAFC;
-  border-radius: 8px;
-  padding: 0.65rem 0.85rem;
-  border: 1px solid #F1F5F9;
-}
-
-.caseComplaintText {
-  font-size: 0.8rem;
-  color: #334155;
-  line-height: 1.45;
-  margin: 0;
-}
-
-.caseFooterDetails {
+.filaToolbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 1rem;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  border-top: 1px solid #F1F5F9;
-  padding-top: 0.75rem;
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
 }
 
-.caseSpecsLeft {
+.filaSearchBox {
   display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
+  align-items: center;
+  gap: 0.6rem;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  flex: 1;
+  max-width: 420px;
 }
 
-.specialtyTag {
-  font-size: 0.775rem;
-  color: #475569;
-}
-
-.specialtyTag strong {
-  color: #0D9488;
-}
-
-.waitTimeTag {
-  font-size: 0.725rem;
+.filaSearchText {
+  font-size: 0.8rem;
   color: #64748B;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.btnActionCase {
+.tableResponsiveWrapper {
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  overflow-x: auto;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.02);
+}
+
+.queueDataTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.85rem;
+  min-width: 860px;
+}
+
+.queueDataTable thead {
+  background: #F8FAFC;
+  border-bottom: 1px solid #E2E8F0;
+}
+
+.queueDataTable th {
+  padding: 0.75rem 1rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.queueTableRow {
+  border-bottom: 1px solid #F1F5F9;
+  transition: background 0.15s ease;
+}
+
+.queueTableRow:hover {
+  background: #F8FAFC;
+}
+
+.queueTableRow td {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+}
+
+.studentColCell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.posBadge {
+  font-family: monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748B;
+  background: #F1F5F9;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.studentNameText {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0F172A;
+}
+
+.protoCode {
+  font-family: monospace;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #0D9488;
+  background: #CCFBF1;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+.gradeText {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748B;
+  margin-top: 0.1rem;
+}
+
+.schoolCell {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.825rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.specialtyBadge {
+  display: inline-block;
   background: #F0FDFA;
   border: 1px solid #CCFBF1;
   color: #0F766E;
+  font-size: 0.775rem;
+  font-weight: 700;
+  padding: 0.25rem 0.55rem;
   border-radius: 6px;
-  padding: 0.4rem 0.75rem;
+  white-space: nowrap;
+}
+
+.semaforoPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.semaforoDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.semaforoRed {
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  color: #B91C1C;
+}
+.semaforoRed .semaforoDot { background: #EF4444; }
+
+.semaforoYellow {
+  background: #FFFBEB;
+  border: 1px solid #FDE68A;
+  color: #B45309;
+}
+.semaforoYellow .semaforoDot { background: #F59E0B; }
+
+.semaforoGreen {
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  color: #047857;
+}
+.semaforoGreen .semaforoDot { background: #10B981; }
+
+.waitingDays {
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.statusCellBadge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+  background: #F1F5F9;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.btnTableAction {
+  background: #0F766E;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
   font-size: 0.75rem;
   font-weight: 700;
   cursor: pointer;
@@ -751,41 +923,11 @@
   align-items: center;
   gap: 0.35rem;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
-.btnActionCase:hover {
-  background: #CCFBF1;
-  color: #115E59;
-}
-
-.badgeUrgent {
-  display: inline-block;
-  background: #FEE2E2;
-  color: #DC2626;
-  font-size: 0.725rem;
-  font-weight: 800;
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
-}
-
-.badgeWarning {
-  display: inline-block;
-  background: #FEF3C7;
-  color: #D97706;
-  font-size: 0.725rem;
-  font-weight: 800;
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
-}
-
-.badgeRegular {
-  display: inline-block;
-  background: #ECFDF5;
-  color: #059669;
-  font-size: 0.725rem;
-  font-weight: 800;
-  padding: 0.25rem 0.55rem;
-  border-radius: 4px;
+.btnTableAction:hover {
+  background: #115E59;
 }
 
 /* Specialties Strip */
@@ -1349,7 +1491,7 @@
   .operacaoMainGrid { grid-template-columns: 1fr; }
   .heroMetricBox { border-right: none; border-bottom: 1px solid #E2E8F0; padding-right: 0; padding-bottom: 1.25rem; }
   .alertCardsGrid { grid-template-columns: 1fr; }
-  .clinicalCardsGrid { grid-template-columns: 1fr; }
+  .filaKpiRow { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 640px) {
