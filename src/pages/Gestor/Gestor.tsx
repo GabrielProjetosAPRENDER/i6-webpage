@@ -3,7 +3,9 @@ import {
   Smartphone, ArrowRight, BarChart3, Users, 
   CheckCircle2, ShieldCheck, 
   ChevronDown, ChevronUp, Bus, Utensils, 
-  Wifi, WifiOff, FileCheck2, Award
+  Wifi, WifiOff, FileCheck2, Award,
+  School, GraduationCap, AlertCircle, Clock,
+  Sparkles, RefreshCw, AlertTriangle
 } from 'lucide-react';
 import styles from './Gestor.module.css';
 import gestorLogo from '../../assets/images/gestor_logo.png';
@@ -12,19 +14,20 @@ interface GestorProps {
   onOpenDemoModal: () => void;
 }
 
-type TabKey = 'diario' | 'censo' | 'transporte' | 'merenda';
+type TabKey = 'semed' | 'diario' | 'transporte' | 'censo';
 
 export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
-  const [activeTab, setActiveTab] = useState<TabKey>('diario');
-  const [isSynced, setIsSynced] = useState<boolean>(false);
+  const [activeTab, setActiveTab] = useState<TabKey>('semed');
+  const [isSynced, setIsSynced] = useState<boolean>(true);
+  const [syncingAnimation, setSyncingAnimation] = useState<boolean>(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   // Interactive student attendance simulation
   const [students, setStudents] = useState([
-    { id: 1, name: 'Lucas Gabriel Silveira', status: 'presente' },
-    { id: 2, name: 'Beatriz Vasconcelos', status: 'presente' },
-    { id: 3, name: 'Arthur Henrique Costa', status: 'ausente' },
-    { id: 4, name: 'Mariana Lima Duarte', status: 'presente' }
+    { id: 1, initials: 'LG', name: 'Lucas Gabriel Silveira', status: 'presente', faltas: 0 },
+    { id: 2, initials: 'BV', name: 'Beatriz Vasconcelos', status: 'presente', faltas: 1 },
+    { id: 3, initials: 'AH', name: 'Arthur Henrique Costa', status: 'ausente', faltas: 3 },
+    { id: 4, initials: 'ML', name: 'Mariana Lima Duarte', status: 'presente', faltas: 0 }
   ]);
 
   const toggleStudentStatus = (id: number) => {
@@ -34,6 +37,17 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
       return { ...s, status: nextStatus };
     }));
   };
+
+  const handleSyncClick = () => {
+    setSyncingAnimation(true);
+    setTimeout(() => {
+      setIsSynced(prev => !prev);
+      setSyncingAnimation(false);
+    }, 500);
+  };
+
+  const presentCount = students.filter(s => s.status === 'presente').length;
+  const presenceRate = Math.round((presentCount / students.length) * 100);
 
   const modules = [
     {
@@ -163,6 +177,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                 <div className={styles.windowBrand}>
                   <img src={gestorLogo} alt="Gestor Educ" className={styles.cockpitLogoImg} />
                   <span>Gestor Educ • SEMED Digital</span>
+                  <span className={styles.envTag}>Tryout Interativo</span>
                 </div>
                 <div className={styles.windowAddressBar}>
                   <ShieldCheck size={13} color="#10B981" />
@@ -170,25 +185,25 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                 </div>
                 <div className={styles.windowMetaStatus}>
                   <span className={styles.pulseDot} />
-                  <span>Rede Municipal Conectada</span>
+                  <span>Rede Conectada • Gonçalves Dias - MA</span>
                 </div>
               </div>
 
               {/* Navigation Tabs for Cockpit */}
               <div className={styles.cockpitTabs}>
                 <button 
+                  className={`${styles.tabBtn} ${activeTab === 'semed' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('semed')}
+                >
+                  <BarChart3 size={16} />
+                  <span>Painel Geral SEMED</span>
+                </button>
+                <button 
                   className={`${styles.tabBtn} ${activeTab === 'diario' ? styles.tabBtnActive : ''}`}
                   onClick={() => setActiveTab('diario')}
                 >
                   <Smartphone size={16} />
-                  <span>Diário Mobile Offline</span>
-                </button>
-                <button 
-                  className={`${styles.tabBtn} ${activeTab === 'censo' ? styles.tabBtnActive : ''}`}
-                  onClick={() => setActiveTab('censo')}
-                >
-                  <FileCheck2 size={16} />
-                  <span>Pré-Validador Educacenso</span>
+                  <span>Diário Mobile (Offline PWA)</span>
                 </button>
                 <button 
                   className={`${styles.tabBtn} ${activeTab === 'transporte' ? styles.tabBtnActive : ''}`}
@@ -198,17 +213,136 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                   <span>Transporte & Rotas Rurais</span>
                 </button>
                 <button 
-                  className={`${styles.tabBtn} ${activeTab === 'merenda' ? styles.tabBtnActive : ''}`}
-                  onClick={() => setActiveTab('merenda')}
+                  className={`${styles.tabBtn} ${activeTab === 'censo' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('censo')}
                 >
-                  <Utensils size={16} />
-                  <span>PNAE • Merenda Escolar</span>
+                  <FileCheck2 size={16} />
+                  <span>Auditoria Censo INEP</span>
                 </button>
               </div>
 
               {/* Cockpit Dynamic Body */}
               <div className={styles.cockpitBody}>
-                {/* TAB 1: DIÁRIO MOBILE OFFLINE */}
+                {/* TAB 1: PAINEL GERAL SEMED (VISÃO EXECUTIVA) */}
+                {activeTab === 'semed' && (
+                  <div className={styles.tabContent}>
+                    <div className={styles.cockpitTopBar}>
+                      <div>
+                        <h3 className={styles.viewTitle}>Secretaria Municipal de Educação • Painel Integrado</h3>
+                        <p className={styles.viewSub}>Monitoramento em tempo real de todas as 18 unidades escolares municipais</p>
+                      </div>
+                      <div className={styles.semedLiveBadge}>
+                        <Clock size={14} />
+                        <span>Ano Letivo 2026 • 2º Bimestre Ativo</span>
+                      </div>
+                    </div>
+
+                    {/* Executive KPIs Grid */}
+                    <div className={styles.kpiCardsGrid}>
+                      <div className={styles.kpiCardItem}>
+                        <div className={styles.kpiIconBoxBlue}>
+                          <Users size={20} />
+                        </div>
+                        <div className={styles.kpiInfo}>
+                          <span className={styles.kpiLabel}>Alunos Matriculados</span>
+                          <strong className={styles.kpiValue}>3.420</strong>
+                          <span className={styles.kpiTrendPos}>+4.2% frequência regular</span>
+                        </div>
+                      </div>
+
+                      <div className={styles.kpiCardItem}>
+                        <div className={styles.kpiIconBoxGreen}>
+                          <School size={20} />
+                        </div>
+                        <div className={styles.kpiInfo}>
+                          <span className={styles.kpiLabel}>Escolas Municipais</span>
+                          <strong className={styles.kpiValue}>18</strong>
+                          <span className={styles.kpiSubGreen}>100% integradas ao sistema</span>
+                        </div>
+                      </div>
+
+                      <div className={styles.kpiCardItem}>
+                        <div className={styles.kpiIconBoxPurple}>
+                          <GraduationCap size={20} />
+                        </div>
+                        <div className={styles.kpiInfo}>
+                          <span className={styles.kpiLabel}>Docentes Ativos</span>
+                          <strong className={styles.kpiValue}>186</strong>
+                          <span className={styles.kpiSubPurple}>Diários digitais atualizados</span>
+                        </div>
+                      </div>
+
+                      <div className={styles.kpiCardItem}>
+                        <div className={styles.kpiIconBoxAmber}>
+                          <Clock size={20} />
+                        </div>
+                        <div className={styles.kpiInfo}>
+                          <span className={styles.kpiLabel}>Frequência Média</span>
+                          <strong className={styles.kpiValue}>94.2%</strong>
+                          <span className={styles.kpiTrendPos}>Meta IDEB alcançada</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Alert Card: Busca Ativa UNICEF */}
+                    <div className={styles.unicefAlertCard}>
+                      <div className={styles.unicefAlertHeader}>
+                        <div className={styles.unicefBadge}>
+                          <AlertTriangle size={14} />
+                          <span>Monitoramento Preventivo de Evasão (Busca Ativa UNICEF)</span>
+                        </div>
+                        <span className={styles.unicefStat}>14 Alunos sob acompanhamento</span>
+                      </div>
+                      <p className={styles.unicefDesc}>
+                        O algoritmo do Gestor Educ detectou 14 estudantes com 3 ou mais faltas injustificadas na rede esta semana. As fichas de intervenção domiciliar já foram encaminhadas automaticamente aos coordenadores escolares.
+                      </p>
+                      <div className={styles.unicefProgressWrapper}>
+                        <div className={styles.unicefProgressBar} style={{ width: '96.2%' }} />
+                      </div>
+                      <div className={styles.unicefFooter}>
+                        <span>Índice de Permanência Escolar na Rede: <strong>96.2%</strong></span>
+                        <span className={styles.unicefActionHint}>Ação preventiva em curso</span>
+                      </div>
+                    </div>
+
+                    {/* Operational Modules Cards */}
+                    <div className={styles.opsGrid}>
+                      <div className={styles.opsCard}>
+                        <div className={styles.opsCardHeader}>
+                          <Smartphone size={18} className={styles.opsIconBlue} />
+                          <strong>Diários Mobile</strong>
+                        </div>
+                        <p>186 turmas com chamadas e planos de aula sincronizados hoje.</p>
+                      </div>
+
+                      <div className={styles.opsCard}>
+                        <div className={styles.opsCardHeader}>
+                          <Utensils size={18} className={styles.opsIconGreen} />
+                          <strong>PNAE Nutricional</strong>
+                        </div>
+                        <p>Cardápios semanais com conformidade per capita do FNDE aprovados.</p>
+                      </div>
+
+                      <div className={styles.opsCard}>
+                        <div className={styles.opsCardHeader}>
+                          <Bus size={18} className={styles.opsIconAmber} />
+                          <strong>Transporte Rural</strong>
+                        </div>
+                        <p>12 rotas municipais ativas operando com pontualidade na zona rural.</p>
+                      </div>
+
+                      <div className={styles.opsCard}>
+                        <div className={styles.opsCardHeader}>
+                          <FileCheck2 size={18} className={styles.opsIconPurple} />
+                          <strong>Censo Escolar</strong>
+                        </div>
+                        <p>Base cadastral 100% blindada para as complementações do FUNDEB.</p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 2: DIÁRIO MOBILE OFFLINE (TRYOUT DOCENTE) */}
                 {activeTab === 'diario' && (
                   <div className={styles.tabContent}>
                     <div className={styles.cockpitTopBar}>
@@ -231,9 +365,10 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                           )}
                         </div>
                         <button 
-                          className={styles.syncActionBtn}
-                          onClick={() => setIsSynced(!isSynced)}
+                          className={`${styles.syncActionBtn} ${syncingAnimation ? styles.syncBtnSpinning : ''}`}
+                          onClick={handleSyncClick}
                         >
+                          <RefreshCw size={13} className={syncingAnimation ? styles.spinIcon : ''} />
                           {isSynced ? 'Simular Perda de Sinal' : 'Simular Sincronização Wi-Fi'}
                         </button>
                       </div>
@@ -244,96 +379,70 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       <span>Resolver e elaborar problemas de multiplicação e divisão com números naturais usando estimativas e cálculo mental.</span>
                     </div>
 
-                    {/* Interactive Attendance List */}
-                    <div className={styles.attendanceTable}>
-                      <div className={styles.tableHeaderRow}>
-                        <span>Nº Chamada & Nome do Estudante</span>
-                        <span>Situação de Frequência (Clique para alternar)</span>
-                      </div>
+                    {/* Interactive Student Attendance Cards Grid */}
+                    <div className={styles.studentsTryoutGrid}>
                       {students.map(student => (
-                        <div key={student.id} className={styles.tableDataRow}>
-                          <div className={styles.studentCell}>
-                            <span className={styles.studentIdBadge}>{student.id.toString().padStart(2, '0')}</span>
-                            <span className={styles.studentNameText}>{student.name}</span>
+                        <div 
+                          key={student.id} 
+                          className={`${styles.studentTryoutCard} ${
+                            student.status === 'presente' ? styles.cardBorderPresent :
+                            student.status === 'ausente' ? styles.cardBorderAbsent : styles.cardBorderJustified
+                          }`}
+                        >
+                          <div className={styles.studentCardHeader}>
+                            <div className={`${styles.studentAvatar} ${
+                              student.status === 'presente' ? styles.avatarPresent :
+                              student.status === 'ausente' ? styles.avatarAbsent : styles.avatarJustified
+                            }`}>
+                              {student.initials}
+                            </div>
+                            <div className={styles.studentMeta}>
+                              <span className={styles.studentCallNum}>Chamada #{student.id.toString().padStart(2, '0')}</span>
+                              <strong className={styles.studentCardName}>{student.name}</strong>
+                            </div>
                           </div>
-                          <button 
-                            className={`${styles.statusToggleBtn} ${
-                              student.status === 'presente' ? styles.statusBtnPresent :
-                              student.status === 'ausente' ? styles.statusBtnAbsent : styles.statusBtnJustified
-                            }`}
-                            onClick={() => toggleStudentStatus(student.id)}
-                            title="Clique para alternar entre Presente, Ausente e Justificada"
-                          >
-                            {student.status === 'presente' && '✓ Presente'}
-                            {student.status === 'ausente' && '✕ Falta Registrada'}
-                            {student.status === 'justificada' && '⏱ Falta Justificada'}
-                          </button>
+
+                          <div className={styles.studentCardFooter}>
+                            <button 
+                              className={`${styles.modernStatusBtn} ${
+                                student.status === 'presente' ? styles.btnStatePresent :
+                                student.status === 'ausente' ? styles.btnStateAbsent : styles.btnStateJustified
+                              }`}
+                              onClick={() => toggleStudentStatus(student.id)}
+                              title="Clique para alternar presença"
+                            >
+                              {student.status === 'presente' && '✓ Presente em Sala'}
+                              {student.status === 'ausente' && '✕ Falta Registrada'}
+                              {student.status === 'justificada' && '⏱ Falta Justificada'}
+                            </button>
+                          </div>
                         </div>
                       ))}
                     </div>
 
-                    <div className={styles.cockpitFooterBar}>
-                      <span>Taxa de Presença Hoje: <strong>75%</strong></span>
-                      <span>Registros seguros no dispositivo • Zero perda de dados</span>
-                    </div>
-                  </div>
-                )}
-
-                {/* TAB 2: PRÉ-VALIDADOR EDUCACENSO INEP */}
-                {activeTab === 'censo' && (
-                  <div className={styles.tabContent}>
-                    <div className={styles.cockpitTopBar}>
-                      <div>
-                        <h3 className={styles.viewTitle}>Auditoria de Conformidade do Censo Escolar (INEP)</h3>
-                        <p className={styles.viewSub}>Base cadastral de 18 Escolas Municipais • Proteção das Complementações do FUNDEB</p>
+                    {/* Real-time Dynamic Feedback Bar */}
+                    <div className={styles.liveFeedbackBar}>
+                      <div className={styles.liveMetricLeft}>
+                        <span>Frequência da Turma Hoje:</span>
+                        <strong className={presenceRate >= 75 ? styles.rateHigh : styles.rateLow}>
+                          {presenceRate}% ({presentCount}/{students.length} presentes)
+                        </strong>
                       </div>
-                      <div className={styles.exportBadgeReady}>
-                        <CheckCircle2 size={16} color="#10B981" />
-                        <span>0 Inconsistências • Apto para Exportar TXT</span>
+                      <div className={styles.liveMetricRight}>
+                        <ShieldCheck size={14} color="#10B981" />
+                        <span>Armazenamento local seguro (IndexedDB) • Zero perda de dados pedagógicos</span>
                       </div>
                     </div>
 
-                    <div className={styles.auditGridMetrics}>
-                      <div className={styles.metricCard}>
-                        <span className={styles.metricLabel}>Total de Alunos Auditados</span>
-                        <strong className={styles.metricValue}>12.450</strong>
-                        <span className={styles.metricSub}>100% com CPF e NIS validados</span>
+                    {/* Intelligent Absenteeism Warning */}
+                    {students.some(s => s.status === 'ausente') && (
+                      <div className={styles.smartWarningBox}>
+                        <AlertCircle size={16} color="#DC2626" />
+                        <span>
+                          <strong>Alerta Automático de Infrequência:</strong> O aluno com falta registrada acumulou infrequência na semana. O Gestor Educ envia notificação preventiva imediata para a coordenação pedagógica (Busca Ativa UNICEF).
+                        </span>
                       </div>
-                      <div className={styles.metricCard}>
-                        <span className={styles.metricLabel}>Docentes Alocados em Turmas</span>
-                        <strong className={styles.metricValue}>520 Professores</strong>
-                        <span className={styles.metricSub}>Carga horária regularizada</span>
-                      </div>
-                      <div className={styles.metricCard}>
-                        <span className={styles.metricLabel}>Alunos da Ed. Especial (Laudos)</span>
-                        <strong className={styles.metricValue}>184 Alunos</strong>
-                        <span className={styles.metricSub}>Dupla contagem no FUNDEB garantida</span>
-                      </div>
-                    </div>
-
-                    <div className={styles.auditChecklist}>
-                      <div className={styles.auditCheckItem}>
-                        <CheckCircle2 size={18} color="#10B981" />
-                        <div>
-                          <strong>Filiação e Dados Civis Padronizados</strong>
-                          <p>Nenhum nome com abreviações não conformes ou dados faltantes de certidão.</p>
-                        </div>
-                      </div>
-                      <div className={styles.auditCheckItem}>
-                        <CheckCircle2 size={18} color="#10B981" />
-                        <div>
-                          <strong>Matrícula Inicial e Transporte Informado</strong>
-                          <p>Alunos que usam transporte escolar declarados para recebimento do PNATE.</p>
-                        </div>
-                      </div>
-                      <div className={styles.auditCheckItem}>
-                        <CheckCircle2 size={18} color="#10B981" />
-                        <div>
-                          <strong>Blindagem de Recursos do FUNDEB</strong>
-                          <p>Conformidade cadastral rigorosa com os critérios do Censo INEP (VAAF, VAAT e VAAR), prevenindo retenções de repasse.</p>
-                        </div>
-                      </div>
-                    </div>
+                    )}
                   </div>
                 )}
 
@@ -384,50 +493,58 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                   </div>
                 )}
 
-                {/* TAB 4: PNAE MERENDA NUTRICIONAL */}
-                {activeTab === 'merenda' && (
+                {/* TAB 4: AUDITORIA CENSO ESCOLAR INEP */}
+                {activeTab === 'censo' && (
                   <div className={styles.tabContent}>
                     <div className={styles.cockpitTopBar}>
                       <div>
-                        <h3 className={styles.viewTitle}>Cardápio Semanal PNAE • Semana 14 (Ensino Fundamental)</h3>
-                        <p className={styles.viewSub}>Elaborado por: Nutricionista Mariana Duarte (CRN-7 12480) • Conformidade FNDE</p>
+                        <h3 className={styles.viewTitle}>Auditoria de Conformidade do Censo Escolar (INEP)</h3>
+                        <p className={styles.viewSub}>Base cadastral de 18 Escolas Municipais • Proteção das Complementações do FUNDEB</p>
                       </div>
-                      <div className={styles.pnaeBadge}>
-                        <Award size={15} color="#10B981" />
-                        <span>Fórmula Nutricional Aprovada</span>
+                      <div className={styles.exportBadgeReady}>
+                        <CheckCircle2 size={16} color="#10B981" />
+                        <span>99.4% Conforme • Apto para Exportar TXT</span>
                       </div>
                     </div>
 
-                    <div className={styles.nutritionGrid}>
-                      <div className={styles.dishCard}>
-                        <span className={styles.dishDay}>Segunda-Feira • Prato Principal</span>
-                        <h4 className={styles.dishTitle}>Frango Desfiado com Legumes & Arroz com Feijão</h4>
-                        <p className={styles.dishDesc}>Acompanhamento: Cenoura, chuchu cozido e Laranja fresca de sobremesa (Agricultura Familiar).</p>
-                        <div className={styles.nutriTags}>
-                          <span>420 kcal</span>
-                          <span>18.5g Proteína</span>
-                          <span>4.2mg Ferro</span>
-                          <span>26mg Vitamina C</span>
+                    <div className={styles.auditGridMetrics}>
+                      <div className={styles.metricCard}>
+                        <span className={styles.metricLabel}>Total de Alunos Auditados</span>
+                        <strong className={styles.metricValue}>3.420 Alunos</strong>
+                        <span className={styles.metricSub}>100% com CPF e certidão validados</span>
+                      </div>
+                      <div className={styles.metricCard}>
+                        <span className={styles.metricLabel}>Docentes Alocados em Turmas</span>
+                        <strong className={styles.metricValue}>186 Professores</strong>
+                        <span className={styles.metricSub}>Carga horária regularizada</span>
+                      </div>
+                      <div className={styles.metricCard}>
+                        <span className={styles.metricLabel}>Alunos da Ed. Especial (Laudos)</span>
+                        <strong className={styles.metricValue}>184 Alunos</strong>
+                        <span className={styles.metricSub}>Dupla contagem no FUNDEB garantida</span>
+                      </div>
+                    </div>
+
+                    <div className={styles.auditChecklist}>
+                      <div className={styles.auditCheckItem}>
+                        <CheckCircle2 size={18} color="#10B981" />
+                        <div>
+                          <strong>Filiação e Dados Civis Padronizados</strong>
+                          <p>Nenhum nome com abreviações não conformes ou dados faltantes de certidão.</p>
                         </div>
                       </div>
-
-                      <div className={styles.pantryStockBox}>
-                        <h4 className={styles.stockTitle}>Controle de Despensa da Unidade</h4>
-                        <div className={styles.stockRow}>
-                          <span>Arroz Parboilizado (Lote 2026-B)</span>
-                          <strong className={styles.colorSuccessText}>160 kg em estoque</strong>
+                      <div className={styles.auditCheckItem}>
+                        <CheckCircle2 size={18} color="#10B981" />
+                        <div>
+                          <strong>Matrícula Inicial e Transporte Informado</strong>
+                          <p>Alunos que usam transporte escolar declarados para recebimento do PNATE.</p>
                         </div>
-                        <div className={styles.stockRow}>
-                          <span>Feijão Carioquinha Tipo 1</span>
-                          <strong className={styles.colorSuccessText}>90 kg em estoque</strong>
-                        </div>
-                        <div className={styles.stockRow}>
-                          <span>Leite em Pó Integral</span>
-                          <strong className={styles.colorSuccessText}>45 kg em estoque</strong>
-                        </div>
-                        <div className={styles.stockRow}>
-                          <span>Polpa de Fruta Regional</span>
-                          <strong className={styles.colorSuccessText}>35 kg (Agricultura Familiar)</strong>
+                      </div>
+                      <div className={styles.auditCheckItem}>
+                        <CheckCircle2 size={18} color="#10B981" />
+                        <div>
+                          <strong>Blindagem de Recursos do FUNDEB</strong>
+                          <p>Conformidade cadastral rigorosa com os critérios do Censo INEP (VAAF, VAAT e VAAR), prevenindo retenções de repasse.</p>
                         </div>
                       </div>
                     </div>

@@ -22,7 +22,7 @@ export const Footer: React.FC = () => {
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram">
+              <a href="https://www.instagram.com/i6systems/" target="_blank" rel="noopener noreferrer" className={styles.socialIcon} aria-label="Instagram @i6systems">
                 <Instagram size={18} />
               </a>
             </div>

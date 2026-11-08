@@ -12,12 +12,12 @@ interface AvaeeProps {
   onOpenDemoModal: () => void;
 }
 
-type AvaeeTab = 'ficha' | 'semaforo' | 'prontuario';
+type AvaeeTab = 'dashboard' | 'semaforo' | 'ficha' | 'prontuario';
 type PriorityFilter = 'todos' | 'vermelho' | 'amarelo' | 'verde';
 type SigiloMode = 'clinica' | 'pedagogica';
 
 export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
-  const [activeTab, setActiveTab] = useState<AvaeeTab>('semaforo');
+  const [activeTab, setActiveTab] = useState<AvaeeTab>('dashboard');
   const [priorityFilter, setPriorityFilter] = useState<PriorityFilter>('todos');
   const [sigiloMode, setSigiloMode] = useState<SigiloMode>('clinica');
   const [selectedBlock, setSelectedBlock] = useState<number>(4);
@@ -25,10 +25,10 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
 
   // Synthetic student queue data (Strictly anonymized, zero leaked data)
   const queueCases = [
-    { id: 'CAEE-089', name: 'Lucas M.', school: 'E.M. Darcy Ribeiro', priority: 'vermelho', specialty: 'Psicologia & TO', days: 4, desc: 'Desregulação sensorial severa em sala de aula. Intervenção prioritária.' },
-    { id: 'CAEE-092', name: 'Beatriz S.', school: 'E.M. Castro Alves', priority: 'amarelo', specialty: 'Fonoaudiologia', days: 11, desc: 'Dificuldade acentuada de processamento auditivo e fala.' },
-    { id: 'CAEE-095', name: 'Gabriel P.', school: 'E.M. Monteiro Lobato', priority: 'verde', specialty: 'AEE / SRM', days: 14, desc: 'Adaptação de material didático e apoio na Sala de Recursos.' },
-    { id: 'CAEE-098', name: 'Mariana K.', school: 'E.M. Paulo Freire', priority: 'vermelho', specialty: 'Neuropediatria / Psicologia', days: 2, desc: 'Suspeita TEA Nível 3, crise comportamental frequente.' }
+    { id: 'CAEE-089', initials: 'LM', name: 'Lucas M.', school: 'E.M. Darcy Ribeiro', priority: 'vermelho', specialty: 'Psicologia & T.O.', days: 4, desc: 'Desregulação sensorial severa em sala de aula. Intervenção prioritária.' },
+    { id: 'CAEE-092', initials: 'BS', name: 'Beatriz S.', school: 'E.M. Castro Alves', priority: 'amarelo', specialty: 'Fonoaudiologia', days: 11, desc: 'Dificuldade acentuada de processamento auditivo e fala.' },
+    { id: 'CAEE-095', initials: 'GP', name: 'Gabriel P.', school: 'E.M. Monteiro Lobato', priority: 'verde', specialty: 'AEE / SRM', days: 14, desc: 'Adaptação de material didático e apoio na Sala de Recursos.' },
+    { id: 'CAEE-098', initials: 'MK', name: 'Mariana K.', school: 'E.M. Paulo Freire', priority: 'vermelho', specialty: 'Neuropediatria / Psicologia', days: 2, desc: 'Suspeita TEA Nível 3, crise comportamental frequente.' }
   ];
 
   const filteredCases = priorityFilter === 'todos' 
@@ -164,7 +164,8 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                 </div>
                 <div className={styles.windowBrand}>
                   <img src={avaeeLogo} alt="AVAEE GD" className={styles.cockpitLogoImg} />
-                  <span>AVAEE GD • Plataforma CAEE</span>
+                  <span>AVAEE GD • Central de Operações CAEE</span>
+                  <span className={styles.envTag}>Demonstração Interativa</span>
                 </div>
                 <div className={styles.windowAddressBar}>
                   <ShieldCheck size={13} color="#45B5A5" />
@@ -172,44 +173,148 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                 </div>
                 <div className={styles.windowMetaStatus}>
                   <span className={styles.pulseDot} />
-                  <span>Central CAEE Ativa</span>
+                  <span>Central CAEE Operacional • Gonçalves Dias - MA</span>
                 </div>
               </div>
 
               {/* Navigation Tabs */}
               <div className={styles.cockpitTabs}>
                 <button 
+                  className={`${styles.tabBtn} ${activeTab === 'dashboard' ? styles.tabBtnActive : ''}`}
+                  onClick={() => setActiveTab('dashboard')}
+                >
+                  <Activity size={16} />
+                  <span>Central de Operações (Dashboard)</span>
+                </button>
+                <button 
                   className={`${styles.tabBtn} ${activeTab === 'semaforo' ? styles.tabBtnActive : ''}`}
                   onClick={() => setActiveTab('semaforo')}
                 >
                   <AlertTriangle size={16} />
-                  <span>Semáforo Pedagógico & Fila Única</span>
+                  <span>Fila Única & Semáforo</span>
                 </button>
                 <button 
                   className={`${styles.tabBtn} ${activeTab === 'ficha' ? styles.tabBtnActive : ''}`}
                   onClick={() => setActiveTab('ficha')}
                 >
                   <FileText size={16} />
-                  <span>Ficha Padronizada (13 Blocos)</span>
+                  <span>Ficha em 13 Blocos</span>
                 </button>
                 <button 
                   className={`${styles.tabBtn} ${activeTab === 'prontuario' ? styles.tabBtnActive : ''}`}
                   onClick={() => setActiveTab('prontuario')}
                 >
                   <ShieldCheck size={16} />
-                  <span>Prontuário com Duplo Sigilo & PDI</span>
+                  <span>Prontuário Duplo Sigilo (LGPD)</span>
                 </button>
               </div>
 
               {/* Cockpit Body */}
               <div className={styles.cockpitBody}>
-                {/* TAB 1: SEMÁFORO & FILA ÚNICA */}
+                {/* TAB 1: CENTRAL DE OPERAÇÕES (DASHBOARD CAEE REAL) */}
+                {activeTab === 'dashboard' && (
+                  <div className={styles.tabContent}>
+                    <div className={styles.cockpitTopBar}>
+                      <div>
+                        <h3 className={styles.viewTitle}>Central de Operações • CAEE Municipal</h3>
+                        <p className={styles.viewSub}>Visão tática e acompanhamento em tempo real da rede de atendimento especializado</p>
+                      </div>
+                      <div className={styles.operacionalBadge}>
+                        <span className={styles.greenDotSmall} />
+                        <span>Operacional • Tempo Real</span>
+                      </div>
+                    </div>
+
+                    {/* Situação da Operação (Exact ideia-avaee CaeeDashboard.tsx structure) */}
+                    <div className={styles.operacaoCardWrapper}>
+                      <span className={styles.operacaoTitle}>Situação da Operação da Rede</span>
+                      <div className={styles.operacaoMainGrid}>
+                        {/* Big Hero Card */}
+                        <div className={styles.heroMetricBox}>
+                          <div className={styles.heroIconCircle}>
+                            <Users size={28} />
+                          </div>
+                          <div className={styles.heroTextData}>
+                            <div className={styles.heroNumRow}>
+                              <strong className={styles.heroNumber}>184</strong>
+                              <span className={styles.heroUnit}>Alunos acompanhados</span>
+                            </div>
+                            <p className={styles.heroSubText}>
+                              Volume total de estudantes sob os cuidados e regulação técnica do serviço de atendimento especializado da rede municipal.
+                            </p>
+                          </div>
+                        </div>
+
+                        {/* 3 Mini KPI Cards */}
+                        <div className={styles.threeCardsRow}>
+                          <div className={styles.miniKpiCard}>
+                            <span className={styles.miniKpiLabel}>Investigações Ativas</span>
+                            <strong className={styles.miniKpiNum}>24</strong>
+                            <p className={styles.miniKpiDesc}>Em processo de fechamento diagnóstico multiprofissional.</p>
+                          </div>
+
+                          <div className={styles.miniKpiCard}>
+                            <div className={styles.miniKpiHeaderRow}>
+                              <span className={styles.miniKpiLabel}>Aguardando Triagem</span>
+                              <AlertTriangle size={13} color="#D97706" />
+                            </div>
+                            <strong className={styles.miniKpiNum}>8</strong>
+                            <p className={styles.miniKpiDesc}>Fila documental inicial após solicitação da escola.</p>
+                          </div>
+
+                          <div className={styles.miniKpiCard}>
+                            <span className={styles.miniKpiLabel}>Atendimentos Prioritários</span>
+                            <strong className={styles.miniKpiNum}>15</strong>
+                            <p className={styles.miniKpiDesc}>Casos e-Multi de regulação técnica prioritária.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Requer Atenção Section */}
+                    <div className={styles.requerAtencaoSection}>
+                      <span className={styles.requerAtencaoTitle}>Requer Atenção Imediata</span>
+                      <div className={styles.alertCardsGrid}>
+                        {/* Card 1: Prioridade Crítica */}
+                        <div className={styles.criticaCard}>
+                          <div className={styles.alertTopBar}>
+                            <span className={styles.badgePrioridadeCritica}>Prioridade Crítica</span>
+                            <span className={styles.prazoExcedidoText}>Prazo excedido (&gt; 48 horas)</span>
+                          </div>
+                          <strong className={styles.alertMainText}>3 alunos aguardando triagem documental inicial</strong>
+                          <p className={styles.alertSubText}>Pendências críticas que impedem o início do ciclo diagnóstico regulamentar.</p>
+                          <button 
+                            className={styles.btnResolverPendencia}
+                            onClick={() => setActiveTab('semaforo')}
+                          >
+                            Resolver na Fila Única <ArrowRight size={14} />
+                          </button>
+                        </div>
+
+                        {/* Card 2: Prazo Próximo */}
+                        <div className={styles.proximoCard}>
+                          <div className={styles.alertTopBar}>
+                            <span className={styles.badgePrazoProximo}>Prazo Próximo</span>
+                            <span className={styles.prazoWarningText}>Aguardando parecer final</span>
+                          </div>
+                          <strong className={styles.alertMainText}>12 investigações próximas do vencimento</strong>
+                          <p className={styles.alertSubText}>Equipe multidisciplinar em fase final de emissão do PDI individualizado.</p>
+                          <div className={styles.cardFooterHint}>
+                            <span>Conformidade com os prazos do Ministério Público</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* TAB 2: SEMÁFORO & FILA ÚNICA (TRYOUT CLÍNICO INTERATIVO) */}
                 {activeTab === 'semaforo' && (
                   <div className={styles.tabContent}>
                     <div className={styles.cockpitTopBar}>
                       <div>
-                        <h3 className={styles.viewTitle}>Central de Regulação de Vagas • CAEE Municipal</h3>
-                        <p className={styles.viewSub}>Triagem técnica contínua baseada em criticidade • 184 estudantes atendidos na rede</p>
+                        <h3 className={styles.viewTitle}>Fila Única Transparente • Regulação Técnica de Vagas</h3>
+                        <p className={styles.viewSub}>Triagem técnica contínua baseada em criticidade clínica e pedagógica</p>
                       </div>
                       <div className={styles.filterButtonGroup}>
                         <button 
@@ -239,37 +344,55 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                       </div>
                     </div>
 
-                    {/* Queue Case Cards */}
-                    <div className={styles.queueTable}>
-                      <div className={styles.tableHeaderRow}>
-                        <span>Protocolo & Estudante</span>
-                        <span>Unidade Solicitante</span>
-                        <span>Especialidade Requisitada</span>
-                        <span>Tempo em Espera</span>
-                        <span>Status</span>
-                      </div>
+                    {/* Modern Clinical Case Cards Grid (Sleek SaaS layout, NOT flat table) */}
+                    <div className={styles.clinicalCardsGrid}>
                       {filteredCases.map(item => (
-                        <div key={item.id} className={styles.tableDataRow}>
-                          <div className={styles.caseStudentCell}>
-                            <span className={styles.caseIdBadge}>{item.id}</span>
+                        <div key={item.id} className={styles.clinicalCaseCard}>
+                          <div className={styles.caseTopHeader}>
+                            <div className={styles.caseAvatarBadgeRow}>
+                              <div className={`${styles.patientAvatar} ${
+                                item.priority === 'vermelho' ? styles.avatarUrgent :
+                                item.priority === 'amarelo' ? styles.avatarWarning : styles.avatarRegular
+                              }`}>
+                                {item.initials}
+                              </div>
+                              <div>
+                                <div className={styles.protoRow}>
+                                  <span className={styles.caseIdBadge}>{item.id}</span>
+                                  <strong className={styles.patientName}>{item.name}</strong>
+                                </div>
+                                <span className={styles.patientSchool}>{item.school}</span>
+                              </div>
+                            </div>
+
                             <div>
-                              <strong>{item.name}</strong>
-                              <span className={styles.caseDescHint}>{item.desc}</span>
+                              {item.priority === 'vermelho' && (
+                                <span className={styles.badgeUrgent}>🔴 Prioridade Máxima</span>
+                              )}
+                              {item.priority === 'amarelo' && (
+                                <span className={styles.badgeWarning}>🟡 Em Triagem</span>
+                              )}
+                              {item.priority === 'verde' && (
+                                <span className={styles.badgeRegular}>🟢 Sala de Recursos</span>
+                              )}
                             </div>
                           </div>
-                          <span className={styles.cellMuted}>{item.school}</span>
-                          <span className={styles.cellBold}>{item.specialty}</span>
-                          <span className={styles.cellMuted}>{item.days} dias</span>
-                          <div>
-                            {item.priority === 'vermelho' && (
-                              <span className={styles.badgeUrgent}>🔴 Prioridade Máxima</span>
-                            )}
-                            {item.priority === 'amarelo' && (
-                              <span className={styles.badgeWarning}>🟡 Em Triagem</span>
-                            )}
-                            {item.priority === 'verde' && (
-                              <span className={styles.badgeRegular}>🟢 Sala de Recursos</span>
-                            )}
+
+                          <div className={styles.caseBodyInfo}>
+                            <p className={styles.caseComplaintText}>{item.desc}</p>
+                          </div>
+
+                          <div className={styles.caseFooterDetails}>
+                            <div className={styles.caseSpecsLeft}>
+                              <span className={styles.specialtyTag}>Especialidade: <strong>{item.specialty}</strong></span>
+                              <span className={styles.waitTimeTag}>Espera: <strong>{item.days} dias</strong></span>
+                            </div>
+                            <button 
+                              className={styles.btnActionCase}
+                              onClick={() => setActiveTab('prontuario')}
+                            >
+                              Ver Prontuário PDI <ArrowRight size={12} />
+                            </button>
                           </div>
                         </div>
                       ))}

@@ -247,7 +247,7 @@ export const Contato: React.FC = () => {
                   <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                     <Linkedin size={20} />
                   </a>
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram">
+                  <a href="https://www.instagram.com/i6systems/" target="_blank" rel="noreferrer" aria-label="Instagram @i6systems" title="@i6systems no Instagram">
                     <Instagram size={20} />
                   </a>
                 </div>
