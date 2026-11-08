@@ -124,11 +124,11 @@ Toda a landing page foi reconstruída para falar a linguagem técnica e instituc
 * **Repositório Conectado:** `Eder-Jesus/webpage-gestor`
 * **Branch:** `main`
 * **Últimos Commits Publicados:**
-  * `GabrielProjetosAPRENDER/i6-webpage`: `36988f7` (*feat: characterize Gestor Educ & AVAEE GD with official branding, fix CTA contrast and remove unreleased products*)
-  * `Eder-Jesus/webpage-gestor`: `aa765a6` (*feat: characterize Gestor Educ & AVAEE GD with official branding, fix CTA contrast and remove unreleased products*)
+  * `GabrielProjetosAPRENDER/i6-webpage`: `03a7381` (*feat: integrate official INPI registration, SERPRO certification and founding multidisciplinary team*)
+  * `Eder-Jesus/webpage-gestor`: `a77c90f` (*feat: integrate official INPI registration, SERPRO certification and founding multidisciplinary team*)
 * **Status do Deploy:** **🟢 Success / Ready** (`Deployment has completed`)
 * **URLs de Produção Ativas:**
-  * **Deploy Específico Mais Recente:** [`https://i6-systems-qy167muyj-ideia-software.vercel.app`](https://i6-systems-qy167muyj-ideia-software.vercel.app)
+  * **Deploy Específico Mais Recente:** [`https://i6-systems-lo4p4zjz2-ideia-software.vercel.app`](https://i6-systems-lo4p4zjz2-ideia-software.vercel.app)
   * **URL Canônica da Equipe:** [`https://i6-systems-ideia-software.vercel.app`](https://i6-systems-ideia-software.vercel.app)
 
 ---
