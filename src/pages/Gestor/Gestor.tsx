@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { 
   Smartphone, ArrowRight, BarChart3, Users, 
-  CheckCircle2, Sparkles, ShieldCheck, 
+  CheckCircle2, ShieldCheck, 
   ChevronDown, ChevronUp, Bus, Utensils, 
   Wifi, WifiOff, FileCheck2, Award
 } from 'lucide-react';
 import styles from './Gestor.module.css';
+import gestorLogo from '../../assets/images/gestor_logo.png';
 
 interface GestorProps {
   onOpenDemoModal: () => void;
@@ -132,7 +133,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
         <div className="container">
           <div className={styles.heroHeader}>
             <div className={styles.productBadge}>
-              <Sparkles size={14} className={styles.badgeIcon} />
+              <img src={gestorLogo} alt="Gestor Educ" className={styles.badgeLogo} />
               <span>Gestor Educ • Suíte Integrada de Gestão Municipal</span>
             </div>
             <h1 className={styles.heroTitle}>
@@ -158,6 +159,10 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                   <div className={styles.dotRed} />
                   <div className={styles.dotYellow} />
                   <div className={styles.dotGreen} />
+                </div>
+                <div className={styles.windowBrand}>
+                  <img src={gestorLogo} alt="Gestor Educ" className={styles.cockpitLogoImg} />
+                  <span>Gestor Educ • SEMED Digital</span>
                 </div>
                 <div className={styles.windowAddressBar}>
                   <ShieldCheck size={13} color="#10B981" />
@@ -324,8 +329,8 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       <div className={styles.auditCheckItem}>
                         <CheckCircle2 size={18} color="#10B981" />
                         <div>
-                          <strong>Blindagem de Recursos Federais</strong>
-                          <p>Estimativa de repasse anual de R$ 14.800.000,00 protegido contra retenções.</p>
+                          <strong>Blindagem de Recursos do FUNDEB</strong>
+                          <p>Conformidade cadastral rigorosa com os critérios do Censo INEP (VAAF, VAAT e VAAR), prevenindo retenções de repasse.</p>
                         </div>
                       </div>
                     </div>

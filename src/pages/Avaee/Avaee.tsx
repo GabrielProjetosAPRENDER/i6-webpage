@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { 
   ChevronDown, ChevronUp, ArrowRight,
   Brain, Activity, FileText, Users, ShieldCheck,
-  HeartHandshake, Sparkles, Clock, AlertTriangle,
+  HeartHandshake, Clock, AlertTriangle,
   Lock, Eye, CheckCircle2
 } from 'lucide-react';
 import styles from './Avaee.module.css';
+import avaeeLogo from '../../assets/images/avaee_logo.png';
 
 interface AvaeeProps {
   onOpenDemoModal: () => void;
@@ -131,7 +132,7 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
         <div className="container">
           <div className={styles.heroHeader}>
             <div className={styles.productBadge}>
-              <Sparkles size={14} />
+              <img src={avaeeLogo} alt="AVAEE GD" className={styles.badgeLogo} />
               <span>AVAEE GD • Regulação da Educação Especial Inclusiva</span>
             </div>
 
@@ -161,8 +162,12 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                   <div className={styles.dotYellow} />
                   <div className={styles.dotGreen} />
                 </div>
+                <div className={styles.windowBrand}>
+                  <img src={avaeeLogo} alt="AVAEE GD" className={styles.cockpitLogoImg} />
+                  <span>AVAEE GD • Plataforma CAEE</span>
+                </div>
                 <div className={styles.windowAddressBar}>
-                  <ShieldCheck size={13} color="#10B981" />
+                  <ShieldCheck size={13} color="#45B5A5" />
                   <span>avaee.i6systems.com.br/caee/regulacao</span>
                 </div>
                 <div className={styles.windowMetaStatus}>
@@ -273,28 +278,28 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                     {/* Specialties Strip */}
                     <div className={styles.specialtyMetricsStrip}>
                       <div className={styles.specMiniCard}>
-                        <Brain size={16} color="#059669" />
+                        <Brain size={16} color="#0D9488" />
                         <div>
                           <strong>Psicologia Clínica</strong>
                           <span>18 vagas ativas • 6 na fila</span>
                         </div>
                       </div>
                       <div className={styles.specMiniCard}>
-                        <Activity size={16} color="#059669" />
+                        <Activity size={16} color="#0D9488" />
                         <div>
                           <strong>Fonoaudiologia</strong>
                           <span>14 vagas ativas • 4 na fila</span>
                         </div>
                       </div>
                       <div className={styles.specMiniCard}>
-                        <HeartHandshake size={16} color="#059669" />
+                        <HeartHandshake size={16} color="#0D9488" />
                         <div>
                           <strong>Terapia Ocupacional</strong>
                           <span>12 vagas ativas • 5 na fila</span>
                         </div>
                       </div>
                       <div className={styles.specMiniCard}>
-                        <FileText size={16} color="#059669" />
+                        <FileText size={16} color="#0D9488" />
                         <div>
                           <strong>Psicopedagogia</strong>
                           <span>16 vagas ativas • 3 na fila</span>
@@ -313,7 +318,7 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                         <p className={styles.viewSub}>Instrumento técnico preenchido pela coordenação da escola regular para acionar o CAEE</p>
                       </div>
                       <div className={styles.standardBadge}>
-                        <CheckCircle2 size={15} color="#059669" />
+                        <CheckCircle2 size={15} color="#0D9488" />
                         <span>Padrão Homologado SEMED</span>
                       </div>
                     </div>
@@ -419,7 +424,7 @@ export const Avaee: React.FC<AvaeeProps> = ({ onOpenDemoModal }) => {
                     ) : (
                       <div className={styles.pedagogicalPanel}>
                         <div className={styles.pedagogyNoticeBox}>
-                          <Eye size={16} color="#059669" />
+                          <Eye size={16} color="#0D9488" />
                           <span><strong>Documento Compartilhado com o Professor Regente:</strong> PDI com adaptações práticas para o dia a dia da sala de aula comum.</span>
                         </div>
                         <div className={styles.pdiGrid}>

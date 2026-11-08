@@ -12,7 +12,6 @@ import Avaee from './pages/Avaee/Avaee';
 import Contato from './pages/Contato/Contato';
 
 import './styles/global.css';
-import CustomCursor from './components/CustomCursor/CustomCursor';
 import BackgroundGrid from './components/BackgroundGrid/BackgroundGrid';
 
 const App: React.FC = () => {
@@ -56,7 +55,6 @@ const App: React.FC = () => {
 
   return (
     <>
-      <CustomCursor />
       <BackgroundGrid />
       <Navbar onOpenDemoModal={openDemoModal} activeRoute={route} />
       <main style={{ minHeight: 'calc(100vh - 80px)' }}>

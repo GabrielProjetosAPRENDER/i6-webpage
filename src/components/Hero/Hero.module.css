@@ -599,6 +599,40 @@
   margin-bottom: 1.25rem;
 }
 
+.pillarLogoWrapper {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pillarLogoWrapperAvaee {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.pillarLogoImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
 .pillarIconBox {
   width: 54px;
   height: 54px;

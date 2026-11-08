@@ -1,9 +1,12 @@
 import React from 'react';
 import { 
-  GraduationCap, ShieldCheck, ArrowRight, CheckCircle2, 
+  GraduationCap, ArrowRight, CheckCircle2, 
   Smartphone, Building2, Lock, Award, BookOpen, Sparkles
 } from 'lucide-react';
 import styles from './Hero.module.css';
+
+import gestorLogo from '../../assets/images/gestor_logo.png';
+import avaeeLogo from '../../assets/images/avaee_logo.png';
 
 interface HeroProps {
   onOpenDemoModal?: () => void;
@@ -210,8 +213,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                       <span className={styles.auditStatLabel}>Rotas de Ônibus</span>
                     </div>
                     <div className={styles.auditStatItem}>
-                      <span className={styles.auditStatNum}>R$ 0</span>
-                      <span className={styles.auditStatLabel}>Perda de Repasse</span>
+                      <span className={styles.auditStatNum}>100%</span>
+                      <span className={styles.auditStatLabel}>Censo INEP Validado</span>
                     </div>
                   </div>
                 </div>
@@ -236,8 +239,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
             {/* Pillar 1: Gestor Educ */}
             <div className={styles.pillarCard}>
               <div className={styles.pillarHeader}>
-                <div className={`${styles.pillarIconBox} ${styles.iconBoxBlue}`}>
-                  <GraduationCap size={28} />
+                <div className={styles.pillarLogoWrapper}>
+                  <img src={gestorLogo} alt="Gestor Educ" className={styles.pillarLogoImg} />
                 </div>
                 <div>
                   <div className={styles.pillarCategory}>Educação Regular & ADM</div>
@@ -272,11 +275,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
               </div>
             </div>
 
-            {/* Pillar 2: AVAEE GD (Teal / Emerald Theme for Inclusion & Healthcare) */}
+            {/* Pillar 2: AVAEE GD */}
             <div className={`${styles.pillarCard} ${styles.pillarCardAvaee}`}>
               <div className={styles.pillarHeader}>
-                <div className={`${styles.pillarIconBox} ${styles.iconBoxTeal}`}>
-                  <ShieldCheck size={28} />
+                <div className={styles.pillarLogoWrapperAvaee}>
+                  <img src={avaeeLogo} alt="AVAEE GD" className={styles.pillarLogoImg} />
                 </div>
                 <div>
                   <div className={styles.pillarCategory}>Educação Especial Inclusiva</div>

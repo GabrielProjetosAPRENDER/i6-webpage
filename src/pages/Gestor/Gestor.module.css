@@ -60,6 +60,12 @@
   box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
 }
 
+.badgeLogo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
 .heroTitle {
   font-size: 3.25rem;
   font-weight: 800;
@@ -138,6 +144,21 @@
 .windowDots {
   display: flex;
   gap: 6px;
+}
+
+.windowBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.cockpitLogoImg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .dotRed, .dotYellow, .dotGreen {
@@ -935,12 +956,13 @@
 }
 
 .ctaCard {
-  background: linear-gradient(135deg, #1D4ED8 0%, #2563EB 100%);
+  background: linear-gradient(135deg, #071B30 0%, #002C55 100%);
   color: #FFFFFF;
   padding: 4rem 2.5rem;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.35);
+  border: 1px solid #1E3A5F;
+  box-shadow: 0 20px 40px -10px rgba(0, 44, 85, 0.45);
 }
 
 .ctaTitle {
@@ -948,11 +970,12 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  color: #FFFFFF !important;
 }
 
 .ctaSubtitle {
   font-size: 1.15rem;
-  color: #DBEAFE;
+  color: #CBD5E1 !important;
   max-width: 640px;
   margin: 0 auto 2rem auto;
   line-height: 1.6;
@@ -963,20 +986,21 @@
   align-items: center;
   gap: 0.6rem;
   background: #FFFFFF;
-  color: #1D4ED8;
+  color: #002C55;
   padding: 1rem 2.25rem;
   border-radius: 10px;
   font-size: 1.05rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
   transition: all 0.2s ease;
 }
 
 .btnPrimaryLg:hover {
+  background: #F8FAFC;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 /* Responsive */

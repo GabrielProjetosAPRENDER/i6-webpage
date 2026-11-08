@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, GraduationCap, Laptop, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Laptop } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './Solucoes.module.css';
+
+import gestorLogo from '../../assets/images/gestor_logo.png';
+import avaeeLogo from '../../assets/images/avaee_logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -13,78 +16,50 @@ export const Solucoes: React.FC = () => {
   const solutions = [
     {
       id: 'gestor',
-      icon: <GraduationCap size={32} />,
+      logo: gestorLogo,
       title: 'Gestor Educ',
-      tagline: 'Gestao Escolar & Administrativa Integrada',
-      description: 'Sistema completo para gestao de redes publicas municipais. Centraliza o prontuario dos alunos, matriculas, diario de classe digital com funcionamento offline para professores e validacao de dados para o Educacenso (INEP).',
+      tagline: 'Gestão Escolar Regular & Administrativa',
+      description: 'Plataforma oficial para modernização de redes municipais de ensino. Centraliza matrículas, diário de classe mobile 100% offline para os docentes, roteirização de transporte escolar rural, gestão nutricional do PNAE e pré-validação cadastral para o Educacenso (INEP/FUNDEB).',
       link: '#/gestor',
-      badgeColor: '#2563EB',
+      badgeColor: '#002C55',
+      accentColor: '#2563EB',
       benefits: [
-        'Diario de classe digital com sincronizacao offline',
-        'Matriculas, remanejamento e enturmacoes automaticas',
-        'Dashboard executivo com indicadores de frequencia e evasao',
-        'Validador inteligente para exportacao ao Educacenso (INEP)'
+        'Diário de classe mobile com operação 100% offline',
+        'Pré-validação e auditoria prévia do Censo Escolar (INEP)',
+        'Mapeamento de frotas e transporte escolar rural',
+        'PNAE com fichas técnicas e cálculo per capita de nutrientes'
       ]
     },
     {
       id: 'avaee',
-      icon: <ShieldCheck size={32} />,
+      logo: avaeeLogo,
       title: 'AVAEE GD',
-      tagline: 'Educacao Especial Inclusiva & Gestao do CAEE',
-      description: 'Plataforma oficial para regulacao de vagas e acompanhamento de estudantes na Educacao Especial. Interliga Escolas Regulares, Centro de Atendimento (CAEE) e Equipe Multiprofissional (Psicologia, Fono, TO, Psicopedagogia) com Semaforo Pedagogico de Prioridade.',
+      tagline: 'Educação Especial Inclusiva & Regulação do CAEE',
+      description: 'Sistema especializado para a regulação de vagas e acompanhamento clínico e pedagógico no CAEE. Conecta a escola regular, Sala de Recursos Multifuncionais (SRM) e a equipe multiprofissional (Psicologia, Fonoaudiologia, Terapia Ocupacional e Psicopedagogia) com Semáforo Pedagógico de criticidade e fila única.',
       link: '#/avaee',
-      badgeColor: '#059669',
+      badgeColor: '#213258',
+      accentColor: '#45B5A5',
       benefits: [
-        'Ficha pedagogica padronizada em 13 eixos estruturados',
-        'Semaforo automatico de prioridade e matriz de criticidade',
-        'Fila unica transparente por especialidade no CAEE',
-        'Prontuario multiprofissional com sigilo e conformidade LGPD'
+        'Ficha padronizada de triagem escolar em 13 blocos',
+        'Semáforo pedagógico automático de prioridade',
+        'Fila única transparente por especialidade clínica',
+        'Prontuário com duplo sigilo profissional (LGPD Art. 14)'
       ]
     }
   ];
 
-  const futureSolutions = [
-    {
-      title: 'Saude Municipal',
-      tagline: 'Gestao de Saude Publica Integrada',
-      description: 'Em breve: Uma solucao completa para agendamento de consultas, prontuario eletronico dos cidadaos e controle de estoque de medicamentos.'
-    },
-    {
-      title: 'Portal do Cidadao',
-      tagline: 'Servicos municipais a um clique',
-      description: 'Em breve: Centralizacao de taxas, certidoes, protocolos e ouvidoria, facilitando o dialogo do cidadao com a prefeitura.'
-    }
-  ];
-
   useEffect(() => {
-    // 1. Solution card reveal
     const cardsCtx = gsap.context(() => {
       gsap.fromTo(`.${styles.solutionCard}`,
-        { opacity: 0, y: 40, scale: 0.96 },
+        { opacity: 0, y: 30, scale: 0.98 },
         {
           opacity: 1,
           y: 0,
           scale: 1,
-          duration: 0.8,
+          duration: 0.7,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: `.${styles.solutionsList}`,
-            start: 'top 80%'
-          }
-        }
-      );
-
-      // 2. Future cards staggered fade
-      gsap.fromTo(`.${styles.futureCard}`,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.15,
-          duration: 0.6,
-          ease: 'power2.out',
-          scrollTrigger: {
-            trigger: `.${styles.futureGrid}`,
             start: 'top 85%'
           }
         }
@@ -111,12 +86,12 @@ export const Solucoes: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <span className={styles.heroBadge}>
-              <Laptop size={12} />
-              Solucoes Tecnologicas
+              <Laptop size={13} />
+              Plataformas Oficiais i6 Systems
             </span>
-            <h1 className={styles.heroTitle}>Softwares modernos para a gestao publica</h1>
+            <h1 className={styles.heroTitle}>Softwares modernos construídos para a gestão pública</h1>
             <p className={styles.heroSubtitle}>
-              Sistemas robustos criados com foco na facilidade de uso, seguranca e transformacao digital dos municipios.
+              Soluções integradas desenvolvidas para atender as duas maiores prioridades estratégicas da educação municipal: a gestão da rede regular e a regulação inclusiva da educação especial.
             </p>
           </motion.div>
         </div>
@@ -132,12 +107,16 @@ export const Solucoes: React.FC = () => {
                 className={styles.solutionCard}
               >
                 <div className={styles.cardHeader}>
-                  <div className={styles.iconWrapper} style={{ color: item.badgeColor, background: `${item.badgeColor}15` }}>
-                    {item.icon}
+                  <div className={styles.logoWrapper}>
+                    <img 
+                      src={item.logo} 
+                      alt={item.title} 
+                      className={styles.brandLogoImg} 
+                    />
                   </div>
                   <div className={styles.headerText}>
-                    <div className={styles.badgeFlag} style={{ color: item.badgeColor, borderColor: `${item.badgeColor}40` }}>
-                      Solucao Oficial i6 Systems
+                    <div className={styles.badgeFlag} style={{ color: item.accentColor, borderColor: `${item.accentColor}40` }}>
+                      Solução Oficial i6 Systems
                     </div>
                     <h3>{item.title}</h3>
                     <p className={styles.tagline}>{item.tagline}</p>
@@ -150,7 +129,7 @@ export const Solucoes: React.FC = () => {
                     <div className={styles.benefitsGrid}>
                       {item.benefits.map((b, bIdx) => (
                         <div key={bIdx} className={styles.benefitItem}>
-                          <span className={styles.checkIcon}>✓</span>
+                          <span className={styles.checkIcon} style={{ color: item.accentColor }}>✓</span>
                           <span>{b}</span>
                         </div>
                       ))}
@@ -159,10 +138,10 @@ export const Solucoes: React.FC = () => {
                   
                   <div className={styles.bodyRight}>
                     <div className={styles.actionBox}>
-                      <span className={styles.actionTitle}>Interessado nesta solucao?</span>
-                      <p className={styles.actionDesc}>Veja todos os modulos e funcionamento detalhado.</p>
-                      <a href={item.link} className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                        Ver Detalhes do Produto
+                      <span className={styles.actionTitle}>Conheça os recursos</span>
+                      <p className={styles.actionDesc}>Veja módulos, fluxos de trabalho e telas do software.</p>
+                      <a href={item.link} className={styles.btnAction} style={{ background: item.badgeColor }}>
+                        Acessar Página do {item.title}
                         <ArrowRight size={16} />
                       </a>
                     </div>
@@ -170,28 +149,6 @@ export const Solucoes: React.FC = () => {
                 </div>
               </div>
             ))}
-          </div>
-
-          {/* Future roadmap solutions */}
-          <div className={styles.futureSection}>
-            <div className={styles.futureHeader}>
-              <span className={styles.tagline}>Visao de Futuro</span>
-              <h2 className={styles.sectionTitle}>Novos lancamentos em desenvolvimento</h2>
-              <p className={styles.sectionSubtitle}>
-                A expansao do ecossistema i6 Systems para conectar todas as areas da administracao municipal.
-              </p>
-            </div>
-
-            <div className={styles.futureGrid}>
-              {futureSolutions.map((future, idx) => (
-                <div key={idx} className={styles.futureCard}>
-                  <div className={styles.futureBadge}>Em Desenvolvimento</div>
-                  <h3>{future.title}</h3>
-                  <p className={styles.futureTagline}>{future.tagline}</p>
-                  <p className={styles.futureDesc}>{future.description}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>

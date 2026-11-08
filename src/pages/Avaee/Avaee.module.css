@@ -24,7 +24,7 @@
   transform: translateX(-50%);
   width: 900px;
   height: 450px;
-  background: radial-gradient(circle, rgba(5, 150, 105, 0.09) 0%, rgba(5, 150, 105, 0) 70%);
+  background: radial-gradient(circle, rgba(69, 181, 165, 0.12) 0%, rgba(33, 50, 88, 0.08) 70%);
   filter: blur(80px);
   pointer-events: none;
 }
@@ -32,10 +32,10 @@
 /* Hero Section */
 .heroSection {
   position: relative;
-  background: linear-gradient(180deg, #FFFFFF 0%, #F0FDF4 60%, #ECFDF5 100%);
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #F0FDFA 100%);
   padding: 130px 0 80px 0;
   overflow: hidden;
-  border-bottom: 1px solid #D1FAE5;
+  border-bottom: 1px solid #CCFBF1;
 }
 
 .heroHeader {
@@ -48,16 +48,22 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  color: #047857;
+  background-color: #F0FDFA;
+  border: 1px solid #99F6E4;
+  color: #0F766E;
   padding: 0.4rem 1.15rem;
   border-radius: 9999px;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   margin-bottom: 1.5rem;
-  box-shadow: 0 2px 6px rgba(5, 150, 105, 0.08);
+  box-shadow: 0 2px 6px rgba(69, 181, 165, 0.1);
+}
+
+.badgeLogo {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
 }
 
 .heroTitle {
@@ -70,7 +76,7 @@
 }
 
 .titleHighlight {
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #213258 0%, #0D9488 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -91,21 +97,23 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  background: linear-gradient(135deg, #162035 0%, #213258 100%);
   color: #FFFFFF;
   padding: 0.85rem 1.85rem;
   border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
-  border: none;
+  border: 1px solid #2D4270;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(5, 150, 105, 0.3);
+  box-shadow: 0 4px 14px rgba(33, 50, 88, 0.35);
   transition: all 0.2s ease;
 }
 
 .btnPrimary:hover {
+  background: #213258;
+  border-color: #45B5A5;
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.4);
+  box-shadow: 0 6px 20px rgba(69, 181, 165, 0.35);
 }
 
 /* =========================================
@@ -129,14 +137,29 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
-  background: #064E3B;
+  background: linear-gradient(135deg, #162035 0%, #213258 100%);
   color: #FFFFFF;
-  border-bottom: 1px solid #047857;
+  border-bottom: 1px solid #2D4270;
 }
 
 .windowDots {
   display: flex;
   gap: 6px;
+}
+
+.windowBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.cockpitLogoImg {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
 .dotRed, .dotYellow, .dotGreen {
@@ -215,9 +238,9 @@
 }
 
 .tabBtnActive {
-  color: #047857;
+  color: #0F766E;
   background: #FFFFFF;
-  border-bottom-color: #059669;
+  border-bottom-color: #45B5A5;
 }
 
 /* Body */
@@ -434,9 +457,9 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
-  color: #047857;
+  background: #F0FDFA;
+  border: 1px solid #99F6E4;
+  color: #0F766E;
   padding: 0.35rem 0.8rem;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -470,18 +493,18 @@
 
 .blockNavBtn:hover {
   background: #FFFFFF;
-  border-color: #A7F3D0;
+  border-color: #99F6E4;
 }
 
 .blockNavBtnActive {
-  background: #ECFDF5;
-  border-color: #059669;
+  background: #F0FDFA;
+  border-color: #45B5A5;
 }
 
 .blockNumBadge {
   font-size: 0.7rem;
   font-weight: 800;
-  color: #059669;
+  color: #0D9488;
   text-transform: uppercase;
 }
 
@@ -508,7 +531,7 @@
 .blockDetailTag {
   font-size: 0.725rem;
   font-weight: 700;
-  color: #059669;
+  color: #0D9488;
   text-transform: uppercase;
 }
 
@@ -542,13 +565,13 @@
 .radioActive {
   display: inline-block;
   background: #FFFFFF;
-  border: 1px solid #10B981;
-  color: #065F46;
+  border: 1px solid #45B5A5;
+  color: #0F766E;
   font-size: 0.8rem;
   font-weight: 600;
   padding: 0.5rem 0.85rem;
   border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 1px 3px rgba(69, 181, 165, 0.1);
 }
 
 .textareaMock {
@@ -584,9 +607,9 @@
 }
 
 .sigiloBtnActive {
-  background: #064E3B;
+  background: #213258;
   color: #FFFFFF;
-  border-color: #064E3B;
+  border-color: #213258;
 }
 
 .sigiloWarningBox {
@@ -618,7 +641,7 @@
 .noteDate {
   font-size: 0.75rem;
   font-weight: 700;
-  color: #059669;
+  color: #0D9488;
 }
 
 .noteCard h5 {
@@ -639,12 +662,12 @@
   display: flex;
   align-items: flex-start;
   gap: 0.65rem;
-  background: #ECFDF5;
-  border: 1px solid #A7F3D0;
+  background: #F0FDFA;
+  border: 1px solid #99F6E4;
   padding: 0.85rem 1rem;
   border-radius: 8px;
   font-size: 0.825rem;
-  color: #065F46;
+  color: #0F766E;
   margin-bottom: 1.25rem;
 }
 
@@ -696,7 +719,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #059669;
+  color: #0D9488;
   margin-bottom: 0.75rem;
 }
 
@@ -733,8 +756,8 @@
 
 .pillarCard:hover {
   transform: translateY(-4px);
-  border-color: #A7F3D0;
-  box-shadow: 0 15px 30px -5px rgba(5, 150, 105, 0.1);
+  border-color: #99F6E4;
+  box-shadow: 0 15px 30px -5px rgba(69, 181, 165, 0.12);
 }
 
 .pillarHeader {
@@ -748,8 +771,8 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: #ECFDF5;
-  color: #059669;
+  background: #F0FDFA;
+  color: #0D9488;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -758,8 +781,8 @@
 .pillarBadge {
   font-size: 0.725rem;
   font-weight: 700;
-  color: #047857;
-  background: #D1FAE5;
+  color: #0F766E;
+  background: #CCFBF1;
   padding: 0.2rem 0.55rem;
   border-radius: 9999px;
 }
@@ -806,17 +829,17 @@
 
 .specCard:hover {
   transform: translateY(-3px);
-  border-color: #A7F3D0;
+  border-color: #99F6E4;
   background: #FFFFFF;
-  box-shadow: 0 15px 30px -5px rgba(5, 150, 105, 0.08);
+  box-shadow: 0 15px 30px -5px rgba(69, 181, 165, 0.08);
 }
 
 .specIconBox {
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  background: #ECFDF5;
-  color: #059669;
+  background: #F0FDFA;
+  color: #0D9488;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -863,8 +886,8 @@
 }
 
 .faqOpen {
-  border-color: #A7F3D0;
-  box-shadow: 0 4px 12px rgba(5, 150, 105, 0.05);
+  border-color: #99F6E4;
+  box-shadow: 0 4px 12px rgba(69, 181, 165, 0.06);
 }
 
 .faqQuestion {
@@ -902,12 +925,13 @@
 }
 
 .ctaCard {
-  background: linear-gradient(135deg, #065F46 0%, #059669 100%);
+  background: linear-gradient(135deg, #162035 0%, #213258 100%);
   color: #FFFFFF;
   padding: 4rem 2.5rem;
   border-radius: 20px;
   text-align: center;
-  box-shadow: 0 20px 40px -10px rgba(5, 150, 105, 0.35);
+  border: 1px solid #2D4270;
+  box-shadow: 0 20px 40px -10px rgba(33, 50, 88, 0.45);
 }
 
 .ctaTitle {
@@ -915,11 +939,12 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  color: #FFFFFF !important;
 }
 
 .ctaSubtitle {
   font-size: 1.15rem;
-  color: #D1FAE5;
+  color: #CBD5E1 !important;
   max-width: 640px;
   margin: 0 auto 2rem auto;
   line-height: 1.6;
@@ -929,21 +954,23 @@
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
-  background: #FFFFFF;
-  color: #065F46;
+  background: #45B5A5;
+  color: #162035;
   padding: 1rem 2.25rem;
   border-radius: 10px;
   font-size: 1.05rem;
   font-weight: 800;
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px rgba(69, 181, 165, 0.3);
   transition: all 0.2s ease;
 }
 
 .btnPrimaryLg:hover {
+  background: #38A393;
+  color: #FFFFFF;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 8px 25px rgba(69, 181, 165, 0.4);
 }
 
 /* Responsive */
