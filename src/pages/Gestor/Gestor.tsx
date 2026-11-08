@@ -3,9 +3,9 @@ import {
   Smartphone, ArrowRight, BarChart3, Users, 
   CheckCircle2, ShieldCheck, 
   ChevronDown, ChevronUp, Bus, Utensils, 
-  Wifi, WifiOff, FileCheck2, Award,
+  Wifi, WifiOff, FileCheck2,
   School, GraduationCap, AlertCircle, Clock,
-  Sparkles, RefreshCw, AlertTriangle
+  RefreshCw, AlertTriangle
 } from 'lucide-react';
 import styles from './Gestor.module.css';
 import gestorLogo from '../../assets/images/gestor_logo.png';
