@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   GraduationCap, ArrowRight, CheckCircle2, 
-  Smartphone, Building2, Lock, ShieldCheck, BookOpen, Sparkles
+  Building2, Lock, ShieldCheck, BookOpen, Sparkles
 } from 'lucide-react';
 import styles from './Hero.module.css';
 

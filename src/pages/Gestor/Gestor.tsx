@@ -3,9 +3,9 @@ import {
   Smartphone, ArrowRight, BarChart3, Users, 
   CheckCircle2, ShieldCheck, 
   ChevronDown, ChevronUp, Bus, Utensils, 
-  Wifi, WifiOff, FileCheck2,
+  FileCheck2,
   School, GraduationCap, AlertCircle, Clock,
-  RefreshCw, AlertTriangle, BookOpen
+  AlertTriangle, BookOpen
 } from 'lucide-react';
 import styles from './Gestor.module.css';
 import gestorLogo from '../../assets/images/gestor_logo.png';
@@ -18,8 +18,6 @@ type TabKey = 'semed' | 'diario' | 'transporte' | 'censo';
 
 export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('semed');
-  const [isSynced, setIsSynced] = useState<boolean>(true);
-  const [syncingAnimation, setSyncingAnimation] = useState<boolean>(false);
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   // Interactive student attendance simulation
@@ -36,14 +34,6 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
       const nextStatus = s.status === 'presente' ? 'ausente' : s.status === 'ausente' ? 'justificada' : 'presente';
       return { ...s, status: nextStatus };
     }));
-  };
-
-  const handleSyncClick = () => {
-    setSyncingAnimation(true);
-    setTimeout(() => {
-      setIsSynced(prev => !prev);
-      setSyncingAnimation(false);
-    }, 500);
   };
 
   const presentCount = students.filter(s => s.status === 'presente').length;

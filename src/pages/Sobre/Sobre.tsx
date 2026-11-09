@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Building2, ShieldCheck, CheckCircle2, 
-  MapPin, Smartphone, HeartHandshake,
+  MapPin, HeartHandshake,
   ArrowRight, Sparkles, Scale, GraduationCap,
   Database, BookOpen, FileCheck2, Users, Mail, Layers
 } from 'lucide-react';
