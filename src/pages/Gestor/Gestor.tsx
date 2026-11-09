@@ -299,7 +299,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                           <Smartphone size={18} className={styles.opsIconBlue} />
                           <strong>Diários Mobile</strong>
                         </div>
-                        <p>186 turmas com chamadas e planos de aula sincronizados hoje.</p>
+                        <p>186 turmas com chamadas e planos de aula registrados hoje em tempo real.</p>
                       </div>
 
                       <div className={styles.opsCard}>

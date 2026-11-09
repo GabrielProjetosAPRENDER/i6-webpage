@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
               </div>
               <div className={styles.liveSyncBadge}>
                 <span className={styles.pulseDot} />
-                <span>Sincronização Ativa</span>
+                <span>Nuvem SEMED Conectada</span>
               </div>
             </div>
 
@@ -141,7 +141,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                       <BookOpen size={16} color="#2563EB" />
                       <span>Diário Digital & Frequência Escolar</span>
                     </div>
-                    <span className={styles.panelBadgeGreen}>Sincronizado</span>
+                    <span className={styles.panelBadgeGreen}>Em Dia</span>
                   </div>
 
                   <div className={styles.panelList}>
@@ -249,13 +249,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
               </div>
 
               <p className={styles.pillarDescription}>
-                A espinha dorsal da rede municipal. Centraliza matrículas, remanejamento automático, turmas, transporte escolar e indicadores de evasão com diário móvel que funciona sem internet.
+                A espinha dorsal da rede municipal. Centraliza matrículas, remanejamento automático, turmas, transporte escolar e indicadores de evasão com diário escolar integrado em tempo real.
               </p>
 
               <div className={styles.featureList}>
                 <div className={styles.featureItem}>
                   <CheckCircle2 size={16} className={styles.checkIconBlue} />
-                  <span>Diário digital para professores lançarem chamada e notas no celular mesmo sem rede.</span>
+                  <span>Diário digital responsivo para professores lançarem chamada e notas com agilidade no celular ou computador.</span>
                 </div>
                 <div className={styles.featureItem}>
                   <CheckCircle2 size={16} className={styles.checkIconBlue} />
