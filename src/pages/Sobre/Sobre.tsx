@@ -3,7 +3,7 @@ import {
   Building2, ShieldCheck, CheckCircle2, 
   MapPin, Smartphone, HeartHandshake,
   ArrowRight, Sparkles, Scale, GraduationCap,
-  Database, BookOpen, FileCheck2, Users, Mail
+  Database, BookOpen, FileCheck2, Users, Mail, Layers
 } from 'lucide-react';
 import styles from './Sobre.module.css';
 
@@ -17,14 +17,14 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
       icon: <Database size={26} />,
       badge: 'Tecnologia & Dados',
       title: 'Engenharia de Software & Big Data',
-      desc: 'Arquiteturas modernas desenvolvidas com as melhores práticas de engenharia de software e análise de dados. Banco de dados com isolamento multi-tenant seguro no PostgreSQL, sincronização offline-first (PWA) e pré-auditoria automatizada do Educacenso (INEP).',
+      desc: 'Arquiteturas modernas desenvolvidas com as melhores práticas de engenharia de software e análise de dados. Banco de dados com isolamento multi-tenant seguro no PostgreSQL, matriz curricular BNCC integrada e pré-auditoria automatizada do Educacenso (INEP).',
       tag: 'Engenharia de Software & Ciência de Dados'
     },
     {
       icon: <BookOpen size={26} />,
       badge: 'Pedagogia Aplicada',
       title: 'Vivência Real no Chão da Escola',
-      desc: 'Sistemas concebidos por quem conhece profundamente o dia a dia pedagógico da rede pública. Orientação educacional aplicada na definição de fluxos práticos para o Diário Mobile e na triagem em 13 blocos do AVAEE GD.',
+      desc: 'Sistemas concebidos por quem conhece profundamente o dia a dia pedagógico da rede pública. Orientação educacional aplicada na definição de fluxos práticos para o Diário Escolar e na triagem em 13 blocos do AVAEE GD.',
       tag: 'Coordenação Pedagógica & Especialistas em AEE'
     },
     {
@@ -38,9 +38,9 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
 
   const principles = [
     {
-      icon: <Smartphone size={26} />,
-      title: 'Tecnologia que Funciona no Brasil Real',
-      desc: 'Desenvolvemos soluções com arquitetura offline-first. Nossos diários e sistemas operam com total estabilidade em salas de aula e escolas da zona rural sem sinal de internet, sincronizando os dados automaticamente assim que houver conexão.'
+      icon: <Layers size={26} />,
+      title: 'Soluções Desenhadas para a Gestão Pública',
+      desc: 'Desenvolvemos softwares que resolvem gargalos reais da rede municipal: centralização de matrículas, controle de transporte escolar, gestão do PNAE e organização da educação especial.'
     },
     {
       icon: <FileCheck2 size={26} />,
@@ -62,8 +62,8 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
   const milestones = [
     {
       title: 'Gestor Educ',
-      category: 'Gestão Escolar & Diário Mobile',
-      desc: 'Matrículas digitalizadas, controle de capacidade por turma, frotas de transporte escolar e diário móvel offline para os docentes da rede municipal.'
+      category: 'Gestão Escolar & Diário Eletrônico',
+      desc: 'Matrículas digitalizadas, controle de capacidade por turma, frotas de transporte escolar e diário eletrônico integrado à BNCC para os docentes da rede municipal.'
     },
     {
       title: 'AVAEE GD',
@@ -112,7 +112,7 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
                 A <strong>i6 Systems</strong> (CNPJ: <code>50.542.946/0001-58</code>), sediada em <strong>Gonçalves Dias - MA</strong>, nasceu da união de engenheiros de software, especialistas em dados e educadores da rede pública que vivenciam de perto a rotina e os desafios da gestão municipal.
               </p>
               <p className={styles.paragraph}>
-                Desenvolvemos soluções que simplificam a administração pública: eliminamos processos burocráticos manuais, prevenimos perdas de repasses do FUNDEB com pré-auditoria do Educacenso (INEP/MEC), conectamos escolas rurais com sincronização offline e estruturamos a Educação Especial com agilidade e respeito à LGPD.
+                Desenvolvemos soluções que simplificam a administração pública: eliminamos processos burocráticos manuais, prevenimos perdas de repasses do FUNDEB com pré-auditoria do Educacenso (INEP/MEC), unificamos a gestão da rede municipal de ensino e estruturamos a Educação Especial com agilidade e respeito à LGPD.
               </p>
               <div className={styles.quoteBox}>
                 "Não criamos softwares genéricos de prateleira. Desenvolvemos ferramentas desenhadas para a realidade de quem está na sala de aula, na secretaria da escola e na tomada de decisão municipal."
@@ -139,10 +139,10 @@ export const Sobre: React.FC<SobreProps> = ({ onOpenDemoModal }) => {
                 </div>
 
                 <div className={styles.instItem}>
-                  <div className={styles.instItemIcon}><Smartphone size={16} /></div>
+                  <div className={styles.instItemIcon}><Database size={16} /></div>
                   <div>
                     <strong>Tecnologia & Operação</strong>
-                    <span>Arquitetura Offline-First & Sincronização em Nuvem</span>
+                    <span>Arquitetura Multi-Tenant em Nuvem com Isolamento PostgreSQL</span>
                   </div>
                 </div>
 

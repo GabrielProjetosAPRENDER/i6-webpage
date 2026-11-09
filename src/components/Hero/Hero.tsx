@@ -66,8 +66,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
               <span>Conformidade com a LGPD</span>
             </div>
             <div className={styles.trustItem}>
-              <Smartphone size={16} className={styles.trustIcon} />
-              <span>Diário com Sincronização Offline</span>
+              <BookOpen size={16} className={styles.trustIcon} />
+              <span>Diário Escolar & Matriz BNCC</span>
             </div>
           </div>
 
@@ -113,7 +113,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                 <div className={styles.kpiCard}>
                   <div className={styles.kpiLabel}>Escolas da Rede</div>
                   <div className={styles.kpiValue}>18</div>
-                  <div className={styles.kpiHint}>100% integradas online/offline</div>
+                  <div className={styles.kpiHint}>100% integradas na plataforma</div>
                 </div>
                 <div className={styles.kpiCard}>
                   <div className={styles.kpiLabel}>Alunos Matriculados</div>
@@ -138,8 +138,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                 <div className={styles.cockpitPanel}>
                   <div className={styles.panelHeader}>
                     <div className={styles.panelTitle}>
-                      <Smartphone size={16} color="#2563EB" />
-                      <span>Diário Digital Mobile dos Professores</span>
+                      <BookOpen size={16} color="#2563EB" />
+                      <span>Diário Digital & Frequência Escolar</span>
                     </div>
                     <span className={styles.panelBadgeGreen}>Sincronizado</span>
                   </div>
@@ -151,7 +151,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                       </div>
                       <div className={styles.itemText}>
                         <div className={styles.itemTitle}>5º Ano B • EMEF Cecília Meireles</div>
-                        <div className={styles.itemSub}>Chamada realizada offline às 07:45 • 28 presentes</div>
+                        <div className={styles.itemSub}>Chamada realizada às 07:45 • 28 presentes</div>
                       </div>
                       <span className={styles.badgeDone}>Concluído</span>
                     </div>

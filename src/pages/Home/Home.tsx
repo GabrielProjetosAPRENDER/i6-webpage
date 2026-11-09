@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShieldCheck, Database, Smartphone, Server, Sparkles } from 'lucide-react';
+import { ShieldCheck, Database, BookOpen, Server, Sparkles } from 'lucide-react';
 import Hero from '../../components/Hero/Hero';
 import Features from '../../components/Features/Features';
 import MunicipalSimulator from '../../components/MunicipalSimulator/MunicipalSimulator';
@@ -24,9 +24,9 @@ export const Home: React.FC<HomeProps> = ({ onOpenDemoModal }) => {
       desc: 'Proteção jurídica integral de dados de crianças e adolescentes, com controle de acesso em 3 camadas e logs de auditoria para o TCE e Promotoria.'
     },
     {
-      icon: <Smartphone size={24} />,
-      name: 'Arquitetura Offline-First (PWA)',
-      desc: 'Sistemas que funcionam no Brasil real. Diários de classe operam em salas rurais sem sinal e sincronizam de forma atômica com o banco central.'
+      icon: <BookOpen size={24} />,
+      name: 'Matriz Curricular & Habilidades BNCC',
+      desc: 'Planejamento pedagógico e diário escolar totalmente alinhados às competências oficiais da BNCC, gerando relatórios de acompanhamento da aprendizagem em tempo real.'
     },
     {
       icon: <Server size={24} />,

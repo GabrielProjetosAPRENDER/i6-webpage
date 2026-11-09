@@ -19,12 +19,12 @@ export const Solucoes: React.FC = () => {
       logo: gestorLogo,
       title: 'Gestor Educ',
       tagline: 'Gestão Escolar Regular & Administrativa',
-      description: 'Plataforma oficial para modernização de redes municipais de ensino. Centraliza matrículas, diário de classe mobile 100% offline para os docentes, roteirização de transporte escolar rural, gestão nutricional do PNAE e pré-validação cadastral para o Educacenso (INEP/FUNDEB).',
+      description: 'Plataforma oficial para modernização de redes municipais de ensino. Centraliza matrículas, diário eletrônico integrado à matriz da BNCC, roteirização de transporte escolar rural, gestão nutricional do PNAE e pré-validação cadastral para o Educacenso (INEP/FUNDEB).',
       link: '#/gestor',
       badgeColor: '#002C55',
       accentColor: '#2563EB',
       benefits: [
-        'Diário de classe mobile com operação 100% offline',
+        'Diário escolar digital integrado às habilidades da BNCC',
         'Pré-validação e auditoria prévia do Censo Escolar (INEP)',
         'Mapeamento de frotas e transporte escolar rural',
         'PNAE com fichas técnicas e cálculo per capita de nutrientes'

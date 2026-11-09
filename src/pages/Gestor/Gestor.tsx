@@ -5,7 +5,7 @@ import {
   ChevronDown, ChevronUp, Bus, Utensils, 
   Wifi, WifiOff, FileCheck2,
   School, GraduationCap, AlertCircle, Clock,
-  RefreshCw, AlertTriangle
+  RefreshCw, AlertTriangle, BookOpen
 } from 'lucide-react';
 import styles from './Gestor.module.css';
 import gestorLogo from '../../assets/images/gestor_logo.png';
@@ -52,13 +52,13 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
   const modules = [
     {
       id: 'diario',
-      icon: <Smartphone size={24} />,
-      title: 'Diário de Classe Mobile (100% Offline)',
+      icon: <BookOpen size={24} />,
+      title: 'Diário de Classe & Matriz BNCC',
       badge: 'Para Professores',
-      desc: 'Chamada ágil, lançamento de notas e plano de aula com habilidades da BNCC direto no smartphone do professor. Opera perfeitamente em escolas rurais sem sinal de internet e sincroniza de forma transparente assim que reconectar.',
+      desc: 'Chamada ágil, lançamento de notas e plano de aula com habilidades da BNCC direto no sistema. Interface ergonômica que simplifica o trabalho docente e gera relatórios automáticos de aprendizagem para a coordenação.',
       highlights: [
-        { label: 'Chamada Tátil em 30 Segundos', desc: 'Interface ergonômica que devolve tempo pedagógico para a sala de aula.' },
-        { label: 'Habilidades da BNCC Integradas', desc: 'Associe objetivos curriculares de cada aula com apenas um toque.' }
+        { label: 'Chamada Tátil em Poucos Cliques', desc: 'Interface ergonômica que devolve tempo pedagógico para a sala de aula.' },
+        { label: 'Habilidades da BNCC Integradas', desc: 'Associe objetivos curriculares oficiais a cada aula registrada.' }
       ]
     },
     {
@@ -120,8 +120,8 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
 
   const faqs = [
     {
-      q: 'O diário de classe realmente funciona em escolas da zona rural sem sinal?',
-      a: 'Sim, 100%. O aplicativo foi construído com arquitetura offline-first (PWA e banco local IndexDB/SQLite). O professor abre o aplicativo, faz a chamada diária, lança conteúdos e avaliações mesmo sem nenhum sinal de telefone ou Wi-Fi. Quando o dispositivo detecta conexão (ao chegar em casa ou na secretaria), os dados são sincronizados de forma atômica e segura com o banco central.'
+      q: 'Como o Gestor Educ integra as habilidades da BNCC ao diário do professor?',
+      a: 'O sistema possui a matriz completa da Base Nacional Comum Curricular (BNCC) pré-carregada por ano e componente curricular. Ao lançar os conteúdos das aulas e avaliações, o docente vincula diretamente os códigos de habilidades trabalhados, gerando relatórios pedagógicos automáticos para a coordenação e supervisão escolar.'
     },
     {
       q: 'Como o Gestor Educ protege os repasses do FUNDEB do município?',
@@ -154,7 +154,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
               A modernização completa da <span className={styles.titleHighlight}>Educação Municipal</span> em um único ecossistema.
             </h1>
             <p className={styles.heroSubtitle}>
-              Conecte a Secretaria de Educação, diretores escolares, professores e famílias. Diário móvel 100% offline, logística de transporte escolar rural, gestão nutricional PNAE e auditoria preventiva do Educacenso para blindar o FUNDEB.
+              Conecte a Secretaria de Educação, diretores escolares, professores e famílias. Diário eletrônico integrado à BNCC, logística de transporte escolar rural, gestão nutricional PNAE e auditoria preventiva do Educacenso para blindar o FUNDEB.
             </p>
             <div className={styles.heroCtaGrid}>
               <button onClick={onOpenDemoModal} className={styles.btnPrimary}>
@@ -199,8 +199,8 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                   className={`${styles.tabBtn} ${activeTab === 'diario' ? styles.tabBtnActive : ''}`}
                   onClick={() => setActiveTab('diario')}
                 >
-                  <Smartphone size={16} />
-                  <span>Diário Mobile (Offline PWA)</span>
+                  <BookOpen size={16} />
+                  <span>Diário Escolar & BNCC</span>
                 </button>
                 <button 
                   className={`${styles.tabBtn} ${activeTab === 'transporte' ? styles.tabBtnActive : ''}`}
@@ -339,7 +339,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                   </div>
                 )}
 
-                {/* TAB 2: DIÁRIO MOBILE OFFLINE (TRYOUT DOCENTE) */}
+                {/* TAB 2: DIÁRIO ESCOLAR & BNCC (TRYOUT DOCENTE) */}
                 {activeTab === 'diario' && (
                   <div className={styles.tabContent}>
                     <div className={styles.cockpitTopBar}>
@@ -349,25 +349,9 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       </div>
                       <div className={styles.syncControlBox}>
                         <div className={styles.syncStatusBadge}>
-                          {isSynced ? (
-                            <>
-                              <Wifi size={14} color="#10B981" />
-                              <span className={styles.colorSuccessText}>Sincronizado na Nuvem</span>
-                            </>
-                          ) : (
-                            <>
-                              <WifiOff size={14} color="#D97706" />
-                              <span className={styles.colorWarningText}>Operando em Modo Offline (PWA)</span>
-                            </>
-                          )}
+                          <CheckCircle2 size={14} color="#10B981" />
+                          <span className={styles.colorSuccessText}>Registro em Tempo Real • Nuvem SEMED</span>
                         </div>
-                        <button 
-                          className={`${styles.syncActionBtn} ${syncingAnimation ? styles.syncBtnSpinning : ''}`}
-                          onClick={handleSyncClick}
-                        >
-                          <RefreshCw size={13} className={syncingAnimation ? styles.spinIcon : ''} />
-                          {isSynced ? 'Simular Perda de Sinal' : 'Simular Sincronização Wi-Fi'}
-                        </button>
                       </div>
                     </div>
 
@@ -376,7 +360,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       <span>Resolver e elaborar problemas de multiplicação e divisão com números naturais usando estimativas e cálculo mental.</span>
                     </div>
 
-                    {/* Interactive Student Attendance Roster (Authentic Teacher Tablet/PWA View) */}
+                    {/* Interactive Student Attendance Roster (Authentic Teacher View) */}
                     <div className={styles.rosterTableWrapper}>
                       <table className={styles.rosterTable}>
                         <thead>
@@ -457,7 +441,7 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
                       </div>
                       <div className={styles.liveMetricRight}>
                         <ShieldCheck size={14} color="#10B981" />
-                        <span>Armazenamento local seguro (IndexedDB) • Zero perda de dados pedagógicos</span>
+                        <span>Registro Oficial SEMED • Conformidade Curricular BNCC</span>
                       </div>
                     </div>
 
@@ -627,8 +611,8 @@ export const Gestor: React.FC<GestorProps> = ({ onOpenDemoModal }) => {
               </div>
               <ul className={styles.compareList}>
                 <li>
-                  <strong>Diário Digital 100% Offline</strong>
-                  <span>Chamadas e notas lançadas no celular pelo professor, sincronizadas com 1 toque ao ter conexão.</span>
+                  <strong>Diário Escolar Digital & BNCC</strong>
+                  <span>Chamadas e notas lançadas diretamente pelo professor, com vinculação imediata às habilidades da BNCC.</span>
                 </li>
                 <li>
                   <strong>Auditoria Contínua do Censo INEP</strong>
