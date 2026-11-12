@@ -44,16 +44,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDemoModal, activeRoute }) 
     return activeRoute.startsWith(route);
   };
 
-  // All pages now feature a luminous light GovTech design, so navbar text is always dark and legible.
-  const isDarkHeroPage = false;
-  const textThemeClass = styles.darkText;
+  // Home page uses the new Luminous Cosmic Dark Hero (React Bits style)
+  const isDarkHeroPage = activeRoute === '#/' || activeRoute === '#' || activeRoute === '';
+  const textThemeClass = isDarkHeroPage ? styles.lightText : (isScrolled ? styles.darkText : styles.lightText);
+  const scrolledClass = isScrolled ? (isDarkHeroPage ? styles.scrolledDark : styles.scrolled) : '';
 
   return (
     <>
-      <header className={`${styles.navbar} ${isScrolled ? styles.scrolled : ''} ${textThemeClass}`} role="banner">
+      <header className={`${styles.navbar} ${scrolledClass} ${textThemeClass}`} role="banner">
         <div className={styles.container}>
           <a href="#/" className={styles.logoContainer} aria-label="i6 Systems Home" onClick={closeMobileMenu}>
-            <Logo lightText={!isScrolled && isDarkHeroPage} size={32} />
+            <Logo lightText={isDarkHeroPage} size={32} />
           </a>
 
           {/* Desktop Nav Links */}
