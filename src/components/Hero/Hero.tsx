@@ -33,9 +33,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
 
             {/* Main Headline with BlurText */}
             <h1 className={styles.heroTitle}>
-              <BlurText text="A infraestrutura digital completa para a" delay={45} animateBy="words" direction="top" />{' '}
-              <span className={styles.titleHighlight}>
-                <BlurText text="Educação Pública Municipal." delay={65} animateBy="words" direction="top" />
+              <span className={styles.titleLine}>
+                <BlurText text="A infraestrutura digital completa" delay={40} animateBy="words" direction="top" />
+              </span>
+              <span className={styles.titleLine}>
+                <BlurText text="para a" delay={40} animateBy="words" direction="top" />{' '}
+                <span className={styles.titleHighlight}>
+                  <BlurText text="Educação Pública Municipal." delay={60} animateBy="words" direction="top" />
+                </span>
               </span>
             </h1>
 
