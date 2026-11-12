@@ -1,84 +1,93 @@
-.heroSection {
+.hero {
   position: relative;
-  background-color: #060913;
+  background: linear-gradient(180deg, #FFFFFF 0%, #F8FAFC 60%, #F1F5F9 100%);
+  padding: 130px 0 80px 0;
   overflow: hidden;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-align: center;
+  border-bottom: 1px solid #E2E8F0;
 }
 
-.auroraWrapper {
-  padding: 130px 0 80px 0;
-  text-align: center;
+.ambientLight {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(99, 102, 241, 0.03) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gridPattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 60%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 30%, #000 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
   position: relative;
   z-index: 10;
-  max-width: 1160px;
+  max-width: 1140px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
-/* Institutional Badge with Glass & Shimmer */
+/* Institutional Badge */
 .govBadge {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  background: rgba(30, 58, 138, 0.28);
-  border: 1px solid rgba(96, 165, 250, 0.35);
-  padding: 0.45rem 1.25rem;
+  gap: 0.5rem;
+  background-color: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  color: #1D4ED8;
+  padding: 0.45rem 1.15rem;
   border-radius: 9999px;
   font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-bottom: 1.75rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.25);
-}
-
-.badgeIcon {
-  color: #60A5FA;
-  flex-shrink: 0;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.06);
 }
 
 /* Main Headline */
 .heroTitle {
-  font-size: 3.4rem;
+  font-size: 3.35rem;
   font-weight: 800;
-  line-height: 1.18;
+  line-height: 1.14;
   letter-spacing: -0.035em;
-  color: #F8FAFC;
+  color: #0F172A;
   margin-bottom: 1.5rem;
-  max-width: 980px;
+  max-width: 950px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.titleLine {
-  display: block;
-}
-
 .titleHighlight {
-  background: linear-gradient(135deg, #60A5FA 0%, #38BDF8 50%, #818CF8 100%);
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
   -webkit-background-clip: text;
-  background-clip: text;
   -webkit-text-fill-color: transparent;
-  display: inline-block;
 }
 
 /* Subtitle */
 .heroSubtitle {
-  font-size: 1.22rem;
-  color: #94A3B8;
-  line-height: 1.65;
-  max-width: 800px;
+  font-size: 1.25rem;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 780px;
   margin: 0 auto 2.5rem auto;
   font-weight: 400;
-}
-
-.heroSubtitle strong {
-  color: #F1F5F9;
-  font-weight: 600;
 }
 
 /* Hero Actions */
@@ -87,56 +96,52 @@
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
-  margin-bottom: 2.75rem;
+  margin-bottom: 2.5rem;
   flex-wrap: wrap;
 }
 
 .btnPrimary {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.6rem;
   background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
   color: #FFFFFF;
   padding: 0.95rem 2rem;
-  border-radius: 12px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 700;
-  border: 1px solid rgba(147, 197, 253, 0.35);
-  box-shadow: 0 0 35px rgba(37, 99, 235, 0.45), 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+  border: 1px solid #1D4ED8;
+  box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.35);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
 }
 
 .btnPrimary:hover {
-  box-shadow: 0 0 50px rgba(59, 130, 246, 0.7), 0 15px 35px -5px rgba(0, 0, 0, 0.6);
   transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.45);
 }
 
 .btnSecondary {
   display: inline-flex;
   align-items: center;
-  gap: 0.65rem;
-  background: rgba(15, 23, 42, 0.7);
-  color: #F8FAFC;
+  gap: 0.6rem;
+  background: #FFFFFF;
+  color: #1E293B;
   padding: 0.95rem 1.85rem;
-  border-radius: 12px;
+  border-radius: 10px;
   font-size: 1rem;
   font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
   cursor: pointer;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.2s ease;
   text-decoration: none;
 }
 
 .btnSecondary:hover {
-  background: rgba(30, 41, 59, 0.85);
-  border-color: rgba(96, 165, 250, 0.5);
-  color: #FFFFFF;
+  background: #F8FAFC;
+  border-color: #94A3B8;
   transform: translateY(-2px);
-  box-shadow: 0 0 25px rgba(59, 130, 246, 0.25);
 }
 
 /* Trust Proof Badges */
@@ -144,7 +149,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.75rem;
   margin-bottom: 3.5rem;
   flex-wrap: wrap;
 }
@@ -152,38 +157,29 @@
 .trustItem {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   font-size: 0.825rem;
   font-weight: 600;
-  color: #94A3B8;
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 0.4rem 0.95rem;
-  border-radius: 9999px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  color: #64748B;
 }
 
 .trustIcon {
   color: #10B981;
 }
 
-/* Showcase Cockpit Frame */
+/* Precision Vector Showcase Laptop Mockup */
 .showcaseFrame {
   position: relative;
   max-width: 980px;
   margin: 0 auto;
-  border-radius: 18px;
-  background: rgba(10, 15, 29, 0.85);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 16px;
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   box-shadow: 
-    0 30px 80px -20px rgba(0, 0, 0, 0.8),
-    0 0 50px -10px rgba(37, 99, 235, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 25px 60px -15px rgba(15, 23, 42, 0.12),
+    0 0 0 1px rgba(15, 23, 42, 0.03);
   overflow: hidden;
   text-align: left;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
 }
 
 .browserTopBar {
@@ -191,8 +187,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.25rem;
-  background: rgba(15, 23, 42, 0.9);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #F1F5F9;
+  border-bottom: 1px solid #E2E8F0;
 }
 
 .windowControls {
@@ -213,11 +209,11 @@
 .browserAddress {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #94A3B8;
-  background: rgba(2, 6, 23, 0.7);
+  color: #64748B;
+  background: #FFFFFF;
   padding: 0.25rem 1.25rem;
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid #E2E8F0;
   display: flex;
   align-items: center;
   gap: 0.35rem;
@@ -226,10 +222,10 @@
 .liveSyncBadge {
   display: flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.4rem;
   font-size: 0.75rem;
   font-weight: 700;
-  color: #34D399;
+  color: #059669;
 }
 
 .pulseDot {
@@ -237,13 +233,13 @@
   height: 8px;
   border-radius: 50%;
   background-color: #10B981;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
 }
 
 /* Cockpit Inner Body */
 .cockpitBody {
   padding: 1.5rem;
-  background: rgba(7, 11, 22, 0.95);
+  background-color: #F8FAFC;
 }
 
 .cockpitNav {
@@ -265,8 +261,8 @@
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -275,12 +271,12 @@
 .cockpitSystemName {
   font-size: 1rem;
   font-weight: 800;
-  color: #F8FAFC;
+  color: #0F172A;
 }
 
 .cockpitMunicipality {
   font-size: 0.8rem;
-  color: #94A3B8;
+  color: #64748B;
   font-weight: 500;
 }
 
@@ -288,13 +284,13 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.3);
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
   padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   font-size: 0.775rem;
   font-weight: 700;
-  color: #93C5FD;
+  color: #1D4ED8;
 }
 
 /* KPI Row */
@@ -306,40 +302,39 @@
 }
 
 .kpiCard {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 12px;
   padding: 1rem 1.15rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .kpiLabel {
   font-size: 0.775rem;
   font-weight: 600;
-  color: #94A3B8;
+  color: #64748B;
   margin-bottom: 0.25rem;
 }
 
 .kpiValue {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #F8FAFC;
+  color: #0F172A;
   line-height: 1.1;
   margin-bottom: 0.2rem;
 }
 
 .textSuccess {
-  color: #34D399;
+  color: #059669;
 }
 
 .textBlue {
-  color: #60A5FA;
+  color: #2563EB;
 }
 
 .kpiHint {
   font-size: 0.725rem;
-  color: #64748B;
+  color: #94A3B8;
   font-weight: 500;
 }
 
@@ -351,12 +346,11 @@
 }
 
 .cockpitPanel {
-  background: rgba(15, 23, 42, 0.65);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #FFFFFF;
+  border: 1px solid #E2E8F0;
   border-radius: 12px;
   padding: 1.25rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }
 
 .panelHeader {
@@ -365,7 +359,7 @@
   justify-content: space-between;
   margin-bottom: 1rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid #F1F5F9;
 }
 
 .panelTitle {
@@ -374,15 +368,15 @@
   gap: 0.5rem;
   font-size: 0.875rem;
   font-weight: 700;
-  color: #F8FAFC;
+  color: #0F172A;
 }
 
 .panelBadgeGreen {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #34D399;
-  background: rgba(16, 185, 129, 0.15);
-  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #059669;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
   padding: 0.2rem 0.55rem;
   border-radius: 9999px;
 }
@@ -390,9 +384,9 @@
 .panelBadgeBlue {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #93C5FD;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #1D4ED8;
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
   padding: 0.2rem 0.55rem;
   border-radius: 9999px;
 }
@@ -409,15 +403,15 @@
   gap: 0.75rem;
   padding: 0.65rem 0.85rem;
   border-radius: 8px;
-  background: rgba(2, 6, 23, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: #F8FAFC;
+  border: 1px solid #F1F5F9;
 }
 
 .itemIconBox {
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  background: rgba(37, 99, 235, 0.15);
+  background: #EFF6FF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -431,27 +425,27 @@
 .itemTitle {
   font-size: 0.825rem;
   font-weight: 700;
-  color: #F1F5F9;
+  color: #1E293B;
 }
 
 .itemSub {
   font-size: 0.725rem;
-  color: #94A3B8;
+  color: #64748B;
 }
 
 .badgeDone {
   font-size: 0.7rem;
   font-weight: 700;
-  color: #34D399;
-  background: rgba(16, 185, 129, 0.15);
+  color: #059669;
+  background: #ECFDF5;
   padding: 0.2rem 0.5rem;
   border-radius: 6px;
 }
 
 /* Audit Box (Right) */
 .auditBox {
-  background: rgba(2, 6, 23, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
   border-radius: 10px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -467,7 +461,7 @@
 .scoreNumber {
   font-size: 1.75rem;
   font-weight: 900;
-  color: #34D399;
+  color: #10B981;
 }
 
 .scoreText {
@@ -477,18 +471,18 @@
 
 .scoreText strong {
   font-size: 0.85rem;
-  color: #F8FAFC;
+  color: #0F172A;
 }
 
 .scoreText span {
   font-size: 0.75rem;
-  color: #94A3B8;
+  color: #64748B;
 }
 
 .auditBarWrapper {
   width: 100%;
   height: 6px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #E2E8F0;
   border-radius: 9999px;
   overflow: hidden;
 }
@@ -507,8 +501,8 @@
 }
 
 .auditStatItem {
-  background: rgba(15, 23, 42, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
   border-radius: 8px;
   padding: 0.65rem 0.5rem;
 }
@@ -517,7 +511,7 @@
   display: block;
   font-size: 1.1rem;
   font-weight: 800;
-  color: #F8FAFC;
+  color: #0F172A;
   margin-bottom: 0.15rem;
 }
 
@@ -525,15 +519,13 @@
   display: block;
   font-size: 0.7rem;
   font-weight: 600;
-  color: #94A3B8;
+  color: #64748B;
 }
 
-/* Flagship Platforms Section (Under Hero) */
+/* Two Flagship Platforms Section (Under Hero) */
 .pillarsSection {
-  padding: 6rem 0 7rem 0;
-  background-color: #060913;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  position: relative;
+  padding: 5rem 0 6rem 0;
+  background-color: #FFFFFF;
 }
 
 .sectionHeader {
@@ -548,14 +540,14 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #60A5FA;
+  color: #2563EB;
   margin-bottom: 0.75rem;
 }
 
 .sectionTitle {
   font-size: 2.5rem;
   font-weight: 800;
-  color: #F8FAFC;
+  color: #0F172A;
   letter-spacing: -0.03em;
   line-height: 1.2;
   margin-bottom: 1rem;
@@ -563,7 +555,7 @@
 
 .sectionSubtitle {
   font-size: 1.15rem;
-  color: #94A3B8;
+  color: #64748B;
   line-height: 1.6;
 }
 
@@ -576,15 +568,28 @@
 }
 
 .pillarCard {
+  background: #F8FAFC;
+  border: 1px solid #E2E8F0;
+  border-radius: 20px;
   padding: 2.5rem;
   display: flex;
   flex-direction: column;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
   text-align: left;
-  height: 100%;
 }
 
-.pillarCardAvaee {
-  /* Specific spotlight accent handled by prop */
+.pillarCard:hover {
+  border-color: #93C5FD;
+  box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.12);
+  transform: translateY(-4px);
+  background: #FFFFFF;
+}
+
+.pillarCardAvaee:hover {
+  border-color: #A7F3D0;
+  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.12);
 }
 
 .pillarHeader {
@@ -598,28 +603,28 @@
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(37, 99, 235, 0.15);
-  border: 1px solid rgba(59, 130, 246, 0.35);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px;
   flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .pillarLogoWrapperAvaee {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: rgba(139, 92, 246, 0.15);
-  border: 1px solid rgba(139, 92, 246, 0.35);
+  background: #FFFFFF;
+  border: 1px solid #CBD5E1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 8px;
   flex-shrink: 0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .pillarLogoImg {
@@ -628,25 +633,48 @@
   object-fit: contain;
 }
 
+.pillarIconBox {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconBoxBlue {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+}
+
+/* Emerald / Teal Theme for AVAEE (Clean, high contrast, medical/education) */
+.iconBoxTeal {
+  background: #ECFDF5;
+  color: #059669;
+  border: 1px solid #A7F3D0;
+}
+
 .pillarCategory {
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: #94A3B8;
+  color: #64748B;
   margin-bottom: 0.2rem;
 }
 
 .pillarTitle {
   font-size: 1.65rem;
   font-weight: 800;
-  color: #F8FAFC;
+  color: #0F172A;
   letter-spacing: -0.02em;
 }
 
 .pillarDescription {
   font-size: 0.975rem;
-  color: #94A3B8;
+  color: #475569;
   line-height: 1.6;
   margin-bottom: 1.5rem;
 }
@@ -664,18 +692,18 @@
   align-items: flex-start;
   gap: 0.65rem;
   font-size: 0.925rem;
-  color: #E2E8F0;
+  color: #1E293B;
   line-height: 1.4;
 }
 
 .checkIconBlue {
-  color: #60A5FA;
+  color: #2563EB;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
 .checkIconTeal {
-  color: #A78BFA;
+  color: #059669;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -695,33 +723,29 @@
   font-size: 0.95rem;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
 }
 
 .linkBlue {
-  background: rgba(37, 99, 235, 0.25);
-  color: #93C5FD;
-  border: 1px solid rgba(59, 130, 246, 0.4);
+  background: #EFF6FF;
+  color: #1D4ED8;
+  border: 1px solid #BFDBFE;
 }
 
 .linkBlue:hover {
   background: #2563EB;
   color: #FFFFFF;
-  border-color: #60A5FA;
-  box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
 }
 
 .linkTeal {
-  background: rgba(139, 92, 246, 0.25);
-  color: #C4B5FD;
-  border: 1px solid rgba(139, 92, 246, 0.4);
+  background: #ECFDF5;
+  color: #047857;
+  border: 1px solid #A7F3D0;
 }
 
 .linkTeal:hover {
-  background: #7C3AED;
+  background: #059669;
   color: #FFFFFF;
-  border-color: #A78BFA;
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.5);
 }
 
 /* Responsive */

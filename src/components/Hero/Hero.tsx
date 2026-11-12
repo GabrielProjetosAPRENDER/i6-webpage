@@ -8,13 +8,6 @@ import styles from './Hero.module.css';
 import gestorLogo from '../../assets/images/gestor_logo.png';
 import avaeeLogo from '../../assets/images/avaee_logo.png';
 
-// React Bits components
-import { AuroraBackground } from '../reactbits/AuroraBackground';
-import { BlurText } from '../reactbits/BlurText';
-import { ShinyText } from '../reactbits/ShinyText';
-import { SpotlightCard } from '../reactbits/SpotlightCard';
-import { Magnet } from '../reactbits/Magnet';
-
 interface HeroProps {
   onOpenDemoModal?: () => void;
 }
@@ -22,225 +15,216 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
   return (
     <>
-      <section id="home-hero" className={styles.heroSection}>
-        <AuroraBackground className={styles.auroraWrapper}>
-          <div className={styles.container}>
-            {/* Institutional Badge with ShinyText */}
-            <div className={styles.govBadge}>
-              <Building2 size={15} className={styles.badgeIcon} />
-              <ShinyText text="Tecnologia de Ponta para Prefeituras & Redes Municipais" speed={4} />
+      <section id="home-hero" className={styles.hero}>
+        <div className={styles.ambientLight} />
+        <div className={styles.gridPattern} />
+
+        <div className={styles.container}>
+          {/* Institutional Badge */}
+          <div className={styles.govBadge}>
+            <Building2 size={15} />
+            <span>Tecnologia de Ponta para Prefeituras & Redes Municipais</span>
+          </div>
+
+          {/* Main Headline */}
+          <h1 className={styles.heroTitle}>
+            A infraestrutura digital completa para a <span className={styles.titleHighlight}>Educação Pública Municipal</span>.
+          </h1>
+
+          {/* Subtitle */}
+          <p className={styles.heroSubtitle}>
+            Softwares modernos, rápidos e intuitivos para gestão escolar regular (<strong>Gestor Educ</strong>) e regulação do atendimento inclusivo (<strong>AVAEE GD</strong>), 100% alinhados às diretrizes do MEC e do INEP.
+          </p>
+
+          {/* Action Buttons */}
+          <div className={styles.heroActions}>
+            <button 
+              onClick={onOpenDemoModal} 
+              className={styles.btnPrimary}
+              aria-label="Solicitar Demonstração para Município"
+            >
+              Solicitar Demonstração para Meu Município
+              <ArrowRight size={18} />
+            </button>
+            <a href="#/solucoes" className={styles.btnSecondary}>
+              Conhecer as Plataformas
+            </a>
+          </div>
+
+          {/* Trust Badges Row */}
+          <div className={styles.trustProofRow}>
+            <div className={styles.trustItem}>
+              <ShieldCheck size={16} className={styles.trustIcon} />
+              <span>Plataforma Própria & Segura</span>
+            </div>
+            <div className={styles.trustItem}>
+              <CheckCircle2 size={16} className={styles.trustIcon} />
+              <span>Padrão Oficial Educacenso & INEP</span>
+            </div>
+            <div className={styles.trustItem}>
+              <Lock size={16} className={styles.trustIcon} />
+              <span>Conformidade com a LGPD</span>
+            </div>
+            <div className={styles.trustItem}>
+              <BookOpen size={16} className={styles.trustIcon} />
+              <span>Diário Escolar & Matriz BNCC</span>
+            </div>
+          </div>
+
+          {/* High-Precision Vector Dashboard Cockpit (No blurry/leaked raster screenshots) */}
+          <div className={styles.showcaseFrame}>
+            <div className={styles.browserTopBar}>
+              <div className={styles.windowControls}>
+                <span className={`${styles.controlDot} ${styles.dotRed}`} />
+                <span className={`${styles.controlDot} ${styles.dotYellow}`} />
+                <span className={`${styles.controlDot} ${styles.dotGreen}`} />
+              </div>
+              <div className={styles.browserAddress}>
+                <Lock size={12} color="#10B981" />
+                <span>painel.i6systems.com.br/secretaria-educacao</span>
+              </div>
+              <div className={styles.liveSyncBadge}>
+                <span className={styles.pulseDot} />
+                <span>Nuvem SEMED Conectada</span>
+              </div>
             </div>
 
-            {/* Main Headline with BlurText */}
-            <h1 className={styles.heroTitle}>
-              <span className={styles.titleLine}>
-                <BlurText text="A infraestrutura digital completa" delay={40} animateBy="words" direction="top" />
-              </span>
-              <span className={styles.titleLine}>
-                <BlurText text="para a" delay={40} animateBy="words" direction="top" />{' '}
-                <span className={styles.titleHighlight}>
-                  <BlurText text="Educação Pública Municipal." delay={60} animateBy="words" direction="top" />
-                </span>
-              </span>
-            </h1>
-
-            {/* Subtitle */}
-            <p className={styles.heroSubtitle}>
-              Softwares modernos, rápidos e intuitivos para gestão escolar regular (<strong>Gestor Educ</strong>) e regulação do atendimento inclusivo (<strong>AVAEE GD</strong>), 100% alinhados às diretrizes do MEC e do INEP.
-            </p>
-
-            {/* Action Buttons with Magnet */}
-            <div className={styles.heroActions}>
-              <Magnet magnetStrength={0.25} activeDistance={100}>
-                <button 
-                  onClick={onOpenDemoModal} 
-                  className={styles.btnPrimary}
-                  aria-label="Solicitar Demonstração para Município"
-                >
-                  <span>Solicitar Demonstração para Meu Município</span>
-                  <ArrowRight size={18} />
-                </button>
-              </Magnet>
-              <a href="#/solucoes" className={styles.btnSecondary}>
-                Conhecer as Plataformas
-              </a>
-            </div>
-
-            {/* Trust Badges Row */}
-            <div className={styles.trustProofRow}>
-              <div className={styles.trustItem}>
-                <ShieldCheck size={16} className={styles.trustIcon} />
-                <span>Plataforma Própria & Segura</span>
-              </div>
-              <div className={styles.trustItem}>
-                <CheckCircle2 size={16} className={styles.trustIcon} />
-                <span>Padrão Oficial Educacenso & INEP</span>
-              </div>
-              <div className={styles.trustItem}>
-                <Lock size={16} className={styles.trustIcon} />
-                <span>Conformidade com a LGPD</span>
-              </div>
-              <div className={styles.trustItem}>
-                <BookOpen size={16} className={styles.trustIcon} />
-                <span>Diário Escolar & Matriz BNCC</span>
-              </div>
-            </div>
-
-            {/* High-Precision Vector Dashboard Cockpit */}
-            <div className={styles.showcaseFrame}>
-              <div className={styles.browserTopBar}>
-                <div className={styles.windowControls}>
-                  <span className={`${styles.controlDot} ${styles.dotRed}`} />
-                  <span className={`${styles.controlDot} ${styles.dotYellow}`} />
-                  <span className={`${styles.controlDot} ${styles.dotGreen}`} />
+            {/* Vector UI Mockup Container */}
+            <div className={styles.cockpitBody}>
+              {/* Cockpit Top Bar */}
+              <div className={styles.cockpitNav}>
+                <div className={styles.cockpitTitleGroup}>
+                  <div className={styles.cockpitLogoBox}>
+                    <GraduationCap size={20} color="#2563EB" />
+                  </div>
+                  <div>
+                    <div className={styles.cockpitSystemName}>Gestor Educ • Visão Consolidada</div>
+                    <div className={styles.cockpitMunicipality}>Secretaria Municipal de Educação</div>
+                  </div>
                 </div>
-                <div className={styles.browserAddress}>
-                  <Lock size={12} color="#10B981" />
-                  <span>painel.i6systems.com.br/secretaria-educacao</span>
-                </div>
-                <div className={styles.liveSyncBadge}>
-                  <span className={styles.pulseDot} />
-                  <span>Nuvem SEMED Conectada</span>
+                <div className={styles.cockpitStatusPill}>
+                  <Sparkles size={13} color="#2563EB" />
+                  <span>Ano Letivo 2026 • 100% em Dia</span>
                 </div>
               </div>
 
-              {/* Vector UI Mockup Container */}
-              <div className={styles.cockpitBody}>
-                {/* Cockpit Top Bar */}
-                <div className={styles.cockpitNav}>
-                  <div className={styles.cockpitTitleGroup}>
-                    <div className={styles.cockpitLogoBox}>
-                      <GraduationCap size={20} color="#3B82F6" />
+              {/* KPI Cards Row */}
+              <div className={styles.kpiRow}>
+                <div className={styles.kpiCard}>
+                  <div className={styles.kpiLabel}>Escolas da Rede</div>
+                  <div className={styles.kpiValue}>18</div>
+                  <div className={styles.kpiHint}>100% integradas na plataforma</div>
+                </div>
+                <div className={styles.kpiCard}>
+                  <div className={styles.kpiLabel}>Alunos Matriculados</div>
+                  <div className={styles.kpiValue}>12.450</div>
+                  <div className={styles.kpiHint}>Dados validados para o INEP</div>
+                </div>
+                <div className={styles.kpiCard}>
+                  <div className={styles.kpiLabel}>Frequência Média</div>
+                  <div className={`${styles.kpiValue} ${styles.textSuccess}`}>94.8%</div>
+                  <div className={styles.kpiHint}>Chamadas digitais diárias</div>
+                </div>
+                <div className={styles.kpiCard}>
+                  <div className={styles.kpiLabel}>Auditoria Educacenso</div>
+                  <div className={`${styles.kpiValue} ${styles.textBlue}`}>0 Erros</div>
+                  <div className={styles.kpiHint}>Repasses do FUNDEB blindados</div>
+                </div>
+              </div>
+
+              {/* Cockpit Visual Grid */}
+              <div className={styles.cockpitGrid}>
+                {/* Left: Diários & Frequência */}
+                <div className={styles.cockpitPanel}>
+                  <div className={styles.panelHeader}>
+                    <div className={styles.panelTitle}>
+                      <BookOpen size={16} color="#2563EB" />
+                      <span>Diário Digital & Frequência Escolar</span>
                     </div>
-                    <div>
-                      <div className={styles.cockpitSystemName}>Gestor Educ • Visão Consolidada</div>
-                      <div className={styles.cockpitMunicipality}>Secretaria Municipal de Educação</div>
-                    </div>
+                    <span className={styles.panelBadgeGreen}>Em Dia</span>
                   </div>
-                  <div className={styles.cockpitStatusPill}>
-                    <Sparkles size={13} color="#60A5FA" />
-                    <span>Ano Letivo 2026 • 100% em Dia</span>
+
+                  <div className={styles.panelList}>
+                    <div className={styles.panelListItem}>
+                      <div className={styles.itemIconBox}>
+                        <BookOpen size={15} color="#2563EB" />
+                      </div>
+                      <div className={styles.itemText}>
+                        <div className={styles.itemTitle}>5º Ano B • EMEF Cecília Meireles</div>
+                        <div className={styles.itemSub}>Chamada realizada às 07:45 • 28 presentes</div>
+                      </div>
+                      <span className={styles.badgeDone}>Concluído</span>
+                    </div>
+
+                    <div className={styles.panelListItem}>
+                      <div className={styles.itemIconBox}>
+                        <BookOpen size={15} color="#2563EB" />
+                      </div>
+                      <div className={styles.itemText}>
+                        <div className={styles.itemTitle}>8º Ano A • EMEF Tiradentes</div>
+                        <div className={styles.itemSub}>Lançamento de notas bimestrais • 32 alunos</div>
+                      </div>
+                      <span className={styles.badgeDone}>Concluído</span>
+                    </div>
+
+                    <div className={styles.panelListItem}>
+                      <div className={styles.itemIconBox}>
+                        <BookOpen size={15} color="#2563EB" />
+                      </div>
+                      <div className={styles.itemText}>
+                        <div className={styles.itemTitle}>1º Ano C • Creche Pequeno Príncipe</div>
+                        <div className={styles.itemSub}>Registro de ocorrência pedagógica e presença</div>
+                      </div>
+                      <span className={styles.badgeDone}>Concluído</span>
+                    </div>
                   </div>
                 </div>
 
-                {/* KPI Cards Row */}
-                <div className={styles.kpiRow}>
-                  <div className={styles.kpiCard}>
-                    <div className={styles.kpiLabel}>Escolas da Rede</div>
-                    <div className={styles.kpiValue}>18</div>
-                    <div className={styles.kpiHint}>100% integradas na plataforma</div>
-                  </div>
-                  <div className={styles.kpiCard}>
-                    <div className={styles.kpiLabel}>Alunos Matriculados</div>
-                    <div className={styles.kpiValue}>12.450</div>
-                    <div className={styles.kpiHint}>Dados validados para o INEP</div>
-                  </div>
-                  <div className={styles.kpiCard}>
-                    <div className={styles.kpiLabel}>Frequência Média</div>
-                    <div className={`${styles.kpiValue} ${styles.textSuccess}`}>94.8%</div>
-                    <div className={styles.kpiHint}>Chamadas digitais diárias</div>
-                  </div>
-                  <div className={styles.kpiCard}>
-                    <div className={styles.kpiLabel}>Auditoria Educacenso</div>
-                    <div className={`${styles.kpiValue} ${styles.textBlue}`}>0 Erros</div>
-                    <div className={styles.kpiHint}>Repasses do FUNDEB blindados</div>
-                  </div>
-                </div>
-
-                {/* Cockpit Visual Grid */}
-                <div className={styles.cockpitGrid}>
-                  {/* Left: Diários & Frequência */}
-                  <div className={styles.cockpitPanel}>
-                    <div className={styles.panelHeader}>
-                      <div className={styles.panelTitle}>
-                        <BookOpen size={16} color="#60A5FA" />
-                        <span>Diário Digital & Frequência Escolar</span>
-                      </div>
-                      <span className={styles.panelBadgeGreen}>Em Dia</span>
+                {/* Right: Validação INEP & Transporte */}
+                <div className={styles.cockpitPanel}>
+                  <div className={styles.panelHeader}>
+                    <div className={styles.panelTitle}>
+                      <CheckCircle2 size={16} color="#10B981" />
+                      <span>Conformidade Educacenso (INEP)</span>
                     </div>
+                    <span className={styles.panelBadgeBlue}>Auditado</span>
+                  </div>
 
-                    <div className={styles.panelList}>
-                      <div className={styles.panelListItem}>
-                        <div className={styles.itemIconBox}>
-                          <BookOpen size={15} color="#60A5FA" />
-                        </div>
-                        <div className={styles.itemText}>
-                          <div className={styles.itemTitle}>5º Ano B • EMEF Cecília Meireles</div>
-                          <div className={styles.itemSub}>Chamada realizada às 07:45 • 28 presentes</div>
-                        </div>
-                        <span className={styles.badgeDone}>Concluído</span>
+                  <div className={styles.auditBox}>
+                    <div className={styles.auditScore}>
+                      <div className={styles.scoreNumber}>100%</div>
+                      <div className={styles.scoreText}>
+                        <strong>Apto para Exportação</strong>
+                        <span>Sem duplicidade de NIS, certidões ou turmas incompletas.</span>
                       </div>
-
-                      <div className={styles.panelListItem}>
-                        <div className={styles.itemIconBox}>
-                          <BookOpen size={15} color="#60A5FA" />
-                        </div>
-                        <div className={styles.itemText}>
-                          <div className={styles.itemTitle}>8º Ano A • EMEF Tiradentes</div>
-                          <div className={styles.itemSub}>Lançamento de notas bimestrais • 32 alunos</div>
-                        </div>
-                        <span className={styles.badgeDone}>Concluído</span>
-                      </div>
-
-                      <div className={styles.panelListItem}>
-                        <div className={styles.itemIconBox}>
-                          <BookOpen size={15} color="#60A5FA" />
-                        </div>
-                        <div className={styles.itemText}>
-                          <div className={styles.itemTitle}>1º Ano C • Creche Pequeno Príncipe</div>
-                          <div className={styles.itemSub}>Registro de ocorrência pedagógica e presença</div>
-                        </div>
-                        <span className={styles.badgeDone}>Concluído</span>
-                      </div>
+                    </div>
+                    <div className={styles.auditBarWrapper}>
+                      <div className={styles.auditBarFill} style={{ width: '100%' }} />
                     </div>
                   </div>
 
-                  {/* Right: Validação INEP & Transporte */}
-                  <div className={styles.cockpitPanel}>
-                    <div className={styles.panelHeader}>
-                      <div className={styles.panelTitle}>
-                        <CheckCircle2 size={16} color="#10B981" />
-                        <span>Conformidade Educacenso (INEP)</span>
-                      </div>
-                      <span className={styles.panelBadgeBlue}>Auditado</span>
+                  <div className={styles.auditStatsGrid}>
+                    <div className={styles.auditStatItem}>
+                      <span className={styles.auditStatNum}>480</span>
+                      <span className={styles.auditStatLabel}>Docentes Alocados</span>
                     </div>
-
-                    <div className={styles.auditBox}>
-                      <div className={styles.auditScore}>
-                        <div className={styles.scoreNumber}>100%</div>
-                        <div className={styles.scoreText}>
-                          <strong>Apto para Exportação</strong>
-                          <span>Sem duplicidade de NIS, certidões ou turmas incompletas.</span>
-                        </div>
-                      </div>
-                      <div className={styles.auditBarWrapper}>
-                        <div className={styles.auditBarFill} style={{ width: '100%' }} />
-                      </div>
+                    <div className={styles.auditStatItem}>
+                      <span className={styles.auditStatNum}>34</span>
+                      <span className={styles.auditStatLabel}>Rotas de Ônibus</span>
                     </div>
-
-                    <div className={styles.auditStatsGrid}>
-                      <div className={styles.auditStatItem}>
-                        <span className={styles.auditStatNum}>480</span>
-                        <span className={styles.auditStatLabel}>Docentes Alocados</span>
-                      </div>
-                      <div className={styles.auditStatItem}>
-                        <span className={styles.auditStatNum}>34</span>
-                        <span className={styles.auditStatLabel}>Rotas de Ônibus</span>
-                      </div>
-                      <div className={styles.auditStatItem}>
-                        <span className={styles.auditStatNum}>100%</span>
-                        <span className={styles.auditStatLabel}>Censo INEP Validado</span>
-                      </div>
+                    <div className={styles.auditStatItem}>
+                      <span className={styles.auditStatNum}>100%</span>
+                      <span className={styles.auditStatLabel}>Censo INEP Validado</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </AuroraBackground>
+        </div>
       </section>
 
-      {/* Two Flagship Platforms Section (Under Hero) - Powered by SpotlightCard */}
+      {/* Two Flagship Platforms Section (Under Hero) */}
       <section className={styles.pillarsSection}>
         <div className="container">
           <div className={styles.sectionHeader}>
@@ -252,11 +236,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
           </div>
 
           <div className={styles.pillarsGrid}>
-            {/* Pillar 1: Gestor Educ with Blue Spotlight */}
-            <SpotlightCard
-              spotlightColor="rgba(59, 130, 246, 0.22)"
-              className={styles.pillarCard}
-            >
+            {/* Pillar 1: Gestor Educ */}
+            <div className={styles.pillarCard}>
               <div className={styles.pillarHeader}>
                 <div className={styles.pillarLogoWrapper}>
                   <img src={gestorLogo} alt="Gestor Educ" className={styles.pillarLogoImg} />
@@ -292,13 +273,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                   <ArrowRight size={16} />
                 </a>
               </div>
-            </SpotlightCard>
+            </div>
 
-            {/* Pillar 2: AVAEE GD with Amethyst / Teal Spotlight */}
-            <SpotlightCard
-              spotlightColor="rgba(139, 92, 246, 0.22)"
-              className={`${styles.pillarCard} ${styles.pillarCardAvaee}`}
-            >
+            {/* Pillar 2: AVAEE GD */}
+            <div className={`${styles.pillarCard} ${styles.pillarCardAvaee}`}>
               <div className={styles.pillarHeader}>
                 <div className={styles.pillarLogoWrapperAvaee}>
                   <img src={avaeeLogo} alt="AVAEE GD" className={styles.pillarLogoImg} />
@@ -334,7 +312,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenDemoModal }) => {
                   <ArrowRight size={16} />
                 </a>
               </div>
-            </SpotlightCard>
+            </div>
           </div>
         </div>
       </section>
